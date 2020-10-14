@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/router', function () {
+    return view('inventory.router');
+});
 
 Route::get('/committee-questionnaire-pdf', 'Committee\QuestionnaireController@generatePdf')->name('committee-questionnaire.pdf');
 // Route::get('/org', function () {
@@ -23,6 +26,8 @@ Route::get('/committee-questionnaire-pdf', 'Committee\QuestionnaireController@ge
 
 Auth::routes();
 
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/changwats', 'Api\ProvinceInfoController@changwats');
