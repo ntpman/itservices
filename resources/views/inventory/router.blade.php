@@ -399,11 +399,35 @@
             <div class="form-group row">
               <label for="" class="col-sm-2 col-form-label">สถานะ</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="">
+                
               </div>
             </div>
             <div class="form-group row">
               <label for="" class="col-sm-2 col-form-label">ประเภท</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-2 col-form-label">ยี่ห้อ</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-2 col-form-label">รุ่น</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-2 col-form-label">เลขครุภัณฑ์</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-2 col-form-label">Serial Number</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" id="">
               </div>
