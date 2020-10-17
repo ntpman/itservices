@@ -84,7 +84,8 @@
                     @include('inc.admin.sidebar-admin')
                 
                 {{-- Menu for Employee --}}
-                    @include('inc.admin.sidebar-employee')
+                    <li class="nav-header">ข้อมูลเครื่อง/อุปกรณ์</li>
+                        @include('inc.admin.sidebarAsset')
 
                 {{-- Approver Menu --}}
                     @include('inc.admin.sidebar-approver')

@@ -2,11 +2,8 @@
 {{-- ข้อมูลผู้จำหน่ายสินค้า --}}
 <li class="nav-item has-treeview {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*','qualitySystem*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link {{ Request::is('locationLab*','industrialEstate*','organisationType*','businessType*','saleProduct*','industrialType*','qualitySystem*') ? 'active' : '' }}">
-    <i class="nav-icon fas fa-arrow-circle-right"></i>
-    <p class="">
-        ข้อมูลผู้จำหน่ายสินค้า
-        <i class="right fas fa-angle-left"></i>
-    </p>
+        <i class="nav-icon fas fa-arrow-circle-right"></i>
+        <p class="">ข้อมูลผู้จำหน่ายสินค้า<i class="right fas fa-angle-left"></i></p>
     </a>
     <ul class="nav nav-treeview">
         {{-- Location Lab Sub-menu --}}
@@ -155,12 +152,12 @@
         </li>
     </ul>
 </li>
-{{-- ข้อมูล--}}
+{{-- ข้อมูลสินค้า--}}
 <li class="nav-item has-treeview {{ Request::is('laboratoryType*','areaService*','fixedCost*','incomePerYear*','employeeTraining*','environmentManage*', 'educationLevel*','labDevelopment*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link {{ Request::is('laboratoryType*','areaService*','fixedCost*','incomePerYear*','employeeTraining*','environmentManage*', 'educationLevel*','labDevelopment*') ? 'active' : '' }}">
     <i class="nav-icon fas fa-arrow-circle-right"></i>
     <p>
-        ส่วนที่ 2 : ห้องปฏิบัติการ
+        ข้อมูลสินค้า
         <i class="right fas fa-angle-left"></i>
     </p>
     </a>
@@ -329,14 +326,11 @@
         </li>
     </ul>
 </li>
-{{-- Part 3 : Science Tools --}}
+{{-- ข้อมูลอาคารสถานที่ --}}
 <li class="nav-item has-treeview {{ Request::is('scienceTool*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link {{ Request::is('scienceTool*','majorTechnology*','technicalEquipment*','objectiveUsage*','equipmentUsage*','equipmentCalibration*','equipmentMaintenance*','equipmentManual*','equipmentRent*') ? 'active' : '' }}">
     <i class="nav-icon fas fa-arrow-circle-right"></i>
-    <p>
-        ส่วนที่ 3 : เครื่องมือ
-        <i class="right fas fa-angle-left"></i>
-    </p>
+    <p> ข้อมูลอาคารสถานที่ <i class="right fas fa-angle-left"></i></p>
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item has-treeview {{ Request::is('scienceTool*') ? 'menu-open' : '' }}">
@@ -526,14 +520,11 @@
         </li>
     </ul>
 </li>
-{{-- Part 4 : Product & Service --}}
+{{-- ข้อมูลหน่วยงาน --}}
 <li class="nav-item has-treeview {{ Request::is('productType*','testingCalibratingList*','testingCalibratingType*','testingCalibratingMethod*','resultControl*','proficiencyTesting*','certifyLaboratory*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link {{ Request::is('productType*','testingCalibratingList*','testingCalibratingType*','testingCalibratingMethod*','resultControl*','proficiencyTesting*','certifyLaboratory*') ? 'active' : '' }}">
     <i class="nav-icon fas fa-arrow-circle-right"></i>
-    <p>
-        ส่วนที่ 4 : ผลิตภัณฑ์ / บริการ
-        <i class="right fas fa-angle-left"></i>
-    </p>
+    <p>ข้อมูลหน่วยงาน<i class="right fas fa-angle-left"></i></p>
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item has-treeview {{ Request::is('productType*') ? 'menu-open' : '' }}">
@@ -678,8 +669,7 @@
         </li>
     </ul>
 </li>
-{{-- Other Basic Infos --}}
-{{-- Add Country --}}
+{{-- ข้อมูลอื่นๆ --}}
 <li class="nav-item has-treeview {{ Request::is ('country*') ? 'menu-open' : '' }}">
     {{-- active --}}
     <a href="#" class="nav-link {{ Request::is ('country*') ? 'active' : '' }}">

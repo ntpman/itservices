@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Model\ProvinceInfo;
+use App\Model\Supplier\ProvinceInfo;
 
 class ProvinceInfoController extends Controller
 {
