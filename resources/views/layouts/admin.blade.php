@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {{-- Website name | Pages name  --}}
-    <title>{{ config('app_name', 'Lab Survey') }} | @yield('page')</title>
+    <title>{{ config('app_name', 'DSS IT Services') }} | @yield('page')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
@@ -82,10 +82,10 @@
         <!-- /.content-wrapper -->
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2020 <a href="#">Laboratory Survey</a>.</strong>
+            <strong>Copyright &copy; 2020 <a href="#">DSS IT Services Application</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.0.5
+                <b>Version</b> 1.0.0
             </div>
         </footer>
 

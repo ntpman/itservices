@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title','Dashboard | Role Informations')
+@section('title','Dashboard | Asset Informations')
     
 @section('content_header')
-    <h1>สิทธิ์การใช้งานระบบ</h1>
+    <h1>ทะเบียนประวัติเครื่อง/อุปกรณ์คอมพิวเตอร์</h1>
 @stop
 
 @section('content')
