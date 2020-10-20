@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Asset;
 
-use App\Model\Assets\assetDetail;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AssetDetailController extends Controller
@@ -41,10 +41,10 @@ class AssetDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Assets\assetDetail  $assetDetail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(assetDetail $assetDetail)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class AssetDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Assets\assetDetail  $assetDetail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(assetDetail $assetDetail)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class AssetDetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Assets\assetDetail  $assetDetail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, assetDetail $assetDetail)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class AssetDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Assets\assetDetail  $assetDetail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(assetDetail $assetDetail)
+    public function destroy($id)
     {
         //
     }

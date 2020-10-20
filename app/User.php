@@ -6,14 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use App\Model\Employee\Organization;
-use App\Model\Employee\Lab;
-use App\Model\Employee\Equipment;
-use App\Model\Employee\ProductLab;
-use App\Model\BasicInformations\Role;
-use App\Model\BasicInformations\Region;
-
-use App\Model\Logs\logCommentLab;
+use App\Profile;
+use App\Model\Asset\Asset;
 
 class User extends Authenticatable
 {
@@ -25,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_code','name', 'email', 'password', 'role_id', 'agency_id', 'region_id', 'status'
+        'name', 'email', 'password', 'image', 'role', 'status'
     ];
 
     /**
@@ -46,36 +40,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function organizations()
+    // Eloquent: Relationships
+    public function profile()
     {
-        return $this->hasMany(Organization::class);
+        return $this->hasOne(Profile::class);
     }
 
-    public function labs()
+    public function assets()
     {
-        return $this->hasMany(Lab::class);
-    }
-
-    public function equipments()
-    {
-        return $this->hasMany(Equipment::class);
-    }
-
-    public function productLabs()
-    {
-        return $this->hasMany(ProductLab::class);
-    }
-
-    public function role() {
-        return $this->belongsTo(Role::class);
-    }
-
-    public function region() {
-        return $this->belongsTo(Region::class);
-    }
-
-    public function logCommentLabs()
-    {
-        return $this->hasMany(LogCommentLab::class);
+        return $this->hasMany(Asset::class);
     }
 }

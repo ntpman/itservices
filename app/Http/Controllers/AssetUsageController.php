@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\BasicInfo\AssetUsage;
 use Illuminate\Http\Request;
 
 class AssetUsageController extends Controller
@@ -41,10 +40,10 @@ class AssetUsageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\BasicInfo\AssetUsage  $assetUsage
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(AssetUsage $assetUsage)
+    public function show($id)
     {
         //
     }
@@ -52,10 +51,10 @@ class AssetUsageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\BasicInfo\AssetUsage  $assetUsage
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(AssetUsage $assetUsage)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +63,10 @@ class AssetUsageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\BasicInfo\AssetUsage  $assetUsage
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AssetUsage $assetUsage)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +74,10 @@ class AssetUsageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\BasicInfo\AssetUsage  $assetUsage
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AssetUsage $assetUsage)
+    public function destroy($id)
     {
         //
     }

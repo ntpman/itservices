@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel for Itservices
                 </div>
 
                 <div class="links">
@@ -94,6 +94,10 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
+                <p>
+                    {{ date('D-M-Y H:i') }}
+                </p>
             </div>
         </div>
     </body>

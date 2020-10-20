@@ -8,7 +8,6 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Helpers\LogActivity;
 
 class RegisterController extends Controller
 {
@@ -39,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('guest');
     }
 
     /**
@@ -51,13 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'user_code' => ['required', 'max:25', 'unique:users'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role_id' => ['required'],
-            'agency_id' => ['required'],
-            'region_id' => ['required'],
         ]);
     }
 
@@ -68,22 +63,11 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {   
-        $registerUser = new User;
-        $registerUser->user_code = $data['user_code'];
-        $registerUser->name = $data['name'];
-        $registerUser->email = $data['email'];
-        $registerUser->password = Hash::make($data['password']);
-        $registerUser->role_id = $data['role_id'];
-        $registerUser->agency_id = $data['agency_id'];
-        $registerUser->region_id = $data['region_id'];
-        $registerUser->save();
-
-        // create log activity
-        LogActivity::addToLog('Add user : " ' . $registerUser->name . ' " successfully.');
-
-        return redirect('register');
-
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
-
 }

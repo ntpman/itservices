@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Itservices'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,6 @@ return [
     |
     */
 
-    // 'timezone' => 'UTC',
     'timezone' => 'Asia/Bangkok',
 
     /*
@@ -176,11 +175,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        /*
-        * Survey Application Service Provider
-        */
-        Collective\Html\HtmlServiceProvider::class,
-        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
     ],
 
     /*
@@ -195,6 +189,7 @@ return [
     */
 
     'aliases' => [
+
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -230,10 +225,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Form' => Collective\Html\FormFacades::class,
-        'Html' => Collective\Html\HtmlFacades::class,
-        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
-        'LogActivity' => App\Helpers\LogActivity::class,
 
     ],
 

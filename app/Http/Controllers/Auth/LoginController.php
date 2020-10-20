@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Helpers\LogActivity;
 
 class LoginController extends Controller
 {
@@ -27,41 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = RouteServiceProvider::HOME;
-    protected function redirectTo()
-    {
-        if (auth()->user()->role_id == 1 ) {
-            LogActivity::addToLog('Login success.');
-            return '/dashboard';
-        }
-
-        if (auth()->user()->role_id == 2 ) {
-            LogActivity::addToLog('Login success.');
-            return '/dashboard';
-        }
-
-        if (auth()->user()->role_id == 3 ) {
-            LogActivity::addToLog('Login success.');
-            return '/dashboard';
-        }
-
-        if (auth()->user()->role_id == 4 ) {
-            LogActivity::addToLog('Login success.');
-            return '/dashboard';
-        }
-
-        if (auth()->user()->role_id == 5 ) {
-            LogActivity::addToLog('Login success.');
-            return '/dashboard';
-        }
-
-        if (auth()->user()->role_id == 6 ) {
-            LogActivity::addToLog('Login success.');
-            return '/dashboard';
-        }
-
-        return '/home';
-    }
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
