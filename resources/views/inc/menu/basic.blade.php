@@ -7,13 +7,13 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="/brand" class="nav-link {{ Request::is('basic') ? 'active' : '' }}">
+            <a href="/basic/brand" class="nav-link {{ Request::is('basic/brand') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
                 <p>Index</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="/model" class="nav-link {{ Request::is('basic/create') ? 'active' : '' }}">
+            <a href="/basic/brand/create" class="nav-link {{ Request::is('basic/brand/create') ? 'active' : '' }}">
                 <i class="fas fa-edit nav-icon"></i>
                 <p>Create</p>
             </a>

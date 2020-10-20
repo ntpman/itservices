@@ -13,7 +13,7 @@
                         <h5 class="m-0">Asset Database</h5>
                     </div>
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped table-sm">
+                        <table id="example1" class="table table-bordered table-striped table-sm datatables">
                             <thead>
                                 <tr>
                                 <th>Rendering engine</th>
