@@ -38,6 +38,9 @@
                     {{-- Setting --}}
                     @include('inc.menu.setting')
 
+                    {{-- Basic Infos --}}
+                    @include('inc.menu.basic')
+
                     {{-- Asset --}}
                     @include('inc.menu.asset')
 

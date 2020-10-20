@@ -21,6 +21,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/admin/users', 'UserController');
 
+Route::name('basic.')->group(function () {
+    Route::get('/basic/brand', 'Basic\BrandController@index')->name('index');
+    Route::get('/basic/brand/create', 'Basic\BrandController@create')->name('create');
+    Route::post('/basic/brand', 'Basic\BrandController@store')->name('store');
+    Route::get('/basic/brand/{brand}/edit', 'Basic\BrandController@edit')->name('edit');
+    Route::put('/basic/brand/{brand}', 'Basic\BrandController@update')->name('update');
+});
+
 Route::name('asset.')->group(function () {
     Route::get('/asset', 'Asset\AssetController@index')->name('index');
     Route::get('/asset/create', 'Asset\AssetController@create')->name('create');
