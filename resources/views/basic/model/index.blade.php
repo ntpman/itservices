@@ -35,7 +35,7 @@
                                 @foreach ($showAllModel as $model)
                                     <tr>
                                         <td class="text-center">{{ $model->id }}</td>
-                                        <td>{{ $model->brands }}</td>
+                                        <td>{{ $model->brand_id}}</td>
                                         <td>{{ $model->model_name }}</td>
                                         <td class="text-center">{{ $model->model_status }}</td>
                                         <td>

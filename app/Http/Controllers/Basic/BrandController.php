@@ -16,7 +16,7 @@ class BrandController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     } 
     /**
      * Display a listing of the resource.
@@ -50,7 +50,6 @@ class BrandController extends Controller
         //validate date
         $this->validate($request, [
             'brandFullName' => 'required|unique:brands,brand_full_name',
-            // 'brandAbbrName' => 'required|unique:brands,brand_abbr_name',
         ]);
 
         //Add new data
@@ -58,7 +57,7 @@ class BrandController extends Controller
             $addBrand->brand_full_name = $request->input('brandFullName');
             $addBrand->brand_abbr_name = $request->input('brandAbbrName');
             $addBrand->brand_status = 'A';
-            $addBrand->created_by = 'TEST';
+            $addBrand->created_by = auth()->user()->name;
             $addBrand->save();
 
         //return index view
@@ -104,7 +103,7 @@ class BrandController extends Controller
             $updateBrand->brand_full_name = $request->input('brandFullName');
             $updateBrand->brand_abbr_name = $request->input('brandAbbrName');
             $updateBrand->brand_status = $request->input('brandStatus');
-            $updateBrand->updated_by = 'UPDATE';
+            $updateBrand->updated_by = auth()->user()->name;
             $updateBrand->save();
 
         //return index view
