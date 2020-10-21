@@ -15,14 +15,14 @@ class CreateModelsTable extends Migration
     {
         Schema::create('models', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('รหัสรายการ');
-            $table->unsignedBigInteger('brands_id')->comment('รหัสผลิตภัณฑ์');
-            $table->string('models_name',255)->unique()->comment('ชื่อรุ่นของผลิตภัณฑ์');
-            $table->string('modeldels_status',1)->default('A')->comment('สถานะการใช้ข้อมูล');
+            $table->unsignedBigInteger('brand_id')->comment('รหัสผลิตภัณฑ์');
+            $table->string('model_name',255)->unique()->comment('ชื่อรุ่นของผลิตภัณฑ์');
+            $table->string('model_status',1)->default('A')->comment('สถานะการใช้ข้อมูล');
             $table->string('created_by',50)->comment('รหัสผู้สร้างข้อมูล');
-            $table->string('updated_by',50)->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
+            $table->string('updated_by',50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
 
-            $table->foreign('brands_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 

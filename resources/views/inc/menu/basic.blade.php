@@ -9,7 +9,13 @@
         <li class="nav-item">
             <a href="/basic/brand" class="nav-link {{ Request::is('basic/brand') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
-                <p>Index</p>
+                <p>ยี่ห้อผลิตภัณฑ์</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/basic/model" class="nav-link {{ Request::is('basic/model') ? 'active' : '' }}">
+                <i class="fas fa-database nav-icon"></i>
+                <p>รุ่นของผลิตภัณฑ์</p>
             </a>
         </li>
     </ul>
