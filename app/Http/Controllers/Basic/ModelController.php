@@ -72,10 +72,10 @@ class ModelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\BasicInformations\Model  $model
+     * @param  \App\Model\BasicInformations\AssetModel  $assetModel
      * @return \Illuminate\Http\Response
      */
-    public function show(Model $model)
+    public function show(AssetModel $assetModel)
     {
         //
     }
@@ -86,10 +86,13 @@ class ModelController extends Controller
      * @param  \App\Model\BasicInformations\Model  $model
      * @return \Illuminate\Http\Response
      */
-    public function edit(Model $model)
+    public function edit(AssetModel $assetModel)
     {
-        $editBrand = Model::find($brand->id);
-        return view('basic.model.edit',['editBrand' => $editBrand]);
+        return $assetModel;
+        $editModel = AssetModel::find($assetModel->id);
+
+        dd($editModel);
+        return view('basic.model.edit',['editModel' => $editModel]);
     }
 
     /**

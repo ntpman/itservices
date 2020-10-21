@@ -39,7 +39,7 @@
                                         <td>{{ $model->model_name }}</td>
                                         <td class="text-center">{{ $model->model_status }}</td>
                                         <td>
-                                            <a href="/basic/brand/{{ $model->id }}/edit" class="bth btn-primary btn-sm">
+                                            <a href="/basic/model/{{ $model->id }}/edit" class="bth btn-primary btn-sm">
                                                 <i class="fas fa-edit"></i> แก้ไข
                                             </a>
                                         </td>

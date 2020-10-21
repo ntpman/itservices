@@ -23,7 +23,7 @@
 							{{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}
 							{{ Form::text('modelName', '', ['class' => 'form-control']) }}
 						</div>
-						<a href="/basic/brand" class="btn btn-secondary">ย้อนกลับ</a>
+						<a href="/basic/model" class="btn btn-secondary">ย้อนกลับ</a>
 						{{ Form::submit('บันทึก', ['class' => 'btn btn-primary']) }}
 					</div>
 					{!! Form::close() !!}
