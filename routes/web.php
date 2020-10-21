@@ -27,6 +27,12 @@ Route::name('basic.')->group(function () {
     Route::post('/basic/brand', 'Basic\BrandController@store')->name('store');
     Route::get('/basic/brand/{brand}/edit', 'Basic\BrandController@edit')->name('edit');
     Route::put('/basic/brand/{brand}', 'Basic\BrandController@update')->name('update');
+
+    Route::get('/basic/model', 'Basic\ModelController@index')->name('index');
+    Route::get('/basic/model/create', 'Basic\ModelController@create')->name('create');
+    Route::post('/basic/model', 'Basic\ModelController@store')->name('store');
+    Route::get('/basic/model/{model}/edit', 'Basic\ModelController@edit')->name('edit');
+    Route::put('/basic/model/{model}', 'Basic\ModelController@update')->name('update');
 });
 
 Route::name('asset.')->group(function () {

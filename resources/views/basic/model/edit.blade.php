@@ -10,7 +10,7 @@
             <div class="col-lg-6">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">แก้ไขข้อมูลยี่ห้อผลิตภัณฑ์ <i class="far fa-edit"></i></h3>
+                        <h5 class="m-0">แก้ไขข้อมูลยี่ห้อผลิตภัณฑ์ <i class="far fa-edit"></i></h5>
                     </div>
                     <!-- form start -->
                     {!! Form::open(['action' => ['Basic\BrandController@update', $editBrand->id], 'method'=>'PUT']) !!}
