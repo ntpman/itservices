@@ -14,7 +14,8 @@ class AssetModel extends Model
 
     public $timestamps = true;
 
-    public function brands() {
+    public function brand() 
+    {
         return $this->belongsTo(Brand::class);
     }
 }

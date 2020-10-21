@@ -14,7 +14,8 @@ class Brand extends Model
 
     public $timestamps = true;
 
-    public function models() {
+    public function assetModels() 
+    {
         return $this->hasMany(AssetModel::class);
     }
 
