@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         $user = new User;
-        $user->name = 'Administrater';
+        $user->name = 'Administrator';
         $user->email = 'nititpong@dss.go.th';
-        $user->password = bcrypt('ntp@2531');
+        $user->password = bcrypt('12345678');
         $user->role = 3;
         $user->status = 1;
         $user->save();
