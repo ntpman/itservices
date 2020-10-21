@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h5 class="m-0">Asset Database</h5>
+                        <h3 class="card-title">Asset Database</h3>
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped table-sm datatables">

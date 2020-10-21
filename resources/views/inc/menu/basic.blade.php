@@ -7,7 +7,7 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="/basic/brand" class="nav-link {{ Request::is('basic/brand') ? 'active' : '' }}">
+            <a href="/basic/brand" class="nav-link {{ Request::is('basic/brand*') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
                 <p>Index</p>
             </a>
