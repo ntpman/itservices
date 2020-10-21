@@ -88,7 +88,6 @@ class ModelController extends Controller
      */
     public function edit(AssetModel $assetModel)
     {
-        return $assetModel;
         $editModel = AssetModel::find($assetModel->id);
 
         dd($editModel);

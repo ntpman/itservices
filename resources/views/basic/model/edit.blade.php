@@ -13,7 +13,7 @@
                         <h5 class="m-0">แก้ไขข้อมูลรุ่นผลิตภัณฑ์ <i class="far fa-edit"></i></h5>
                     </div>
                     <!-- form start -->
-                    {!! Form::open(['action' => ['Basic\ModelController@update', $editModel->id], 'method'=>'PUT']) !!}
+                    {!! Form::open(['action' => ['Basic\ModelController@update', 1], 'method'=>'PUT']) !!}
                     <div class="card-body">
                         <div class="form-group">
                             {{ Form::label('title','ยี่ห้อผลิตภัณฑ์') }}
