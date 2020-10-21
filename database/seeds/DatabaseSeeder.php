@@ -22,13 +22,13 @@ class DatabaseSeeder extends Seeder
         $user->status = 1;
         $user->save();
 
-        /*
-        $user->name = 'Somnuek Jumee';
-        $user->email = 'jsomnuek@dss.go.th';
-        $user->password = bcrypt('12345678');
-        $user->role = 3;
-        $user->status = 1;
-        $user->save();
-        */
+        $user2 = new User;
+        $user2->name = 'Somnuek Jumee';
+        $user2->email = 'jsomnuek@dss.go.th';
+        $user2->password = bcrypt('12345678');
+        $user2->role = 3;
+        $user2->status = 1;
+        $user2->save();
+        
     }
 }
