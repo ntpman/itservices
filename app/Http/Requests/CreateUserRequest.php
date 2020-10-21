@@ -39,10 +39,10 @@ class CreateUserRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'โปรดระบุ : ชื่อผู้ใช้งาน',
-            'email' => 'โปรดระบุ : อีเมล์สำหรับ Login เข้าใช้งานระบบ',
-            'password' => 'โปรดระบุ : รหัสผ่าน',
-            'image' => 'โปรดระบุ : ตรวจสอบไฟล์รูปภาพ',
+            'name' => 'please โปรดระบุ : ชื่อผู้ใช้งาน',
+            'email' => 'please โปรดระบุ : อีเมล์สำหรับ Login เข้าใช้งานระบบ',
+            'password' => 'please โปรดระบุ : รหัสผ่าน',
+            'image' => 'please โปรดระบุ : ตรวจสอบไฟล์รูปภาพ',
         ];
     }
 }
