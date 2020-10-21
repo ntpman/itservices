@@ -35,7 +35,11 @@
                                 @foreach ($showAllModel as $model)
                                     <tr>
                                         <td class="text-center">{{ $model->id }}</td>
-                                        <td>{{ $model->brand->brand_full_name }}</td>
+                                        <td>
+                                            <a href="/basic/model/{{ $model->id }}">
+                                                {{ $model->brand->brand_full_name }}
+                                            </a>
+                                        </td>
                                         <td>{{ $model->model_name }}</td>
                                         <td class="text-center">{{ $model->model_status }}</td>
                                         <td>

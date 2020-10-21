@@ -75,9 +75,11 @@ class ModelController extends Controller
      * @param  \App\Model\BasicInformations\AssetModel  $assetModel
      * @return \Illuminate\Http\Response
      */
-    public function show(AssetModel $assetModel)
+    public function show($id)
     {
-        //
+        $assetModel = AssetModel::findOrFail($id);
+
+        return $assetModel;
     }
 
     /**
@@ -88,11 +90,11 @@ class ModelController extends Controller
      */
     public function edit(AssetModel $assetModel)
     {
-        return $assetModel;
-        $editModel = AssetModel::find($assetModel->id);
+        return($assetModel);
 
-        dd($editModel);
-        return view('basic.model.edit',['editModel' => $editModel]);
+        return view('basic.model.edit', [
+            'editModel' => $assetModel
+        ]);
     }
 
     /**
