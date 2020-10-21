@@ -29,6 +29,14 @@ class DatabaseSeeder extends Seeder
         $user2->role = 3;
         $user2->status = 1;
         $user2->save();
+
+        $user3 = new User;
+        $user3->name = 'Sub Suanduang';
+        $user3->email = 'sub@dss.go.th';
+        $user3->password = bcrypt('13345678');
+        $user3->role = 2;
+        $user3->status = 1;
+        $user3->save();
         
     }
 }
