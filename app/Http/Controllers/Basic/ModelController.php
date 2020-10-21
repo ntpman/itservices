@@ -88,9 +88,9 @@ class ModelController extends Controller
      * @param  \App\Model\BasicInformations\Model  $model
      * @return \Illuminate\Http\Response
      */
-    public function edit(AssetModel $assetModel)
+    public function edit(AssetModel $model)
     {
-        return($assetModel);
+        return($model);
 
         return view('basic.model.edit', [
             'editModel' => $assetModel

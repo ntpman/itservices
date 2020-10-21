@@ -43,9 +43,9 @@
                                 <!-- /.col -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="common_name_id">รหัสชื่อครุภัณฑ์</label>
-                                        <input type="text" class="form-control form-control-sm @error('common_name_id') is-invalid @enderror" name="common_name_id" id="common_name_id" value="{{ old('common_name_id') }}" placeholder="common_name_id">
-                                        @error('common_name_id')
+                                        <label for="asset_common_name_id">รหัสชื่อครุภัณฑ์</label>
+                                        <input type="text" class="form-control form-control-sm @error('asset_common_name_id') is-invalid @enderror" name="asset_common_name_id" id="asset_common_name_id" value="{{ old('asset_common_name_id') }}" placeholder="asset_common_name_id">
+                                        @error('asset_common_name_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

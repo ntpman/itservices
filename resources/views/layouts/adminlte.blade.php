@@ -51,17 +51,19 @@
                             </ol>
                         </div><!-- /.col -->
                         <div class="col-sm-12">
-                            @if (Session::has('success_msg'))
+                            {{-- @if (Session::has('success_msg'))
                                 <div class="alert alert-success">
                                     {{ session('success_msg') }}
                                 </div>
-                            @endif
+                            @endif --}}
 
                             @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
+                                <div class="alert alert-danger mb-0">
+                                    <ol class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ol>
                                 </div>
                             @endif
                         </div>
@@ -129,7 +131,7 @@
                 Toast.fire({
                     icon: 'success',
                     type: 'success',
-                    title: 'Congratulations!'
+                    title: `<span class="ml-1 font-mitr">{{ session('success_msg') }}</span>`,
                 });
             });
         </script>
