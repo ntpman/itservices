@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateUserRequest;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\CreateUserRequest;
 
 use App\User;
 

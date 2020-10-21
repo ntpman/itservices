@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Asset;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests\CreateAssetRequest;
 
 use App\Model\Asset\Asset;
 
@@ -49,29 +51,16 @@ class AssetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAssetRequest $request)
     {
         // dd($request);
         // dd($request->all());
-
-        // validate the data with function
-        $this->validateAsset();
-
-        // Handle File Upload
-        if($request->hasFile('picture_name')) {
-            // Get filename with the extension
-            $fileNameWithExt = $request->file('equipment_image')->getClientOriginalName();
-            // Get just filename
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('equipment_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('equipment_image')->storeAs('public/asset_pictures', $fileNameToStore);
-        } else {
-            $fileNameToStore = '';
-        }
+        
+        /** 
+         * validate the data with function
+         * 
+        */
+        // $this->validateAsset();
 
         // store in the database
         $asset = new Asset;
