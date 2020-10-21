@@ -1,0 +1,18 @@
+/* Import */
+@font-face {
+    font-family: "Mitr-Medium";
+    src: url("../fonts/Mitr/Mitr-Medium.ttf");
+}
+@font-face {
+    font-family: "Sarabun-Regular";
+    src: url("../fonts/Sarabun/Sarabun-Regular.ttf");
+}
+
+/* Fonts */
+.content .card h3.card-title {
+    font-family: "Mitr-Medium";
+}
+.content .card .card-body label,
+.content .card .card-body table.table {
+    font-family: "Sarabun-Regular";
+}

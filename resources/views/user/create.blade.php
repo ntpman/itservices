@@ -83,6 +83,7 @@
                         <!-- /.card-body -->        
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="/admin/users" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                     <!-- end start -->
