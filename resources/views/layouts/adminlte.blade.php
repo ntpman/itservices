@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="{{ asset('/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('/adminlte/dist/css/adminlte.min.css') }}">
-    <!-- Google Font: Source Sans Pro -->
+    <!-- Google Font: Source -->
+    <link rel="stylesheet" href="{{ asset('/css/font.css') }}">
 </head>
 <body class="hold-transition sidebar-mini text-sm">
     <div class="wrapper">

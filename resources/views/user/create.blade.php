@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h5 class="m-0">Create User <i class="far fa-edit"></i></h5>
+                        <h3 class="card-title">Create User <i class="far fa-edit"></i></h3>
                     </div>
                     <!-- form start -->
                     <form action="/admin/users" method="POST" enctype="multipart/form-data" role="form">
@@ -83,6 +83,7 @@
                         <!-- /.card-body -->        
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="/admin/users" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                     <!-- end start -->

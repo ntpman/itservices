@@ -10,7 +10,14 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h5 class="m-0">All Users</h5>
+                        <h3 class="card-title">All Users</h3>
+                        <div class="card-tools">
+                            <ul class="nav nav-pills ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/admin/users/create"><i class="fas fa-plus"></i> Add</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body table-responsive">
                         <table id="example1" class="table table-bordered table-striped table-sm datatables">
