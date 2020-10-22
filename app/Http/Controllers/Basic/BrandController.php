@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Basic;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Model\Basic\Brand;
 

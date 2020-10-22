@@ -33,7 +33,49 @@ Route::name('basic.')->group(function () {
     Route::post('/basic/model', 'Basic\ModelController@store')->name('store');
     Route::get('/basic/model/{model}', 'Basic\ModelController@show')->name('show');
     Route::get('/basic/model/{model}/edit', 'Basic\ModelController@edit')->name('edit');
+    Route::get('/basic/model/{model}/change_status', 'Basic\ModelController@changeStatus')->name('change_status');
     Route::put('/basic/model/{model}', 'Basic\ModelController@update')->name('update');
+
+    Route::get('/basic/building', 'Basic\BuildingController@index')->name('index');
+    Route::get('/basic/building/create', 'Basic\BuildingController@create')->name('create');
+    Route::post('/basic/building', 'Basic\BuildingController@store')->name('store');
+    Route::get('/basic/building/{building}', 'Basic\BuildingController@show')->name('show');
+    Route::get('/basic/building/{building}/edit', 'Basic\BuildingController@edit')->name('edit');
+    Route::get('/basic/building/{building}/change_status', 'Basic\BuildingController@changeStatus')->name('change_status');
+    Route::put('/basic/building/{building}', 'Basic\BuildingController@update')->name('update');
+
+    Route::get('/basic/type', 'Basic\TypeController@index')->name('index');
+    Route::get('/basic/type/create', 'Basic\TypeController@create')->name('create');
+    Route::post('/basic/type', 'Basic\TypeController@store')->name('store');
+    Route::get('/basic/type/{type}', 'Basic\TypeController@show')->name('show');
+    Route::get('/basic/type/{type}/edit', 'Basic\TypeController@edit')->name('edit');
+    Route::get('/basic/type/{type}/change_status', 'Basic\TypeController@changeStatus')->name('change_status');
+    Route::put('/basic/type/{type}', 'Basic\TypeController@update')->name('update');
+
+    Route::get('/basic/sub_type', 'Basic\SubTypeController@index')->name('index');
+    Route::get('/basic/sub_type/create', 'Basic\SubTypeController@create')->name('create');
+    Route::post('/basic/sub_type', 'Basic\SubTypeController@store')->name('store');
+    Route::get('/basic/sub_type/{sub_type}', 'Basic\SubTypeController@show')->name('show');
+    Route::get('/basic/sub_type/{sub_type}/edit', 'Basic\SubTypeController@edit')->name('edit');
+    Route::get('/basic/sub_type/{sub_type}/change_status', 'Basic\SubTypeController@changeStatus')->name('change_status');
+    Route::put('/basic/sub_type/{sub_type}', 'Basic\SubTypeController@update')->name('update');
+
+    Route::get('/basic/common_name', 'Basic\CommonNameController@index')->name('index');
+    Route::get('/basic/common_name/create', 'Basic\CommonNameController@create')->name('create');
+    Route::post('/basic/common_name', 'Basic\CommonNameController@store')->name('store');
+    Route::get('/basic/common_name/{common_name}', 'Basic\CommonNameController@show')->name('show');
+    Route::get('/basic/common_name/{common_name}/edit', 'Basic\CommonNameController@edit')->name('edit');
+    Route::get('/basic/common_name/{common_name}/change_status', 'Basic\CommonNameController@changeStatus')->name('change_status');
+    Route::put('/basic/common_name/{common_name}', 'Basic\CommonNameController@update')->name('update');
+
+    Route::get('/basic/usage', 'Basic\UsageController@index')->name('index');
+    Route::get('/basic/usage/create', 'Basic\UsageController@create')->name('create');
+    Route::post('/basic/usage', 'Basic\UsageController@store')->name('store');
+    Route::get('/basic/usage/{usage}', 'Basic\UsageController@show')->name('show');
+    Route::get('/basic/usage/{usage}/edit', 'Basic\UsageController@edit')->name('edit');
+    Route::get('/basic/usage/{usage}/change_status', 'Basic\UsageController@changeStatus')->name('change_status');
+    Route::put('/basic/usage/{usage}', 'Basic\UsageController@update')->name('update');
+
 });
 
 Route::name('asset.')->group(function () {
