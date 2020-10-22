@@ -14,7 +14,7 @@ class Type extends Model
 
     public $timestamps = true;
 
-    public function subTypes() {
+    public function assetSubtypes() {
         return $this->hasMany(SubType::class);
     }
 }

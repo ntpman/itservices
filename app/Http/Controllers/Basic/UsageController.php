@@ -119,7 +119,7 @@ class UsageController extends Controller
             $updateUsage->updated_by = auth()->user()->name;
             $updateUsage->save();
 
-            Session::flash('success_msg','แก้ไขสถานะการใช้งานครุภัณฑ์เรียบร้อย');
+            Session::flash('success_msg','แก้ไขสถานะการใช้งานเรียบร้อย');
         }
 
         //return index view

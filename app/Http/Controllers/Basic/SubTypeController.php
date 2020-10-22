@@ -122,6 +122,7 @@ class SubTypeController extends Controller
             $updateModel->subtype_name = $request->input('subTypeName');
             $updateModel->updated_by = auth()->user()->name;
             $updateModel->save();
+
             Session::flash('success_msg', 'บันทึกข้อมูลประเภทครุภัณฑ์ย่อยเรียบร้อย');
         }
         else {
@@ -129,6 +130,8 @@ class SubTypeController extends Controller
             $updateModel->subtype_status = $request->input('subTypeStatus');
             $updateModel->updated_by = auth()->user()->name;
             $updateModel->save();
+
+            Session::flash('success_msg', 'แก้ไขสถานะการใช้ข้อมูลเรียบร้อย');
         }
 
         //return index view
@@ -144,6 +147,18 @@ class SubTypeController extends Controller
     public function destroy(SubType $subType)
     {
         //
+    }
+
+    public function changeStatus(SubType $subType)
+    {
+        $types = Type::all()
+        ->where('asset_type_status','=', 'A')
+        ->pluck('asset_type_name', 'id')->toArray();
+
+        return view('basic.sub_type.change_status', [
+            'editSubType' => $subType,
+            'allType' => $types,
+        ]);
     }
 
 }
