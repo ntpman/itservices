@@ -44,8 +44,13 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="supplier_province_id">จังหวัด</label>
-                                        <select class="form-control custom-select" style="width: 100%;" name="supplier_province_id" id="supplier_province_id">
-                                            <option value="1" {{ old('supplier_province_id') ==  1 ? 'selected' : '' }}>supplier_province_id</option>
+                                        <select class="form-control select2bs4 @error('supplier_province_id') is-invalid @enderror" 
+                                            style="width: 100%;" 
+                                            name="supplier_province_id" 
+                                            id="supplier_province_id" 
+                                            data-value="{{ old('supplier_province_id') }}" 
+                                            data-placeholder="supplier_province_id">
+                                                <option value="" selected></option>
                                         </select>
                                         @error('supplier_province_id')
                                             <span class="invalid-feedback" role="alert">
@@ -57,9 +62,14 @@
                                 <!-- /.col -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="supplier_district_id">อำเภอ/เขต</label>
-                                        <select class="form-control custom-select" style="width: 100%;" name="supplier_district_id" id="supplier_district_id">
-                                            <option value="1" {{ old('supplier_district_id') ==  1 ? 'selected' : '' }}>supplier_district_id</option>
+                                        <label for="supplier_district_id">เขต/อำเภอ</label>
+                                        <select class="form-control select2bs4 @error('supplier_district_id') is-invalid @enderror" 
+                                            style="width: 100%;" 
+                                            name="supplier_district_id" 
+                                            id="supplier_district_id" 
+                                            data-value="{{ old('supplier_district_id') }}" 
+                                            data-placeholder="supplier_district_id">
+                                                <option value="" selected></option>
                                         </select>
                                         @error('supplier_district_id')
                                             <span class="invalid-feedback" role="alert">
@@ -151,5 +161,5 @@
 @endsection
 
 @section('scripts')
-    
+    <script src="{{ asset('/js/supplier.js') }}"></script>
 @endsection

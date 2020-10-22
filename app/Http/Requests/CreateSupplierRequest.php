@@ -26,9 +26,9 @@ class CreateSupplierRequest extends FormRequest
         return [
             'supplier_name' => ['required', 'string', 'max:255', 'unique:suppliers'],
             'supplier_address' => ['required', 'string', 'max:255'],
-            'supplier_province_id' => ['required', 'integer',],
-            'supplier_district_id' => ['required', 'integer'],
             'supplier_subdistrict_id' => ['nullable', 'integer'],
+            'supplier_district_id' => ['required', 'integer'],
+            'supplier_province_id' => ['required', 'integer',],
             'supplier_postcode' => ['required', 'string', 'min:5', 'max:5'],
             'supplier_phone' => ['required', 'string', 'max:255'],
             'supplier_email' => ['required', 'string', 'email', 'max:255'],
@@ -48,9 +48,9 @@ class CreateSupplierRequest extends FormRequest
         return [
             'supplier_name' => 'please โปรดระบุ : ชื่อผู้จำหน่ายสินค้า',
             'supplier_address' => 'please โปรดระบุ : ที่อยู่',
+            'supplier_subdistrict_id' => 'please โปรดระบุ : แขวง/ตำบล',
+            'supplier_district_id' => 'please โปรดระบุ : เขต/อำเภอ',
             'supplier_province_id' => 'please โปรดระบุ : จังหวัด',
-            'supplier_district_id' => 'please โปรดระบุ : อำเภอ/เขต',
-            'supplier_subdistrict_id' => 'please โปรดระบุ : ตำบล/แขวง',
             'supplier_postcode' => 'please โปรดระบุ : รหัสไปรษณีย์',
             'supplier_phone' => 'please โปรดระบุ : หมายเลขโทรศัพท์',
             'supplier_email' => 'please โปรดระบุ : อีเมล',

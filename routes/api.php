@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::name('provinces.')->group(function () {
+    Route::get('provinces', 'Api\ProvinceController@province')->name('province');
+    Route::get('districts/{id}', 'Api\ProvinceController@district')->name('district');
+    Route::get('subdistricts/{id}', 'Api\ProvinceController@subdistrict')->name('subdistrict');
+});
