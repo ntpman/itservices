@@ -38,11 +38,14 @@
                     {{-- Setting --}}
                     @include('inc.menu.setting')
 
-                    {{-- Basic Infos --}}
+                    {{-- Basic --}}
                     @include('inc.menu.basic')
 
                     {{-- Asset --}}
                     @include('inc.menu.asset')
+
+                    {{-- Supplier --}}
+                    @include('inc.menu.supplier')
 
                     <!-- /.include flie menu -->
                     

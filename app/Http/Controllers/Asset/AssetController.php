@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Asset;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateAssetRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Http\Requests\CreateAssetRequest;
 
 use App\Model\Asset\Asset;
 
@@ -29,6 +29,8 @@ class AssetController extends Controller
     public function index()
     {
         $assets = Asset::all();
+
+        // return $assets;
 
         return view('asset.index', [
             'assets' => $assets
@@ -55,12 +57,6 @@ class AssetController extends Controller
     {
         // dd($request);
         // dd($request->all());
-        
-        /** 
-         * validate the data with function
-         * 
-        */
-        // $this->validateAsset();
 
         // store in the database
         $asset = new Asset;
@@ -109,16 +105,5 @@ class AssetController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     */
-    protected function validateAsset()
-    {
-        return request()->validate([
-            'asset_number' => 'required',
-        ]);
     }
 }

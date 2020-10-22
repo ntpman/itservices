@@ -1,12 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Supplier;
 
-use App\Model\BasicInfos\supplier;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateSupplierRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
+use App\Model\Supplier\Supplier;
 
 class SupplierController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +28,13 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $suppliers = Supplier::all();
+
+        // return $suppliers;
+
+        return view('supplier.index', [
+            'suppliers' => $suppliers
+        ]);
     }
 
     /**
@@ -24,7 +44,9 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('supplier.create', [
+            ''
+        ]);
     }
 
     /**
@@ -33,18 +55,22 @@ class SupplierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSupplierRequest $request)
     {
-        //
+        return $request->all();
+
+        /**
+         * Store in the database
+         */
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\BasicInfos\supplier  $supplier
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(supplier $supplier)
+    public function show($id)
     {
         //
     }
@@ -52,10 +78,10 @@ class SupplierController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\BasicInfos\supplier  $supplier
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(supplier $supplier)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +90,10 @@ class SupplierController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\BasicInfos\supplier  $supplier
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, supplier $supplier)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +101,10 @@ class SupplierController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\BasicInfos\supplier  $supplier
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(supplier $supplier)
+    public function destroy($id)
     {
         //
     }

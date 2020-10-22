@@ -4,7 +4,7 @@ namespace App\Model\Asset;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\User;
+use App\Model\Supplier\Supplier;
 
 class Asset extends Model
 {
@@ -22,9 +22,11 @@ class Asset extends Model
 
     public $timestamps = true;
 
-    // Eloquent: Relationships
-    public function user()
+    /**
+     * Eloquent: Relationships
+     */
+    public function supplier()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Supplier::class);
     }
 }

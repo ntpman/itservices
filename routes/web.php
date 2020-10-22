@@ -45,4 +45,13 @@ Route::name('asset.')->group(function () {
     Route::put('/asset/{asset}', 'Asset\AssetController@update')->name('update');
 });
 
+Route::name('supplier.')->group(function () {
+    Route::get('/supplier', 'Supplier\SupplierController@index')->name('index');
+    Route::get('/supplier/create', 'Supplier\SupplierController@create')->name('create');
+    Route::post('/supplier', 'Supplier\SupplierController@store')->name('store');
+    Route::get('/supplier/{supplier}', 'Supplier\SupplierController@show')->name('show');
+    Route::get('/supplier/{supplier}/edit', 'Supplier\SupplierController@edit')->name('edit');
+    Route::put('/supplier/{supplier}', 'Supplier\SupplierController@update')->name('update');
+});
+
 
