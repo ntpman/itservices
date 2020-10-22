@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-success elevation-4">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link">
+    <a href="{{ Auth::user() ? '/home' : '/' }}" class="brand-link">
         <img src="{{ asset('/adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
         style="opacity: .8">
         <span class="brand-text font-weight-light" >{{ config('app.name', '') }}</span>
@@ -23,7 +23,7 @@
                     @endif
                 </div>
                 <div class="info">
-                    <a href="/" class="d-block">{{ Auth::user()->name }}</a>
+                    <a href="{{ Auth::user() ? '/home' : '/' }}" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
             </div>
             <!-- /.sidebar user panel (optional) -->

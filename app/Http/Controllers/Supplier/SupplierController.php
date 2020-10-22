@@ -57,11 +57,27 @@ class SupplierController extends Controller
      */
     public function store(CreateSupplierRequest $request)
     {
-        return $request->all();
+        // return $request->all();
 
         /**
          * Store in the database
          */
+        $supplier = new Supplier;
+        $supplier->supplier_name = $request->input('supplier_name');
+        $supplier->supplier_address = $request->input('supplier_address');
+        $supplier->supplier_subdistrict_id = $request->input('supplier_subdistrict_id');
+        $supplier->supplier_district_id = $request->input('supplier_district_id');
+        $supplier->supplier_province_id = $request->input('supplier_province_id');
+        $supplier->supplier_postcode = $request->input('supplier_postcode');
+        $supplier->supplier_phone = $request->input('supplier_phone');
+        $supplier->supplier_email = $request->input('supplier_email');
+        $supplier->supplier_contact = $request->input('supplier_contact');
+
+        if($supplier->save()) {
+            Session::flash('success_msg', 'เพิ่มผู้จำหน่ายสินค้าเรียบร้อย');
+
+            return redirect('/supplier');
+        }
     }
 
     /**

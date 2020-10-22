@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Asset Database</h3>
+                        <h3 class="card-title">All Assets</h3>
                         <div class="card-tools">
                             <ul class="nav nav-pills ml-auto">
                                 <li class="nav-item">
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table id="" class="table table-bordered table-striped table-sm datatables">
                             @if (count($assets) > 0)
                                 <thead>
