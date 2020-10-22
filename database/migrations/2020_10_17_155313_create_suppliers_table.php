@@ -29,9 +29,6 @@ class CreateSuppliersTable extends Migration
             $table->timestamps();
 
             // Foreign Key
-            $table->foreign('supplier_province_id')->references('ta_id')->on('provinces');
-            $table->foreign('supplier_district_id')->references('am_id')->on('provinces');
-            $table->foreign('supplier_subdistrict_id')->references('ch_id')->on('provinces');
         });
     }
 
