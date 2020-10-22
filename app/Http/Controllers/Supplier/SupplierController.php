@@ -72,8 +72,10 @@ class SupplierController extends Controller
         $supplier->supplier_phone = $request->input('supplier_phone');
         $supplier->supplier_email = $request->input('supplier_email');
         $supplier->supplier_contact = $request->input('supplier_contact');
+        $supplier->created_by = auth()->user()->name;
 
         if($supplier->save()) {
+            
             Session::flash('success_msg', 'เพิ่มผู้จำหน่ายสินค้าเรียบร้อย');
 
             return redirect('/supplier');
@@ -124,7 +126,8 @@ class SupplierController extends Controller
              * Store in the database
              */
             Supplier::where('id', $id)->update([
-                'supplier_name' => $request->input('supplier_name')
+                'supplier_name' => $request->input('supplier_name'),
+                'updated_by' => auth()->user()->name,
             ]);
 
             Session::flash('success_msg', 'แก้ไขชื่อผู้จำหน่ายสินค้าเรียบร้อย');
@@ -144,6 +147,7 @@ class SupplierController extends Controller
             'supplier_phone' => ['required', 'string', 'max:255'],
             'supplier_email' => ['required', 'string', 'email', 'max:255'],
             'supplier_contact' => ['required', 'string', 'max:255'],
+            'updated_by' => ['nullable', 'string', 'max:50'],
         ]);
         
         /**
@@ -158,6 +162,7 @@ class SupplierController extends Controller
             'supplier_phone' => $request->input('supplier_phone'),
             'supplier_email' => $request->input('supplier_email'),
             'supplier_contact' => $request->input('supplier_contact'),
+            'updated_by' => auth()->user()->name,
         ]);
 
         Session::flash('success_msg', 'แก้ไขชื่อข้อมูลเรียบร้อย');

@@ -14,7 +14,8 @@
 
 /* Fonts */
 .font-mitr,
-.content .card .card-body span.invalid-feedback {
+.content .card .card-body span.invalid-feedback, 
+.content .modal .modal-body span.invalid-feedback {
     font-family: "Mitr-Light";
 }
 .content .card h3.card-title {
