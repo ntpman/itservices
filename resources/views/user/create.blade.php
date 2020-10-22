@@ -20,7 +20,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Name">
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="name">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -54,8 +54,15 @@
                                     <div class="form-group">
                                         <label for="image">File input Image</label>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="image" id="image">
-                                            <label class="custom-file-label" for="image">Choose file Images Size 160x160 [ .jpg .jpeg .png ]</label>
+                                            <input type="file" class="custom-file-input @error('image') is-invalid @enderror" name="image" id="image">
+                                            <label class="custom-file-label text-muted" for="image">
+                                                Choose file Images Type [ .jpg .jpeg .png ]
+                                            </label>
+                                            @error('image')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +72,7 @@
                                         <select class="form-control custom-select" style="width: 100%;" name="role" id="role">
                                             <option value="1" {{ old('role') ==  1 ? 'selected' : '' }}>General</option>
                                             <option value="2" {{ old('role') ==  2 ? 'selected' : '' }}>Maneger</option>
-                                            <option value="3" {{ old('role') ==  2 ? 'selected' : '' }}>Admin</option>
+                                            <option value="3" {{ old('role') ==  3 ? 'selected' : '' }}>Admin</option>
                                         </select>
                                     </div>
                                 </div>

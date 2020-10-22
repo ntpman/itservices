@@ -19,7 +19,7 @@ class CreateProfilesTable extends Migration
             $table->timestamps();
 
             // Foreign Key
-            $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

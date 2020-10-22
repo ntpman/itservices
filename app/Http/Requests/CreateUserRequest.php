@@ -27,6 +27,22 @@ class CreateUserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
+            'image' => ['nullable', 'mimes:jpeg,jpg,png'],
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => 'please โปรดระบุ : ชื่อผู้ใช้งาน',
+            'email' => 'please โปรดระบุ : อีเมล์สำหรับ Login เข้าใช้งานระบบ',
+            'password' => 'please โปรดระบุ : รหัสผ่าน',
+            'image' => 'please โปรดระบุ : ตรวจสอบไฟล์รูปภาพ',
         ];
     }
 }

@@ -85,7 +85,7 @@ class UserController extends Controller
         $user->status = $request->input('status');
         $user->save();
 
-        Session::flash('success_msg', 'Success Create User');
+        Session::flash('success_msg', 'เพิ่มผู้ใช้งานเรียบร้อย');
 
         return redirect('/admin/users');
     }

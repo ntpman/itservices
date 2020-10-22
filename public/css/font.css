@@ -1,5 +1,9 @@
 /* Import */
 @font-face {
+    font-family: "Mitr-Light";
+    src: url("../fonts/Mitr/Mitr-Light.ttf");
+}
+@font-face {
     font-family: "Mitr-Medium";
     src: url("../fonts/Mitr/Mitr-Medium.ttf");
 }
@@ -9,6 +13,10 @@
 }
 
 /* Fonts */
+.font-mitr,
+.content .card .card-body span.invalid-feedback {
+    font-family: "Mitr-Light";
+}
 .content .card h3.card-title {
     font-family: "Mitr-Medium";
 }

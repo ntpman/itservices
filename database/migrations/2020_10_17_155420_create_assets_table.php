@@ -27,9 +27,9 @@ class CreateAssetsTable extends Migration
             $table->date('recived_asset')->comment('วันที่ตรวจรับครุภัณฑ์');
             $table->string('warranty_period', 1)->comment('ระยะเวลาการรับประกัน');
             $table->unsignedBigInteger('asset_usage_id')->comment('รหัสสถานะการใช้งานครุภัณฑ์');
-            $table->date('retired_asset')->comment('วันที่แจ้งจำหน่ายครุภัณฑ์');
-            $table->string('created_by', 50)->comment('รหัสผู้สร้างข้อมูล');
-            $table->string('updated_by', 50)->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
+            $table->date('retired_asset')->nullable()->comment('วันที่แจ้งจำหน่ายครุภัณฑ์');
+            $table->string('created_by', 50)->nullable()->comment('รหัสผู้สร้างข้อมูล');
+            $table->string('updated_by', 50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
 
             $table->foreign('asset_type_id')->references('id')->on('asset_types');
