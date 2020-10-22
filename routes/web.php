@@ -33,10 +33,7 @@ Route::name('basic.')->group(function () {
     Route::post('/basic/model', 'Basic\ModelController@store')->name('store');
     Route::get('/basic/model/{model}', 'Basic\ModelController@show')->name('show');
     Route::get('/basic/model/{model}/edit', 'Basic\ModelController@edit')->name('edit');
-<<<<<<< HEAD
     Route::get('/basic/model/{model}/change_status', 'Basic\ModelController@changeStatus')->name('change_status');
-=======
->>>>>>> 20d849a25dbca4bb2ef1c458195c4f1d4d7c8dbe
     Route::put('/basic/model/{model}', 'Basic\ModelController@update')->name('update');
 
     Route::get('/basic/building', 'Basic\BuildingController@index')->name('index');
