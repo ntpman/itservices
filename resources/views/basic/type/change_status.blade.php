@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Models Edit
+    | Types Edit
 @endsection
 
 @section('content')
@@ -10,30 +10,25 @@
             <div class="col-lg-6">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h5 class="m-0">แก้ไขข้อมูลรุ่นผลิตภัณฑ์ <i class="far fa-edit"></i></h5>
+                        <h5 class="m-0">แก้ไขสถานะการใช้งานข้อมูล <i class="far fa-edit"></i></h5>
                     </div>
                     <!-- form start -->
-                    {!! Form::open(['action' => ['Basic\ModelController@update', $editModel->id], 'method'=>'PUT']) !!}
+                    {!! Form::open(['action' => ['Basic\TypeController@update', $editType->id], 'method'=>'PUT']) !!}
                     <div class="card-body">
                         <div class="form-group">
-                            {{ Form::label('title','ยี่ห้อผลิตภัณฑ์') }}
-                            {{ Form::select('brandFullName', $allBrand, $editModel->brand_id, ['class' => 'form-control', 'required']) }}
-                        </div>
-                        <div class="form-group">
-							{{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}
-							{{ Form::text('modelName', $editModel->model_name, ['class' => 'form-control']) }}
+							{{ Form::label('title','ชื่อประเภทครุภัณฑ์')}}
+							{{ Form::text('typeName', $editType->asset_type_name, ['class' => 'form-control','disabled']) }}
                         </div>
                         <div class="form-group">
                             {{ Form::label('title', 'สถานะการใช้งานข้อมูล') }}
-                            {{ Form::select('modelStatus', [
+                            {{ Form::select('typeStatus', [
                                     'A' => 'Active',
                                     'D' => 'Disable',
-                                ], $editModel->model_status, ['class'=>'form-control','disabled']) 
+                                ], $editType->asset_type_status, ['class'=>'form-control']) 
                             }}
                         </div>
-                        <a href="/basic/model" class="btn btn-secondary">ย้อนกลับ</a>
+                        <a href="/basic/type" class="btn btn-secondary">ย้อนกลับ</a>
                         {{ Form::hidden('_method','PUT') }}
-                        {{ Form::hidden('_name','edit') }}
                         {{ Form::submit('บันทึก', ['class'=>'btn btn-primary']) }}
                     </div>
                     {!! Form::close() !!}

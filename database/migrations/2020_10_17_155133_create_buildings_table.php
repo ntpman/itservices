@@ -15,10 +15,10 @@ class CreateBuildingsTable extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('รหัสรายการ');
-            $table->string('building_name',255)->unique()->comment('ชื่อาคาร');
+            $table->string('building_name',255)->unique()->comment('ชื่ออาคาร');
             $table->string('building_status',1)->default('A')->comment('สถานะการใช้ข้อมูล');
             $table->string('created_by',50)->comment('รหัสผู้สร้างข้อมูล');
-            $table->string('updated_by',50)->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
+            $table->string('updated_by',50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
         });
     }

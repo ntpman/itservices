@@ -15,10 +15,10 @@ class CreateAssetTypesTable extends Migration
     {
         Schema::create('asset_types', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('รหัสรายการ');
-            $table->string('asset_type_name',50)->comment('ชื่อประเภทครุภัณฑ์');
+            $table->string('asset_type_name',50)->unique()->comment('ชื่อประเภทครุภัณฑ์');
             $table->string('asset_type_status',1)->default('A')->comment('สถานะการใช้ข้อมูล');
             $table->string('created_by',50)->comment('รหัสผู้สร้างข้อมูล');
-            $table->string('updated_by',50)->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
+            $table->string('updated_by',50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
         });
     }

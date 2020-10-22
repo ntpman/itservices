@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Models Index
+    | Usages Index
 @endsection
 
 @section('content')
@@ -10,46 +10,40 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header ui-sortable-handle" style="cursor: move;">
-                        <h3 class="card-title">All Models</h3>
+                        <h3 class="card-title">All Usages</h3>
                         <div class="card-tools">
                             <ul class="nav nav-pills ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/basic/model/create"><i class="fas fa-edit"></i>เพิ่มข้อมูล</a>
+                                    <a class="nav-link active" href="/basic/usage/create"><i class="fas fa-edit"></i>เพิ่มข้อมูล</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="card-body table-responsive">
                         <table id="example1" class="table table-bordered table-striped table-sm datatables">
-                            @if (count($showAllModel) > 0)
+                            @if (count($showAllUsage) > 0)
                                 <thead>
                                     <tr>
                                         <th style="width:80px;">ลำดับที่</th>
-                                        <th class="text-center">ยี่ห้อผลิตภัณฑ์</th>
-                                        <th class="text-center">รุ่นผลิตภัณฑ์</th>
+                                        <th class="text-center">การใช้งานครุภัณฑ์</th>
                                         <th style="width:180px;">สถานะการใช้งานข้อมูล</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($showAllModel as $model)
+                                @foreach ($showAllUsage as $usage)
                                     <tr>
-                                        <td class="text-center">{{ $model->id }}</td>
-                                        <td>
-                                            <a href="/basic/model/{{ $model->id }}">
-                                                {{ $model->brand->brand_full_name }}
-                                            </a>
-                                        </td>
-                                        <td>{{ $model->model_name }}</td>
-                                        <td class="text-center">{{ $model->model_status }}</td>
+                                        <td class="text-center">{{ $usage->id }}</td>
+                                        <td>{{ $usage->usage_name }}</td>
+                                        <td class="text-center">{{ $usage->usage_status }}</td>
                                         <td>
                                             <br />
-                                            <a href="/basic/model/{{ $model->id }}/edit" class="bth btn-primary btn-sm">
+                                            <a href="/basic/usage/{{ $usage->id }}/edit" class="bth btn-primary btn-sm">
                                                 <i class="fas fa-edit"></i> แก้ไข
                                             </a>
                                             <br />
                                             <br />
-                                            <a href="/basic/model/{{ $model->id }}/change_status" class="bth btn-danger btn-sm">
+                                            <a href="/basic/usage/{{ $usage->id }}/change_status" class="bth btn-danger btn-sm">
                                                 <i class="fas fa-edit"></i> เปลี่ยนสถานะ
                                             </a>
                                             <br />

@@ -19,7 +19,7 @@ class CreateAssetSubtypesTable extends Migration
             $table->string('subtype_name',50)->comment('ประเภทครุภัณฑ์ย่อย');
             $table->string('subtype_status',1)->default('A')->comment('สถานะการใช้ข้อมูล');
             $table->string('created_by',50)->comment('รหัสผู้สร้างข้อมูล');
-            $table->string('updated_by',50)->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
+            $table->string('updated_by',50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
 
             $table->foreign('asset_type_id')->references('id')->on('asset_types');

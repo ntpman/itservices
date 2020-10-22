@@ -18,7 +18,7 @@ class CreateAssetCommonNamesTable extends Migration
             $table->string('common_name',255)->unique()->comment('ชื่อครุภัณฑ์');
             $table->string('common_name_status',1)->default('A')->comment('สถานะการใช้ข้อมูล');
             $table->string('created_by',50)->comment('รหัสผู้สร้างข้อมูล');
-            $table->string('updated_by',50)->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
+            $table->string('updated_by',50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
         });
     }
