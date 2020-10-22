@@ -21,6 +21,7 @@
     font-family: "Mitr-Medium";
 }
 .content .card .card-body label,
+.content .modal .modal-body label,
 .content .card .card-body table.table {
     font-family: "Sarabun-Regular";
 }

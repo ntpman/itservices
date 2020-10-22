@@ -29,7 +29,7 @@
                                         <th>ชื่อผู้จำหน่ายสินค้า</th>
                                         <th>หมายเลขโทรศัพท์</th>
                                         <th>อีเมล</th>
-                                        <th></th>
+                                        <th>แก้ไขข้อมูล</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,7 +42,11 @@
                                             <td>{{ $item->supplier_name }}</td>
                                             <td>{{ $item->supplier_phone }}</td>
                                             <td>{{ $item->supplier_email }}</td>
-                                            <td></td>
+                                            <td>
+                                                <a href="/supplier/{{ $item->id }}/edit" class="">
+                                                    <i class="far fa-edit"></i> Edit
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -136,7 +136,6 @@
 
                 Toast.fire({
                     icon: 'success',
-                    type: 'success',
                     title: `<span class="ml-1 font-mitr">{{ session('success_msg') }}</span>`,
                 });
             });
