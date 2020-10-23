@@ -78,15 +78,32 @@ Route::name('basic.')->group(function () {
 
 });
 
-Route::name('asset.')->group(function () {
-    Route::get('/asset', 'Asset\AssetController@index')->name('index');
-    Route::get('/asset/create', 'Asset\AssetController@create')->name('create');
-    Route::post('/asset', 'Asset\AssetController@store')->name('store');
-    Route::get('/asset/{asset}', 'Asset\AssetController@show')->name('show');
-    Route::get('/asset/{asset}/edit', 'Asset\AssetController@edit')->name('edit');
-    Route::put('/asset/{asset}', 'Asset\AssetController@update')->name('update');
+/**
+ * Route Assets
+ */
+Route::prefix('assets')->group(function () {
+    // asset
+    Route::name('asset.')->group(function () {
+        Route::get('/asset', 'Asset\AssetController@index')->name('index');
+        Route::get('/asset/create', 'Asset\AssetController@create')->name('create');
+        Route::post('/asset', 'Asset\AssetController@store')->name('store');
+        Route::get('/asset/{asset}', 'Asset\AssetController@show')->name('show');
+        Route::get('/asset/{asset}/edit', 'Asset\AssetController@edit')->name('edit');
+        Route::put('/asset/{asset}', 'Asset\AssetController@update')->name('update');
+    });
+    // picture
+    Route::name('picture.')->group(function () {
+        Route::get('/picture', 'Asset\AssetPictureController@index')->name('index');
+        Route::get('/picture/create', 'Asset\AssetPictureController@create')->name('create');
+        Route::post('/picture', 'Asset\AssetPictureController@store')->name('store');
+        Route::get('/picture/{picture}', 'Asset\AssetPictureController@show')->name('show');
+        Route::get('/picture/{picture}/edit', 'Asset\AssetPictureController@edit')->name('edit');
+        Route::put('/picture/{picture}', 'Asset\AssetPictureController@update')->name('update');
+    });
 });
-
+/**
+ * Route Suppliers
+ */
 Route::name('supplier.')->group(function () {
     Route::get('/supplier', 'Supplier\SupplierController@index')->name('index');
     Route::get('/supplier/create', 'Supplier\SupplierController@create')->name('create');

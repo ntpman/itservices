@@ -5,7 +5,7 @@ namespace App\Model\Supplier;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Model\Province;
-use App\Model\Asset;
+use App\Model\Assets\Asset;
 
 class Supplier extends Model
 {

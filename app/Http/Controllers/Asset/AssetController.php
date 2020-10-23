@@ -7,7 +7,7 @@ use App\Http\Requests\CreateAssetRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-use App\Model\Asset\Asset;
+use App\Model\Assets\Asset;
 
 class AssetController extends Controller
 {
@@ -32,7 +32,7 @@ class AssetController extends Controller
 
         // return $assets;
 
-        return view('asset.index', [
+        return view('assets.asset.index', [
             'assets' => $assets
         ]);
     }
@@ -44,7 +44,7 @@ class AssetController extends Controller
      */
     public function create()
     {
-        return view('asset.create');
+        return view('assets.asset.create');
     }
 
     /**

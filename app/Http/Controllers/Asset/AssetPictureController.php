@@ -1,12 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Asset;
 
-use App\Model\Assetss\assetPicture;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Model\Assets\AssetPicture;
 
 class AssetPictureController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,11 @@ class AssetPictureController extends Controller
      */
     public function index()
     {
-        //
+        $assetPictures = AssetPicture::all();
+
+        return view('assets.picture.index', [
+            'assetPictures' => $assetPictures
+        ]);
     }
 
     /**
@@ -24,7 +40,9 @@ class AssetPictureController extends Controller
      */
     public function create()
     {
-        //
+        return view('assets.picture.create', [
+            ''
+        ]);
     }
 
     /**
@@ -41,10 +59,10 @@ class AssetPictureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Assetss\assetPicture  $assetPicture
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(assetPicture $assetPicture)
+    public function show($id)
     {
         //
     }
@@ -52,10 +70,10 @@ class AssetPictureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Assetss\assetPicture  $assetPicture
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(assetPicture $assetPicture)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +82,10 @@ class AssetPictureController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Assetss\assetPicture  $assetPicture
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, assetPicture $assetPicture)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +93,10 @@ class AssetPictureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Assetss\assetPicture  $assetPicture
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(assetPicture $assetPicture)
+    public function destroy($id)
     {
         //
     }

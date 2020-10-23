@@ -13,7 +13,7 @@
                         <h3 class="card-title"><i class="far fa-edit"></i> Asset Create</h3>
                     </div>
                     <!-- form start -->
-                    <form action="/asset" method="POST" enctype="multipart/form-data" role="form">
+                    <form action="/assets/asset" method="POST" enctype="multipart/form-data" role="form">
                         @csrf
                         <div class="card-body">
                             <div class="row">
