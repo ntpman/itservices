@@ -9,6 +9,8 @@ use App\Model\Assets\AssetDetail;
 use App\Model\Assets\AssetOwner;
 use App\Model\Location;
 
+use App\Model\Basic\Type;
+use App\Model\Basic\SubType;
 use App\Model\Supplier\Supplier;
 
 class Asset extends Model
@@ -52,6 +54,14 @@ class Asset extends Model
     }
     
     // belongsTo
+    public function assetType()
+    {
+        return $this->belongsTo(Type::class);
+    }
+    public function assetSubtype()
+    {
+        return $this->belongsTo(SubType::class);
+    }
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);

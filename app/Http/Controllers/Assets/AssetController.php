@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Session;
 
 use App\Model\Assets\Asset;
 
+use App\Model\Basic\Type;
+
 class AssetController extends Controller
 {
     /**

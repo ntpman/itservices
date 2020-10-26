@@ -4,6 +4,7 @@ namespace App\Model\Basic;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Model\Assets\Asset;
 use App\Model\Basic\Type;
 
 class SubType extends Model
@@ -14,7 +15,17 @@ class SubType extends Model
 
     public $timestapms = true;
 
+    /**
+     * Eloquent: Relationships
+     */
+
+    // belongsTo
     public function assetType() {
         return $this->belongsTo(Type::class);
+    }
+
+    // hasMany
+    public function assets() {
+        return $this->hasMany(Asset::class);
     }
 }
