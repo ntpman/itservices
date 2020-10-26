@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Assets\AssetPicture;
 use App\Model\Assets\AssetDetail;
 use App\Model\Assets\AssetOwner;
+use App\Model\Assets\AssetRepair;
 use App\Model\Location;
 
 use App\Model\Basic\Type;
 use App\Model\Basic\SubType;
+use App\Model\Basic\CommonName;
+use App\Model\Basic\Brand;
+use App\Model\Basic\AssetModel;
+use App\Model\Basic\Usage;
 use App\Model\Supplier\Supplier;
 
 class Asset extends Model
@@ -48,6 +53,10 @@ class Asset extends Model
     {
         return $this->hasMany(AssetOwner::class);
     }
+    public function assetRepairs()
+    {
+        return $this->hasMany(AssetRepair::class);
+    }
     public function locations()
     {
         return $this->hasMany(Location::class);
@@ -61,6 +70,22 @@ class Asset extends Model
     public function assetSubtype()
     {
         return $this->belongsTo(SubType::class);
+    }
+    public function assetCommonName()
+    {
+        return $this->belongsTo(CommonName::class);
+    }
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+    public function model()
+    {
+        return $this->belongsTo(AssetModel::class);
+    }
+    public function assetUsage()
+    {
+        return $this->belongsTo(Usage::class);
     }
     public function supplier()
     {

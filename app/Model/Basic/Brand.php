@@ -4,6 +4,7 @@ namespace App\Model\Basic;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Model\Assets\Asset;
 use App\Model\Basic\AssetModel;
 
 class Brand extends Model
@@ -14,6 +15,15 @@ class Brand extends Model
 
     public $timestamps = true;
 
+    /**
+     * Eloquent: Relationships
+     */
+
+    // hasMany
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
     public function assetModels() 
     {
         return $this->hasMany(AssetModel::class);
