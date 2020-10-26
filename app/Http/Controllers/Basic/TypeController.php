@@ -50,17 +50,17 @@ class TypeController extends Controller
     {
         //validate date
         $this->validate($request, [
-            'typeName' => 'required|unique:asset_types,asset_type_name',
+            'typeName' => 'required|unique:types,type_name',
         ]);
 
         //Add new data
-            $addType = new Type;
-            $addType->asset_type_name = $request->input('typeName');
-            $addType->asset_type_status = 'A';
-            $addType->created_by = auth()->user()->name;
-            $addType->save();
+        $addType = new Type;
+        $addType->type_name = $request->input('typeName');
+        $addType->type_status = 'A';
+        $addType->created_by = auth()->user()->name;
+        $addType->save();
 
-            Session::flash('success_msg', 'บันทึกข้อมูลประเภทครุภัณฑ์เรียบร้อย');
+        Session::flash('success_msg', 'บันทึกข้อมูลประเภทครุภัณฑ์เรียบร้อย');
 
         //return index view
         return redirect('/basic/type');
@@ -99,16 +99,16 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        if ($request->input('_name')==='edit'){
+        if ($request->input('_name') === 'edit'){
         
             //validate data
-        $this->validate($request, [
-            'typeName' => 'required|unique:asset_types,asset_type_name',
-        ]);
+            $this->validate($request, [
+                'typeName' => 'required|unique:types,type_name',
+            ]);
 
-        //update data
+            //update data
             $updateType = Type::find($type->id);
-            $updateType->asset_type_name = $request->input('typeName');
+            $updateType->type_name = $request->input('typeName');
             $updateType->updated_by = auth()->user()->name;
             $updateType->save();
 
@@ -116,7 +116,7 @@ class TypeController extends Controller
         }
         else {
             $updateType = Type::find($type->id);
-            $updateType->asset_type_status = $request->input('typeStatus');
+            $updateType->type_status = $request->input('typeStatus');
             $updateType->updated_by = auth()->user()->name;
             $updateType->save();
 

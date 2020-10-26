@@ -17,14 +17,14 @@
                     <div class="card-body">
                         <div class="form-group">
 							{{ Form::label('title','ชื่อประเภทครุภัณฑ์')}}
-							{{ Form::text('typeName', $editType->asset_type_name, ['class' => 'form-control','required']) }}
+							{{ Form::text('typeName', $editType->type_name, ['class' => 'form-control','required']) }}
                         </div>
                         <div class="form-group">
                             {{ Form::label('title', 'สถานะการใช้งานข้อมูล') }}
                             {{ Form::select('typeStatus', [
                                     'A' => 'Active',
                                     'D' => 'Disable',
-                                ], $editType->asset_type_status, ['class'=>'form-control','disabled']) 
+                                ], $editType->type_status, ['class'=>'form-control','disabled']) 
                             }}
                         </div>
                         <a href="/basic/type" class="btn btn-secondary">ย้อนกลับ</a>
