@@ -46,7 +46,12 @@ class AssetController extends Controller
      */
     public function create()
     {
-        return view('assets.asset.create');
+        $assetTypes = Type::all();
+
+        
+        return view('assets.asset.create', [
+            'assetTypes' => $assetTypes,
+        ]);
     }
 
     /**

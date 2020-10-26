@@ -16,8 +16,8 @@ class CreateAssetPicturesTable extends Migration
         Schema::create('asset_pictures', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('รหัสรายการ');
             $table->unsignedBigInteger('asset_id')->comment('รหัสชื่อครุภัณฑ์');
-            $table->string('picture_name')->unique()->comment('ชื่อไฟล์');
-            $table->string('created_by', 50)->nullable()->comment('รหัสผู้สร้างข้อมูล');
+            $table->string('asset_picture_name')->unique()->comment('ชื่อไฟล์');
+            $table->string('created_by', 50)->comment('รหัสผู้สร้างข้อมูล');
             $table->string('updated_by', 50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
 

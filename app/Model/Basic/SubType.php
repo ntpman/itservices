@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Assets\Asset;
 use App\Model\Basic\Type;
 
-class SubType extends Model
+class Subtype extends Model
 {
-    protected $table = 'asset_subtypes';
+    protected $table = 'subtypes';
     protected $primaryKey = 'id';
-    protected $fillable = ['asset_type_id','subtype_name','subtype_status','created_by','updated_by',];
+    protected $fillable = ['type_id','subtype_name','subtype_status','created_by','updated_by',];
 
     public $timestapms = true;
 

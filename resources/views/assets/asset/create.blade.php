@@ -20,7 +20,16 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_type_id">รหัสประเภทครุภัณฑ์</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_type_id') is-invalid @enderror" name="asset_type_id" id="asset_type_id" value="{{ old('asset_type_id') }}" placeholder="asset_type_id">
+                                        <select class="form-control select2bs4 @error('asset_type_id') is-invalid @enderror" 
+                                            style="width: 100%;" 
+                                            name="asset_type_id"
+                                            id="asset_type_id" 
+                                            data-placeholder="asset_type_id">
+                                                <option value="" selected></option>
+                                            @foreach ($assetTypes as $item)
+                                                <option value="{{ $item->id }}">{{ $item->asset_type_name }}</option>                                         
+                                            @endforeach
+                                        </select>
                                         @error('asset_type_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

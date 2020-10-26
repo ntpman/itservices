@@ -8,9 +8,9 @@ use App\Model\Assets\Asset;
 
 class Usage extends Model
 {
-    protected $table = 'asset_usages';
+    protected $table = 'usages';
     protected $primaryKey = 'id';
-    protected $fillable = ['usage_name','usage_status','created_by','updated_by',];
+    protected $fillable = ['usage_name', 'usage_status', 'created_by', 'updated_by'];
 
     public $timestamps = true;
 

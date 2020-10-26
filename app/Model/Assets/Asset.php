@@ -11,7 +11,7 @@ use App\Model\Assets\AssetRepair;
 use App\Model\Location;
 
 use App\Model\Basic\Type;
-use App\Model\Basic\SubType;
+use App\Model\Basic\Subtype;
 use App\Model\Basic\CommonName;
 use App\Model\Basic\Brand;
 use App\Model\Basic\AssetModel;
@@ -63,13 +63,13 @@ class Asset extends Model
     }
     
     // belongsTo
-    public function assetType()
+    public function type()
     {
         return $this->belongsTo(Type::class);
     }
-    public function assetSubtype()
+    public function subtype()
     {
-        return $this->belongsTo(SubType::class);
+        return $this->belongsTo(Subtype::class);
     }
     public function assetCommonName()
     {

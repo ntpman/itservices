@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Model\Assets\Asset;
 
-class CommonName extends Model
+class Common extends Model
 {
-    protected $table = 'asset_common_names';
+    protected $table = 'commons';
     protected $primaryKey = 'id';
-    protected $fillable = ['common_name','common_name_status','created_by','updated_by']; 
+    protected $fillable = ['common_name', 'common_status', 'created_by', 'updated_by'];
 
     public $timestaps = true;
 
