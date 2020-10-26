@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Assets;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateAssetDetailRequest;
+use App\Http\Requests\Assets\CreateDetailRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -47,7 +47,7 @@ class AssetDetailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateAssetDetailRequest $request)
+    public function store(CreateDetailRequest $request)
     {
         //
     }

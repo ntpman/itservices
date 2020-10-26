@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Assets;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateAssetOwnerRequest;
+use App\Http\Requests\Assets\CreateOwnerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -47,7 +47,7 @@ class AssetOwnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateAssetOwnerRequest $request)
+    public function store(CreateOwnerRequest $request)
     {
         //
     }

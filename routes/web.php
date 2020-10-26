@@ -21,61 +21,78 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/admin/users', 'UserController');
 
-Route::name('basic.')->group(function () {
-    Route::get('/basic/brand', 'Basic\BrandController@index')->name('index');
-    Route::get('/basic/brand/create', 'Basic\BrandController@create')->name('create');
-    Route::post('/basic/brand', 'Basic\BrandController@store')->name('store');
-    Route::get('/basic/brand/{brand}/edit', 'Basic\BrandController@edit')->name('edit');
-    Route::put('/basic/brand/{brand}', 'Basic\BrandController@update')->name('update');
-
-    Route::get('/basic/model', 'Basic\ModelController@index')->name('index');
-    Route::get('/basic/model/create', 'Basic\ModelController@create')->name('create');
-    Route::post('/basic/model', 'Basic\ModelController@store')->name('store');
-    Route::get('/basic/model/{model}', 'Basic\ModelController@show')->name('show');
-    Route::get('/basic/model/{model}/edit', 'Basic\ModelController@edit')->name('edit');
-    Route::get('/basic/model/{model}/change_status', 'Basic\ModelController@changeStatus')->name('change_status');
-    Route::put('/basic/model/{model}', 'Basic\ModelController@update')->name('update');
-
-    Route::get('/basic/building', 'Basic\BuildingController@index')->name('index');
-    Route::get('/basic/building/create', 'Basic\BuildingController@create')->name('create');
-    Route::post('/basic/building', 'Basic\BuildingController@store')->name('store');
-    Route::get('/basic/building/{building}', 'Basic\BuildingController@show')->name('show');
-    Route::get('/basic/building/{building}/edit', 'Basic\BuildingController@edit')->name('edit');
-    Route::get('/basic/building/{building}/change_status', 'Basic\BuildingController@changeStatus')->name('change_status');
-    Route::put('/basic/building/{building}', 'Basic\BuildingController@update')->name('update');
-
-    Route::get('/basic/type', 'Basic\TypeController@index')->name('index');
-    Route::get('/basic/type/create', 'Basic\TypeController@create')->name('create');
-    Route::post('/basic/type', 'Basic\TypeController@store')->name('store');
-    Route::get('/basic/type/{type}', 'Basic\TypeController@show')->name('show');
-    Route::get('/basic/type/{type}/edit', 'Basic\TypeController@edit')->name('edit');
-    Route::get('/basic/type/{type}/change_status', 'Basic\TypeController@changeStatus')->name('change_status');
-    Route::put('/basic/type/{type}', 'Basic\TypeController@update')->name('update');
-
-    Route::get('/basic/sub_type', 'Basic\SubTypeController@index')->name('index');
-    Route::get('/basic/sub_type/create', 'Basic\SubTypeController@create')->name('create');
-    Route::post('/basic/sub_type', 'Basic\SubTypeController@store')->name('store');
-    Route::get('/basic/sub_type/{sub_type}', 'Basic\SubTypeController@show')->name('show');
-    Route::get('/basic/sub_type/{sub_type}/edit', 'Basic\SubTypeController@edit')->name('edit');
-    Route::get('/basic/sub_type/{sub_type}/change_status', 'Basic\SubTypeController@changeStatus')->name('change_status');
-    Route::put('/basic/sub_type/{sub_type}', 'Basic\SubTypeController@update')->name('update');
-
-    Route::get('/basic/common_name', 'Basic\CommonNameController@index')->name('index');
-    Route::get('/basic/common_name/create', 'Basic\CommonNameController@create')->name('create');
-    Route::post('/basic/common_name', 'Basic\CommonNameController@store')->name('store');
-    Route::get('/basic/common_name/{common_name}', 'Basic\CommonNameController@show')->name('show');
-    Route::get('/basic/common_name/{common_name}/edit', 'Basic\CommonNameController@edit')->name('edit');
-    Route::get('/basic/common_name/{common_name}/change_status', 'Basic\CommonNameController@changeStatus')->name('change_status');
-    Route::put('/basic/common_name/{common_name}', 'Basic\CommonNameController@update')->name('update');
-
-    Route::get('/basic/usage', 'Basic\UsageController@index')->name('index');
-    Route::get('/basic/usage/create', 'Basic\UsageController@create')->name('create');
-    Route::post('/basic/usage', 'Basic\UsageController@store')->name('store');
-    Route::get('/basic/usage/{usage}', 'Basic\UsageController@show')->name('show');
-    Route::get('/basic/usage/{usage}/edit', 'Basic\UsageController@edit')->name('edit');
-    Route::get('/basic/usage/{usage}/change_status', 'Basic\UsageController@changeStatus')->name('change_status');
-    Route::put('/basic/usage/{usage}', 'Basic\UsageController@update')->name('update');
-
+/**
+ * Route Basics
+ */
+Route::prefix('basic')->group(function () {
+    // brand
+    Route::name('brand.')->group(function () {
+        Route::get('/brand', 'Basic\BrandController@index')->name('index');
+        Route::get('/brand/create', 'Basic\BrandController@create')->name('create');
+        Route::post('/brand', 'Basic\BrandController@store')->name('store');
+        Route::get('/brand/{brand}/edit', 'Basic\BrandController@edit')->name('edit');
+        Route::put('/brand/{brand}', 'Basic\BrandController@update')->name('update');
+    });
+    // model
+    Route::name('model.')->group(function () {
+        Route::get('/model', 'Basic\ModelController@index')->name('index');
+        Route::get('/model/create', 'Basic\ModelController@create')->name('create');
+        Route::post('/model', 'Basic\ModelController@store')->name('store');
+        Route::get('/model/{model}', 'Basic\ModelController@show')->name('show');
+        Route::get('/model/{model}/edit', 'Basic\ModelController@edit')->name('edit');
+        Route::get('/model/{model}/change_status', 'Basic\ModelController@changeStatus')->name('change_status');
+        Route::put('/model/{model}', 'Basic\ModelController@update')->name('update');
+    });
+    // building
+    Route::name('building.')->group(function () {
+        Route::get('/building', 'Basic\BuildingController@index')->name('index');
+        Route::get('/building/create', 'Basic\BuildingController@create')->name('create');
+        Route::post('/building', 'Basic\BuildingController@store')->name('store');
+        Route::get('/building/{building}', 'Basic\BuildingController@show')->name('show');
+        Route::get('/building/{building}/edit', 'Basic\BuildingController@edit')->name('edit');
+        Route::get('/building/{building}/change_status', 'Basic\BuildingController@changeStatus')->name('change_status');
+        Route::put('/building/{building}', 'Basic\BuildingController@update')->name('update');
+    });
+    // type
+    Route::name('type.')->group(function () {
+        Route::get('/type', 'Basic\TypeController@index')->name('index');
+        Route::get('/type/create', 'Basic\TypeController@create')->name('create');
+        Route::post('/type', 'Basic\TypeController@store')->name('store');
+        Route::get('/type/{type}', 'Basic\TypeController@show')->name('show');
+        Route::get('/type/{type}/edit', 'Basic\TypeController@edit')->name('edit');
+        Route::get('/type/{type}/change_status', 'Basic\TypeController@changeStatus')->name('change_status');
+        Route::put('/type/{type}', 'Basic\TypeController@update')->name('update');
+    });
+    // sub_type
+    Route::name('sub_type.')->group(function () {
+        Route::get('/sub_type', 'Basic\SubTypeController@index')->name('index');
+        Route::get('/sub_type/create', 'Basic\SubTypeController@create')->name('create');
+        Route::post('/sub_type', 'Basic\SubTypeController@store')->name('store');
+        Route::get('/sub_type/{sub_type}', 'Basic\SubTypeController@show')->name('show');
+        Route::get('/sub_type/{sub_type}/edit', 'Basic\SubTypeController@edit')->name('edit');
+        Route::get('/sub_type/{sub_type}/change_status', 'Basic\SubTypeController@changeStatus')->name('change_status');
+        Route::put('/sub_type/{sub_type}', 'Basic\SubTypeController@update')->name('update');
+    });
+    // common_name
+    Route::name('common_name.')->group(function () {
+        Route::get('/common_name', 'Basic\CommonNameController@index')->name('index');
+        Route::get('/common_name/create', 'Basic\CommonNameController@create')->name('create');
+        Route::post('/common_name', 'Basic\CommonNameController@store')->name('store');
+        Route::get('/common_name/{common_name}', 'Basic\CommonNameController@show')->name('show');
+        Route::get('/common_name/{common_name}/edit', 'Basic\CommonNameController@edit')->name('edit');
+        Route::get('/common_name/{common_name}/change_status', 'Basic\CommonNameController@changeStatus')->name('change_status');
+        Route::put('/common_name/{common_name}', 'Basic\CommonNameController@update')->name('update');
+    });
+    // usage
+    Route::name('usage.')->group(function () {
+        Route::get('/usage', 'Basic\UsageController@index')->name('index');
+        Route::get('/usage/create', 'Basic\UsageController@create')->name('create');
+        Route::post('/usage', 'Basic\UsageController@store')->name('store');
+        Route::get('/usage/{usage}', 'Basic\UsageController@show')->name('show');
+        Route::get('/usage/{usage}/edit', 'Basic\UsageController@edit')->name('edit');
+        Route::get('/usage/{usage}/change_status', 'Basic\UsageController@changeStatus')->name('change_status');
+        Route::put('/usage/{usage}', 'Basic\UsageController@update')->name('update');
+    });
 });
 
 /**

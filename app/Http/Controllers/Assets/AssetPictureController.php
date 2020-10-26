@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Assets;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateAssetPictureRequest;
+use App\Http\Requests\Assets\CreatePictureRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -53,7 +53,7 @@ class AssetPictureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateAssetPictureRequest $request)
+    public function store(CreatePictureRequest $request)
     {
         //
     }

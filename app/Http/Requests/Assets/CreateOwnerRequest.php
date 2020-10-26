@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Assets;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateAssetDetailRequest extends FormRequest
+class CreateOwnerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class CreateAssetDetailRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -25,9 +25,9 @@ class CreateAssetDetailRequest extends FormRequest
     {
         return [
             'asset_id' => ['required', 'integer'],
-            'asset_detail' => ['required', 'string'],
-            'amont' => ['required', 'string', 'max:50'],
-            'comment' => ['nullable', 'string'],
+            'owner_name' => ['required', 'string', 'max:150'],
+            'owner_started' => ['nullable', 'date'],
+            'owner_ended' => ['nullable', 'date'],
             'created_by' => ['nullable', 'string', 'max:50'],
             'updated_by' => ['nullable', 'string', 'max:50'],
         ];

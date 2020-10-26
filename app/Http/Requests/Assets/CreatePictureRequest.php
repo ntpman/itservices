@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Assets;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateAssetPictureRequest extends FormRequest
+class CreatePictureRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

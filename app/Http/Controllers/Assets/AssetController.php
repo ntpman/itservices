@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Assets;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateAssetRequest;
+use App\Http\Requests\Assets\CreateAssetRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
