@@ -63,15 +63,14 @@ Route::prefix('basic')->group(function () {
         Route::get('/type/{type}/change_status', 'Basic\TypeController@changeStatus')->name('change_status');
         Route::put('/type/{type}', 'Basic\TypeController@update')->name('update');
     });
-    // sub_type
-    Route::name('sub_type.')->group(function () {
-        Route::get('/sub_type', 'Basic\SubTypeController@index')->name('index');
-        Route::get('/sub_type/create', 'Basic\SubTypeController@create')->name('create');
-        Route::post('/sub_type', 'Basic\SubTypeController@store')->name('store');
-        Route::get('/sub_type/{sub_type}', 'Basic\SubTypeController@show')->name('show');
-        Route::get('/sub_type/{sub_type}/edit', 'Basic\SubTypeController@edit')->name('edit');
-        Route::get('/sub_type/{sub_type}/change_status', 'Basic\SubTypeController@changeStatus')->name('change_status');
-        Route::put('/sub_type/{sub_type}', 'Basic\SubTypeController@update')->name('update');
+    // subtype
+    Route::name('subtype.')->group(function () {
+        Route::get('/subtype', 'Basic\SubtypeController@index')->name('index');
+        Route::get('/subtype/create', 'Basic\SubtypeController@create')->name('create');
+        Route::post('/subtype', 'Basic\SubtypeController@store')->name('store');
+        Route::get('/subtype/{subtype}', 'Basic\SubtypeController@show')->name('show');
+        Route::get('/subtype/{subtype}/edit', 'Basic\SubtypeController@edit')->name('edit');
+        Route::put('/subtype/{subtype}', 'Basic\SubtypeController@update')->name('update');
     });
     // common_name
     Route::name('common_name.')->group(function () {

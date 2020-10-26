@@ -14,7 +14,7 @@
                         <div class="card-tools">
                             <ul class="nav nav-pills ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/basic/sub_type/create"><i class="fas fa-edit"></i>เพิ่มข้อมูล</a>
+                                    <a class="nav-link active" href="/basic/subtype/create"><i class="fas fa-edit"></i>เพิ่มข้อมูล</a>
                                 </li>
                             </ul>
                         </div>
@@ -35,21 +35,13 @@
                                 @foreach ($showAllSubType as $subType)
                                     <tr>
                                         <td class="text-center">{{ $subType->id }}</td>
-                                        <td>{{ $subType->assetType->asset_type_name }}</td>
+                                        <td>{{ $subType->type->type_name }}</td>
                                         <td>{{ $subType->subtype_name }}</td>
                                         <td class="text-center">{{ $subType->subtype_status }}</td>
                                         <td>
-                                            <br />
-                                            <a href="/basic/sub_type/{{ $subType->id }}/edit" class="bth btn-primary btn-sm">
+                                            <a href="/basic/subtype/{{ $subType->id }}/edit" class="bth btn-primary btn-sm">
                                                 <i class="fas fa-edit"></i> แก้ไข
                                             </a>
-                                            <br />
-                                            <br />
-                                            <a href="/basic/sub_type/{{ $subType->id }}/change_status" class="bth btn-danger btn-sm">
-                                                <i class="fas fa-edit"></i> เปลี่ยนสถานะ
-                                            </a>
-                                            <br />
-                                            <br />
                                         </td>
                                     </tr>
                                 @endforeach
