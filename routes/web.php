@@ -109,6 +109,15 @@ Route::prefix('assets')->group(function () {
         Route::get('detail/{detail}/edit', 'Assets\AssetDetailController@edit')->name('edit');
         Route::put('detail/{detail}', 'Assets\AssetDetailController@update')->name('update');
     });
+    // owner
+    Route::name('owner.')->group(function () {
+        Route::get('owner', 'Assets\AssetOwnerController@index')->name('index');
+        Route::get('owner/create', 'Assets\AssetOwnerController@create')->name('create');
+        Route::post('owner', 'Assets\AssetOwnerController@store')->name('store');
+        Route::get('owner/{owner}', 'Assets\AssetOwnerController@show')->name('show');
+        Route::get('owner/{owner}/edit', 'Assets\AssetOwnerController@edit')->name('edit');
+        Route::put('owner/{owner}', 'Assets\AssetOwnerController@update')->name('update');
+    });
 });
 
 /**

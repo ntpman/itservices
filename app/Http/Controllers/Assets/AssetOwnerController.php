@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Assets;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateAssetPictureRequest;
+use App\Http\Requests\CreateAssetOwnerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-use App\Model\Assets\AssetPicture;
+use App\Model\Assets\AssetOwner;
 
-class AssetPictureController extends Controller
+class AssetOwnerController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,11 +28,7 @@ class AssetPictureController extends Controller
      */
     public function index()
     {
-        $assetPictures = AssetPicture::all();
-
-        return view('assets.picture.index', [
-            'assetPictures' => $assetPictures
-        ]);
+        //
     }
 
     /**
@@ -42,9 +38,7 @@ class AssetPictureController extends Controller
      */
     public function create()
     {
-        return view('assets.picture.create', [
-            ''
-        ]);
+        //
     }
 
     /**
@@ -53,7 +47,7 @@ class AssetPictureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateAssetPictureRequest $request)
+    public function store(CreateAssetOwnerRequest $request)
     {
         //
     }
