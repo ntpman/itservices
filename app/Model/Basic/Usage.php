@@ -17,6 +17,7 @@ class Usage extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
 
     // hasMany
     public function assets()

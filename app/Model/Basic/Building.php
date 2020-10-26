@@ -17,6 +17,7 @@ class Building extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
 
     // hasMany
     public function locations()

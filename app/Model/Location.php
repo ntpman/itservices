@@ -26,7 +26,6 @@ class Location extends Model
     /**
      * Eloquent: Relationships
      */
-    
     // belongsTo
     public function asset()
     {
@@ -36,4 +35,6 @@ class Location extends Model
     {
         return $this->belongsTo(Building::class);
     }
+
+    // hasMany
 }

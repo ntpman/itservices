@@ -28,7 +28,5 @@ class BrandModel extends Model
     public function assets()
     {
         return $this->hasMany(Asset::class);
-    }
-
-    
+    }  
 }

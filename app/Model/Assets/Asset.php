@@ -91,6 +91,4 @@ class Asset extends Model
     {
         return $this->hasMany(Location::class);
     }
-    
-    
 }

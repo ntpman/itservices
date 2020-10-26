@@ -14,7 +14,7 @@ class AssetPicture extends Model
 
     /*
     protected $fillable = [
-        'asset_id', 'picture_name', 'created_by', 'updated_by'
+        'asset_id', 'asset_picture_name', 'created_by', 'updated_by'
     ];
     */
     
@@ -25,8 +25,11 @@ class AssetPicture extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
     public function asset()
     {
         return $this->belongsTo(Asset::class);
     }
+
+    // hasMany
 }

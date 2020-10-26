@@ -27,5 +27,4 @@ class Type extends Model
     public function subtypes() {
         return $this->hasMany(Subtype::class);
     }
-    
 }

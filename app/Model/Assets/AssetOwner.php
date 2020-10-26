@@ -14,7 +14,7 @@ class AssetOwner extends Model
 
     /*
     protected $fillable = [
-        'asset_id', 'owner_name', 'owner_started', 'owner_ended', 'created_by', 'updated_by'
+        'asset_id', 'asset_owner_name', 'asset_owner_started', 'asset_owner_ended', 'created_by', 'updated_by'
     ];
     */
     
@@ -25,8 +25,11 @@ class AssetOwner extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
     public function asset()
     {
         return $this->belongsTo(Asset::class);
     }
+
+    // hasMany
 }

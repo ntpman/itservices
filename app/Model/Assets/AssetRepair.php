@@ -14,7 +14,8 @@ class AssetRepair extends Model
 
     /*
     protected $fillable = [
-        'asset_id', 'repair_date', 'repair_list', 'repairer_name', 'repairer_org', 'repair_comment', 'created_by', 'updated_by'
+        'asset_id', 'asset_repair_date', 'asset_repair_list', 'asset_repair_name', 'asset_repair_org', 'asset_repair_comment', 
+        'created_by', 'updated_by'
     ];
     */
     
@@ -25,8 +26,11 @@ class AssetRepair extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
     public function asset()
     {
         return $this->belongsTo(Asset::class);
     }
+
+    // hasMany
 }

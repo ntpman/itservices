@@ -27,6 +27,7 @@ class Supplier extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
     public function provinceTa()
     {
         return $this->belongsTo(Province::class, 'supplier_subdistrict_id' , 'ta_id');
@@ -42,6 +43,7 @@ class Supplier extends Model
         return $this->belongsTo(Province::class, 'supplier_province_id' , 'ch_id');
     }
 
+    // hasMany
     public function assets()
     {
         return $this->hasMany(Asset::class);
