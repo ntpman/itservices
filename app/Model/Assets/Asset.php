@@ -12,9 +12,9 @@ use App\Model\Location;
 
 use App\Model\Basic\Type;
 use App\Model\Basic\Subtype;
-use App\Model\Basic\CommonName;
+use App\Model\Basic\Common;
 use App\Model\Basic\Brand;
-use App\Model\Basic\AssetModel;
+use App\Model\Basic\BrandModel;
 use App\Model\Basic\Usage;
 use App\Model\Supplier\Supplier;
 
@@ -26,9 +26,10 @@ class Asset extends Model
 
     /*
     protected $fillable = [
-        'asset_type_id', 'asset_subtype_id', 'asset_common_name_id', 'asset_number', 'purchase_year',
-        'brand_id', 'model_id', 'serial_number', 'supplier_id', 'recived_asset', 'warranty_period',
-        'asset_usage_id', 'retired_asset', 'created_by', 'updated_by'
+        'type_id', 'brand_id', 'common_id', 'usage_id', 'supplier_id', 
+        'subtype_id', 'brand_model_id',
+        'asset_number', 'asset_serial_number', 'asset_purchase_year', 'asset_warranty_period', 'asset_recived', 'asset_retired'
+        'created_by', 'updated_by'
     ];
     */
     
@@ -39,6 +40,35 @@ class Asset extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+    public function subtype()
+    {
+        return $this->belongsTo(Subtype::class);
+    }
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+    public function brandModel()
+    {
+        return $this->belongsTo(BrandModel::class);
+    }
+    public function common()
+    {
+        return $this->belongsTo(Common::class);
+    }
+    public function usage()
+    {
+        return $this->belongsTo(Usage::class);
+    }
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 
     // hasMany
     public function assetPictures()
@@ -62,33 +92,5 @@ class Asset extends Model
         return $this->hasMany(Location::class);
     }
     
-    // belongsTo
-    public function type()
-    {
-        return $this->belongsTo(Type::class);
-    }
-    public function subtype()
-    {
-        return $this->belongsTo(Subtype::class);
-    }
-    public function assetCommonName()
-    {
-        return $this->belongsTo(CommonName::class);
-    }
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class);
-    }
-    public function model()
-    {
-        return $this->belongsTo(AssetModel::class);
-    }
-    public function assetUsage()
-    {
-        return $this->belongsTo(Usage::class);
-    }
-    public function supplier()
-    {
-        return $this->belongsTo(Supplier::class);
-    }
+    
 }

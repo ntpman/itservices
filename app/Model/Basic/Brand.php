@@ -5,7 +5,7 @@ namespace App\Model\Basic;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Model\Assets\Asset;
-use App\Model\Basic\BasicModel;
+use App\Model\Basic\BrandModel;
 
 class Brand extends Model
 {
@@ -18,15 +18,16 @@ class Brand extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
 
     // hasMany
     public function assets()
     {
         return $this->hasMany(Asset::class);
     }
-    public function basicModels() 
+    public function brandModels() 
     {
-        return $this->hasMany(BasicModel::class);
+        return $this->hasMany(BrandModel::class);
     }
 
 }

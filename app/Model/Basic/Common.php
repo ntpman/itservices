@@ -17,6 +17,7 @@ class Common extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
 
     // hasMany
     public function assets()

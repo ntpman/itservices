@@ -7,17 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Assets\Asset;
 use App\Model\Basic\Brand;
 
-class BasicModel extends Model
+class BrandModel extends Model
 {
-    protected $table = 'basic_models';
+    protected $table = 'brand_models';
     protected $primaryKey = 'id';
-    protected $fillable = ['brand_id', 'basic_model_name', 'basic_model_status', 'created_by', 'updated_by'];
+    protected $fillable = ['brand_id', 'brand_model_name', 'brand_model_status', 'created_by', 'updated_by'];
 
     public $timestamps = true;
 
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
+    public function brand() 
+    {
+        return $this->belongsTo(Brand::class);
+    }
 
     // hasMany
     public function assets()
@@ -25,9 +30,5 @@ class BasicModel extends Model
         return $this->hasMany(Asset::class);
     }
 
-    // belongsTo
-    public function brand() 
-    {
-        return $this->belongsTo(Brand::class);
-    }
+    
 }

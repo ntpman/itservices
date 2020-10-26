@@ -18,9 +18,8 @@ class Subtype extends Model
     /**
      * Eloquent: Relationships
      */
-
     // belongsTo
-    public function assetType() {
+    public function type() {
         return $this->belongsTo(Type::class);
     }
 
