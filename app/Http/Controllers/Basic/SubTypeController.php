@@ -61,13 +61,14 @@ class SubtypeController extends Controller
         ]);
 
         //Add new data
-            $addSubType = new Subtype;
-            $addSubType->type_id = $request->input('typeId');
-            $addSubType->subtype_name = $request->input('subTypeName');
-            $addSubType->subtype_status = 'A';
-            $addSubType->created_by = auth()->user()->name;
-            $addSubType->save();
+        $addSubType = new Subtype;
+        $addSubType->type_id = $request->input('typeId');
+        $addSubType->subtype_name = $request->input('subTypeName');
+        $addSubType->subtype_status = 'A';
+        $addSubType->created_by = auth()->user()->name;
+        $addSubType->save();
 
+        Session::flash('success_msg', 'บันทึกข้อมูลประเภทครุภัณฑ์ย่อยเรียบร้อย');
         //return index view
         return redirect('/basic/subtype');
     }
