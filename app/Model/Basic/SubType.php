@@ -14,7 +14,7 @@ class SubType extends Model
 
     public $timestapms = true;
 
-    public function type() {
+    public function assetType() {
         return $this->belongsTo(Type::class);
     }
 }

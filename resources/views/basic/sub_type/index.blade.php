@@ -35,7 +35,7 @@
                                 @foreach ($showAllSubType as $subType)
                                     <tr>
                                         <td class="text-center">{{ $subType->id }}</td>
-                                        <td>{{ $subType->type->asset_type_name }}</td>
+                                        <td>{{ $subType->assetType->asset_type_name }}</td>
                                         <td>{{ $subType->subtype_name }}</td>
                                         <td class="text-center">{{ $subType->subtype_status }}</td>
                                         <td>

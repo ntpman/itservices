@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Assets\AssetPicture;
 use App\Model\Assets\AssetDetail;
 use App\Model\Assets\AssetOwner;
+use App\Model\Location;
+
 use App\Model\Supplier\Supplier;
 
 class Asset extends Model
@@ -43,6 +45,10 @@ class Asset extends Model
     public function assetOwners()
     {
         return $this->hasMany(AssetOwner::class);
+    }
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
     }
     
     // belongsTo
