@@ -84,23 +84,33 @@ Route::name('basic.')->group(function () {
 Route::prefix('assets')->group(function () {
     // asset
     Route::name('asset.')->group(function () {
-        Route::get('/asset', 'Asset\AssetController@index')->name('index');
-        Route::get('/asset/create', 'Asset\AssetController@create')->name('create');
-        Route::post('/asset', 'Asset\AssetController@store')->name('store');
-        Route::get('/asset/{asset}', 'Asset\AssetController@show')->name('show');
-        Route::get('/asset/{asset}/edit', 'Asset\AssetController@edit')->name('edit');
-        Route::put('/asset/{asset}', 'Asset\AssetController@update')->name('update');
+        Route::get('/asset', 'Assets\AssetController@index')->name('index');
+        Route::get('/asset/create', 'Assets\AssetController@create')->name('create');
+        Route::post('/asset', 'Assets\AssetController@store')->name('store');
+        Route::get('/asset/{asset}', 'Assets\AssetController@show')->name('show');
+        Route::get('/asset/{asset}/edit', 'Assets\AssetController@edit')->name('edit');
+        Route::put('/asset/{asset}', 'Assets\AssetController@update')->name('update');
     });
     // picture
     Route::name('picture.')->group(function () {
-        Route::get('/picture', 'Asset\AssetPictureController@index')->name('index');
-        Route::get('/picture/create', 'Asset\AssetPictureController@create')->name('create');
-        Route::post('/picture', 'Asset\AssetPictureController@store')->name('store');
-        Route::get('/picture/{picture}', 'Asset\AssetPictureController@show')->name('show');
-        Route::get('/picture/{picture}/edit', 'Asset\AssetPictureController@edit')->name('edit');
-        Route::put('/picture/{picture}', 'Asset\AssetPictureController@update')->name('update');
+        Route::get('/picture', 'Assets\AssetPictureController@index')->name('index');
+        Route::get('/picture/create', 'Assets\AssetPictureController@create')->name('create');
+        Route::post('/picture', 'Assets\AssetPictureController@store')->name('store');
+        Route::get('/picture/{picture}', 'Assets\AssetPictureController@show')->name('show');
+        Route::get('/picture/{picture}/edit', 'Assets\AssetPictureController@edit')->name('edit');
+        Route::put('/picture/{picture}', 'Assets\AssetPictureController@update')->name('update');
+    });
+    // detail
+    Route::name('detail.')->group(function () {
+        Route::get('detail', 'Assets\AssetDetailController@index')->name('index');
+        Route::get('detail/create', 'Assets\AssetDetailController@create')->name('create');
+        Route::post('detail', 'Assets\AssetDetailController@store')->name('store');
+        Route::get('detail/{detail}', 'Assets\AssetDetailController@show')->name('show');
+        Route::get('detail/{detail}/edit', 'Assets\AssetDetailController@edit')->name('edit');
+        Route::put('detail/{detail}', 'Assets\AssetDetailController@update')->name('update');
     });
 });
+
 /**
  * Route Suppliers
  */

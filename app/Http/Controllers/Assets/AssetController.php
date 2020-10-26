@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Asset;
+namespace App\Http\Controllers\Assets;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateAssetRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
-use App\Model\Assets\AssetPicture;
+use App\Model\Assets\Asset;
 
-class AssetPictureController extends Controller
+class AssetController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,10 +28,12 @@ class AssetPictureController extends Controller
      */
     public function index()
     {
-        $assetPictures = AssetPicture::all();
+        $assets = Asset::all();
 
-        return view('assets.picture.index', [
-            'assetPictures' => $assetPictures
+        // return $assets;
+
+        return view('assets.asset.index', [
+            'assets' => $assets
         ]);
     }
 
@@ -40,9 +44,7 @@ class AssetPictureController extends Controller
      */
     public function create()
     {
-        return view('assets.picture.create', [
-            ''
-        ]);
+        return view('assets.asset.create');
     }
 
     /**
@@ -51,9 +53,13 @@ class AssetPictureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAssetRequest $request)
     {
-        //
+        // dd($request);
+        // dd($request->all());
+
+        // store in the database
+        $asset = new Asset;
     }
 
     /**

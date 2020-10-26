@@ -1,11 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Assets;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateAssetPicture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
-class AssetUsageController extends Controller
+use App\Model\Assets\AssetPicture;
+
+class AssetPictureController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +28,11 @@ class AssetUsageController extends Controller
      */
     public function index()
     {
-        //
+        $assetPictures = AssetPicture::all();
+
+        return view('assets.picture.index', [
+            'assetPictures' => $assetPictures
+        ]);
     }
 
     /**
@@ -23,7 +42,9 @@ class AssetUsageController extends Controller
      */
     public function create()
     {
-        //
+        return view('assets.picture.create', [
+            ''
+        ]);
     }
 
     /**
@@ -32,7 +53,7 @@ class AssetUsageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAssetPicture $request)
     {
         //
     }

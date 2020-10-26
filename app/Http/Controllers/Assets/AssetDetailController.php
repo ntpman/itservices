@@ -1,12 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Assets;
 
-use App\Model\Assetss\assetOwner;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateAssetDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
-class AssetOwnerController extends Controller
+use App\Model\Assets\AssetDetail;
+
+class AssetDetailController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +47,7 @@ class AssetOwnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAssetDetail $request)
     {
         //
     }
@@ -41,10 +55,10 @@ class AssetOwnerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Assetss\assetOwner  $assetOwner
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(assetOwner $assetOwner)
+    public function show($id)
     {
         //
     }
@@ -52,10 +66,10 @@ class AssetOwnerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Assetss\assetOwner  $assetOwner
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(assetOwner $assetOwner)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +78,10 @@ class AssetOwnerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Assetss\assetOwner  $assetOwner
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, assetOwner $assetOwner)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +89,10 @@ class AssetOwnerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Assetss\assetOwner  $assetOwner
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(assetOwner $assetOwner)
+    public function destroy($id)
     {
         //
     }

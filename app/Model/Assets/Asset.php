@@ -5,6 +5,7 @@ namespace App\Model\Assets;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Model\Assets\AssetPicture;
+use App\Model\Assets\AssetDetail;
 use App\Model\Supplier\Supplier;
 
 class Asset extends Model
@@ -31,6 +32,11 @@ class Asset extends Model
     public function assetPictures()
     {
         return $this->hasMany(AssetPicture::class);
+    }
+
+    public function assetDetails()
+    {
+        return $this->hasMany(AssetDetail::class);
     }
 
     public function supplier()
