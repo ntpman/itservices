@@ -33,6 +33,6 @@ class CreateBrandModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('basic_models');
+        Schema::dropIfExists('brand_models');
     }
 }
