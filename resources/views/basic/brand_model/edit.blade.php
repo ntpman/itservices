@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Models Edit
+    | Brand Models Edit
 @endsection
 
 @section('content')
