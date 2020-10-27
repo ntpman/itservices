@@ -16,7 +16,7 @@ class CreateSubtypesTable extends Migration
         Schema::create('subtypes', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('รหัสรายการ');
             $table->unsignedBigInteger('type_id')->comment('รหัสประเภทครุภัณฑ์');
-            $table->string('subtype_name', 50)->comment('ประเภทครุภัณฑ์ย่อย');
+            $table->string('subtype_name', 50)->unique()->comment('ประเภทครุภัณฑ์ย่อย');
             $table->string('subtype_status', 1)->default('A')->comment('สถานะการใช้ข้อมูล');
             $table->string('created_by', 50)->comment('รหัสผู้สร้างข้อมูล');
             $table->string('updated_by', 50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');

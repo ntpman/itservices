@@ -10,35 +10,31 @@
             <div class="col-lg-6">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h5 class="m-0">แก้ไขข้อมูลรุ่นผลิตภัณฑ์ <i class="far fa-edit"></i></h5>
+                        <h3 class="card-title"><i class="far fa-edit"></i> แก้ไขข้อมูลรุ่นผลิตภัณฑ์</h3>
                     </div>
                     <!-- form start -->
-                    {!! Form::open(['action' => ['Basic\ModelController@update', $editModel->id], 'method'=>'PUT']) !!}
+                    {!! Form::open(['action' => ['Basic\BrandModelController@update', $editBrandModel->id], 'method'=>'PUT']) !!}
                     <div class="card-body">
-                        {{ Form::label('title','ยี่ห้อผลิตภัณฑ์') }}
-                        <div class="form-row">
-                            <div class="col-10">                                
-                                {{ Form::select('brandFullName', $allBrand, $editModel->brand_id, ['class' => 'form-control', 'readonly']) }}
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-                                    Edit
-                                </button>
-                            </div>
+                        <div class="form-group">
+                            {{ Form::label('title','ยี่ห้อผลิตภัณฑ์') }}                            
+                            {{ Form::select('brandId', $allBrand, $editBrandModel->brand_id, ['class' => 'form-control']) }}
                         </div>
                         <div class="form-group">
-							{{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}
-							{{ Form::text('modelName', $editModel->model_name, ['class' => 'form-control']) }}
+                            {{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}
+                            <a href="#" data-toggle="modal" data-target="#modal-brandModelName">
+                                <i class="far fa-edit"></i> Edit
+                            </a>
+							{{ Form::text('brandModelName', $editBrandModel->brand_model_name, ['class' => 'form-control', 'readonly']) }}
                         </div>
                         <div class="form-group">
                             {{ Form::label('title', 'สถานะการใช้งานข้อมูล') }}
-                            {{ Form::select('modelStatus', [
+                            {{ Form::select('brandModelStatus', [
                                     'A' => 'Active',
                                     'D' => 'Disable',
-                                ], $editModel->model_status, ['class'=>'form-control','disabled']) 
+                                ], $editBrandModel->brand_model_status, ['class'=>'form-control']) 
                             }}
                         </div>
-                        <a href="/basic/model" class="btn btn-secondary">ย้อนกลับ</a>
+                        <a href="/basic/brandmodel" class="btn btn-secondary">ย้อนกลับ</a>
                         {{ Form::hidden('_method','PUT') }}
                         {{ Form::hidden('_name','edit') }}
                         {{ Form::submit('บันทึก', ['class'=>'btn btn-primary']) }}
@@ -55,28 +51,28 @@
 @endsection
 
 @section('modal')
-    <div class="modal fade" id="modal-default">
+    <div class="modal fade" id="modal-brandModelName" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">ยี่ห้อผลิตภัณฑ์</h4>
+                    <h4 class="modal-title"><i class="far fa-edit"></i> Edit Brand Model Name</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <!-- form start -->
-                {!! Form::open(['action' => ['Basic\ModelController@update', $editModel->id], 'method'=>'PUT']) !!}
+                {!! Form::open(['action' => ['Basic\BrandModelController@update', $editBrandModel->id], 'method'=>'PUT']) !!}
                 <div class="modal-body">
                     <div class="form-group">
-                        {{ Form::label('title','ยี่ห้อผลิตภัณฑ์') }}
-                        {{ Form::select('brandFullName', $allBrand, $editModel->brand_id, ['class' => 'form-control', 'required']) }}
-                    </div>                    
+                        {{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}
+						{{ Form::text('brandModelName', $editBrandModel->brand_model_name, ['class' => 'form-control']) }}
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                     {{ Form::hidden('_method','PUT') }}
-                    {{ Form::hidden('_name','edit') }}
-                    {{ Form::submit('บันทึก', ['class'=>'btn btn-primary']) }}
+                    {{ Form::hidden('_name','edit-brandModelName') }}
+                    {{ Form::submit('บันทึก', ['class'=>'btn btn-primary btn-sm']) }}
                 </div>
                 {!! Form::close() !!}
                 <!-- end start -->

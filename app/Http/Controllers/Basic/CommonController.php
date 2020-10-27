@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-use App\Model\Basic\CommonName;
+use App\Model\Basic\Common;
 
-class CommonNameController extends Controller
+class CommonController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,8 +26,8 @@ class CommonNameController extends Controller
      */
     public function index()
     {
-        $allCommonName = CommonName::all();
-        return view('basic.common_name.index',['showAllCommonName' => $allCommonName]);
+        $allCommon = Common::all();
+        return view('basic.common.index',['showAllCommon' => $allCommon]);
     }
 
     /**
@@ -37,7 +37,7 @@ class CommonNameController extends Controller
      */
     public function create()
     {   
-        return view('basic.common_name.create');
+        return view('basic.common.create');
     }
 
     /**
@@ -50,20 +50,20 @@ class CommonNameController extends Controller
     {
         //validate date
         $this->validate($request, [
-            'commonName' => 'required|unique:asset_common_names,common_name',
+            'commonName' => 'required|unique:commons,common_name',
         ]);
 
         //Add new data
-            $addCommonName = new CommonName;
-            $addCommonName->common_name = $request->input('commonName');
-            $addCommonName->common_name_status = 'A';
-            $addCommonName->created_by = auth()->user()->name;
-            $addCommonName->save();
+        $addCommon = new Common;
+        $addCommon->common_name = $request->input('commonName');
+        $addCommon->common_status = 'A';
+        $addCommon->created_by = auth()->user()->name;
+        $addCommon->save();
 
-            Session::flash('success_msg', 'บันทึกข้อมูลชื่อครุภัณฑ์เรียบร้อย');
+        Session::flash('success_msg', 'บันทึกข้อมูลชื่อครุภัณฑ์เรียบร้อย');
 
         //return index view
-        return redirect('/basic/common_name');
+        return redirect('/basic/common');
     }
 
     /**
@@ -83,10 +83,10 @@ class CommonNameController extends Controller
      * @param  \App\Model\BasicInformations\Model  $model
      * @return \Illuminate\Http\Response
      */
-    public function edit(CommonName $commonName)
+    public function edit(Common $common)
     {
-        return view('basic.common_name.edit', [
-            'editCommonName' => $commonName,
+        return view('basic.common.edit', [
+            'editCommon' => $common,
         ]);
     }
 
@@ -97,34 +97,35 @@ class CommonNameController extends Controller
      * @param  \App\Model\BasicInformations\AssetModel  $model
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CommonName $commonName)
+    public function update(Request $request, Common $common)
     {
-        if ($request->input('_name')==='edit'){
+        if($request->input('_name') === 'edit'){
         
             //validate data
-        $this->validate($request, [
-            'commonName' => 'required|unique:asset_common_names,common_name',
-        ]);
+            $this->validate($request, [
+                'commonName' => 'required|unique:commons,common_name',
+            ]);
 
-        //update data
-            $updateCommonName = CommonName::find($building->id);
-            $updateCommonName->common_name = $request->input('commonName');
-            $updateCommonName->updated_by = auth()->user()->name;
-            $updateCommonName->save();
+            //update data
+            $updateCommon = Common::find($common->id);
+            $updateCommon->common_name = $request->input('commonName');
+            $updateCommon->updated_by = auth()->user()->name;
+            $updateCommon->save();
 
             Session::flash('success_msg', 'แก้ไขชื่อครุภัณฑ์เรียบร้อย');
         }
-        else {
-            $updateCommonName = CommonName::find($building->id);
-            $updateCommonName->common_name_status = $request->input('commonNameStatus');
-            $updateCommonName->updated_by = auth()->user()->name;
-            $updateCommonName->save();
+
+        if($request->input('_name') === 'edit-commonStatus') {
+            $updateCommon = Common::find($common->id);
+            $updateCommon->common_status = $request->input('commonStatus');
+            $updateCommon->updated_by = auth()->user()->name;
+            $updateCommon->save();
 
             Session::flash('success_msg', 'แก้ไขสถานะการใช้ข้อมูลเรียบร้อย');
         }
 
         //return index view
-        return redirect('/basic/common_name');
+        return redirect('/basic/common');
     }
 
     /**
@@ -133,7 +134,7 @@ class CommonNameController extends Controller
      * @param  \App\Model\BasicInformations\Model  $model
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CommonName $commonName)
+    public function destroy(Common $common)
     {
         //
     }

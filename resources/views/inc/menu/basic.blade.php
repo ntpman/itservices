@@ -7,43 +7,43 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="/basic/building" class="nav-link {{ Request::is('basic/building') ? 'active' : '' }}">
+            <a href="/basic/building" class="nav-link {{ Request::is('basic/building*') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
                 <p>ชื่ออาคาร</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="/basic/brand" class="nav-link {{ Request::is('basic/brand') ? 'active' : '' }}">
+            <a href="/basic/brand" class="nav-link {{ Request::is('basic/brand*') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
                 <p>ยี่ห้อผลิตภัณฑ์</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="/basic/brandmodel" class="nav-link {{ Request::is('basic/brandmodel') ? 'active' : '' }}">
+            <a href="/basic/brandmodel" class="nav-link {{ Request::is('basic/brandmodel*') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
                 <p>รุ่นผลิตภัณฑ์</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="/basic/type" class="nav-link {{ Request::is('basic/type') ? 'active' : '' }}">
+            <a href="/basic/type" class="nav-link {{ Request::is('basic/type*') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
                 <p>ประเภทครุภัณฑ์</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="/basic/subtype" class="nav-link {{ Request::is('basic/subtype') ? 'active' : '' }}">
+            <a href="/basic/subtype" class="nav-link {{ Request::is('basic/subtype*') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
                 <p>ประเภทครุภัณฑ์ย่อย</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="/basic/common" class="nav-link {{ Request::is('basic/common') ? 'active' : '' }}">
+            <a href="/basic/common" class="nav-link {{ Request::is('basic/common*') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
                 <p>ชื่อครุภัณฑ์</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="/basic/usage" class="nav-link {{ Request::is('basic/usage') ? 'active' : '' }}">
+            <a href="/basic/usage" class="nav-link {{ Request::is('basic/usage*') ? 'active' : '' }}">
                 <i class="fas fa-database nav-icon"></i>
                 <p>การใช้งานครุภัณฑ์</p>
             </a>

@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Common Names Create
+    | Models Create
 @endsection
 
 @section('content')
@@ -10,16 +10,20 @@
             <div class="col-lg-6">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h5 class="m-0">เพิ่มชื่อครุภัณฑ์ <i class="far fa-edit"></i></h5>
+                        <h3 class="card-title"><i class="far fa-edit"></i> เพิ่มข้อมูลรุ่นของผลิตภัณฑ์</h3>
                     </div>
 					<!-- form start -->
-					{!! Form::open(['action' => 'Basic\CommonNameController@store', 'method' => 'POST', 'class' => 'was-validate']) !!}
+					{!! Form::open(['action' => 'Basic\BrandModelController@store', 'method' => 'POST', 'class' => 'was-validate']) !!}
 					<div class="card-body">
 						<div class="form-group">
-							{{ Form::label('title','ชื่อครุภัณฑ์')}}
-							{{ Form::text('commonName', '', ['class' => 'form-control', 'required']) }}
+							{{ Form::label('title', 'ยี่ห้อผลิตภัณฑ์') }}
+							{{ Form::select('brandId', $allBrand, '', ['class' => 'form-control', 'required']) }}
 						</div>
-						<a href="/basic/common_name" class="btn btn-secondary">ย้อนกลับ</a>
+						<div class="form-group">
+							{{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}
+							{{ Form::text('brandModelName', '', ['class' => 'form-control']) }}
+						</div>
+						<a href="/basic/brandmodel" class="btn btn-secondary">ย้อนกลับ</a>
 						{{ Form::submit('บันทึก', ['class' => 'btn btn-primary']) }}
 					</div>
 					{!! Form::close() !!}

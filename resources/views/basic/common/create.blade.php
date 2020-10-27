@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Models Create
+    | Common Create
 @endsection
 
 @section('content')
@@ -10,20 +10,16 @@
             <div class="col-lg-6">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h5 class="m-0">เพิ่มข้อมูลรุ่นของผลิตภัณฑ์ <i class="far fa-edit"></i></h5>
+                        <h3 class="card-title"><i class="far fa-edit"></i> เพิ่มชื่อครุภัณฑ์</h3>
                     </div>
 					<!-- form start -->
-					{!! Form::open(['action' => 'Basic\ModelController@store', 'method' => 'POST', 'class' => 'was-validate']) !!}
+					{!! Form::open(['action' => 'Basic\CommonController@store', 'method' => 'POST', 'class' => 'was-validate']) !!}
 					<div class="card-body">
 						<div class="form-group">
-							{{ Form::label('title', 'ยี่ห้อผลิตภัณฑ์') }}
-							{{ Form::select('brandFullName', $allBrand, '', ['class' => 'form-control', 'required']) }}
+							{{ Form::label('title','ชื่อครุภัณฑ์')}}
+							{{ Form::text('commonName', '', ['class' => 'form-control', 'required']) }}
 						</div>
-						<div class="form-group">
-							{{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}
-							{{ Form::text('modelName', '', ['class' => 'form-control']) }}
-						</div>
-						<a href="/basic/model" class="btn btn-secondary">ย้อนกลับ</a>
+						<a href="/basic/common" class="btn btn-secondary">ย้อนกลับ</a>
 						{{ Form::submit('บันทึก', ['class' => 'btn btn-primary']) }}
 					</div>
 					{!! Form::close() !!}

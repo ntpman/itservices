@@ -23,7 +23,7 @@ class CreateAssetsTable extends Migration
             $table->unsignedBigInteger('usage_id')->comment('รหัสสถานะการใช้งานครุภัณฑ์');
             $table->unsignedBigInteger('supplier_id')->comment('รหัสผู้แทนจำหน่ายครุภัณฑ์');
             $table->string('asset_number', 50)->unique()->comment('หมายเลขครุภัณฑ์');
-            $table->string('asset_serial_number', 50)->comment('หมายเลขประจำเครื่อง');
+            $table->string('asset_serial_number', 50)->unique()->comment('หมายเลขประจำเครื่อง');
             $table->string('asset_purchase_year', 4)->comment('ปีที่จัดซื้อ');
             $table->string('asset_warranty_period', 1)->comment('ระยะเวลาการรับประกัน');
             $table->date('asset_recived')->comment('วันที่ตรวจรับครุภัณฑ์');

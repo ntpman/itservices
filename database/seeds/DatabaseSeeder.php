@@ -47,4 +47,10 @@ class DatabaseSeeder extends Seeder
         $user4->save();
         
     }
+
+    /**
+     * Basic
+     * building = ['อาคารตั้ว', 'อาคารหอสมุด', 'อาคารสถานศึกษาเคมีปฏิบัติ', 'อาคาร SAL']
+     * brand = ['ACER', 'ASUS', 'HP', 'LENOVO', 'DELL']
+     */
 }
