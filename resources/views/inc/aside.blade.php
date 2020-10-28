@@ -35,12 +35,12 @@
                     
                     <!-- Include flie menu -->
 
-                    {{-- Setting --}}
-                    @include('inc.menu.setting')
-
                     {{-- Basic --}}
                     @include('inc.menu.basic')
-
+                    
+                    {{-- User --}}
+                    @include('inc.menu.user')
+                    
                     {{-- Asset --}}
                     @include('inc.menu.asset')
 

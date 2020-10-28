@@ -7,9 +7,6 @@ use App\Http\Requests\Assets\CreateAssetRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-use App\Model\Location;
-use App\Model\Basic\Building;
-
 use App\Model\Assets\Asset;
 use App\Model\Assets\AssetDetail;
 use App\Model\Assets\AssetOwner;
@@ -22,6 +19,7 @@ use App\Model\Basic\Brand;
 use App\Model\Basic\BrandModel;
 use App\Model\Basic\Common;
 use App\Model\Basic\Usage;
+use App\Model\Basic\Building;
 
 use App\Model\Supplier\Supplier;
 
@@ -109,7 +107,7 @@ class AssetController extends Controller
             
             Session::flash('success_msg', 'บันทึกข้อมูลเรียบร้อย');
 
-            return redirect("/assets/asset/{{ $asset->id }}");
+            return redirect("/assets/asset/$asset->id");
         }
     }
 
@@ -240,7 +238,7 @@ class AssetController extends Controller
 
         Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
 
-        return redirect("/assets/asset/{{ $id }}");
+        return redirect("/assets/asset/$id");
     }
 
     /**

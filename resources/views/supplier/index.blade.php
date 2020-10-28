@@ -14,7 +14,7 @@
                         <div class="card-tools">
                             <ul class="nav nav-pills ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/supplier/create"><i class="fas fa-plus"></i> Add</a>
+                                    <a class="nav-link active" href="/supplier/create"><i class="fas fa-plus"></i> Create</a>
                                 </li>
                             </ul>
                         </div>
@@ -39,7 +39,9 @@
                                     @foreach ($suppliers as $item)                                  
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $item->supplier_name }}</td>
+                                            <td>
+                                                <a href="/supplier/{{ $item->id }}">{{ $item->supplier_name }}</a>
+                                            </td>
                                             <td>{{ $item->supplier_phone }}</td>
                                             <td>{{ $item->supplier_email }}</td>
                                             <td>

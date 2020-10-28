@@ -14,7 +14,7 @@
                         <div class="card-tools">
                             <ul class="nav nav-pills ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/assets/asset/create"><i class="fas fa-edit"></i>เพิ่มข้อมูล</a>
+                                    <a class="nav-link active" href="/assets/asset/create"><i class="fas fa-plus"></i> Create</a>
                                 </li>
                             </ul>
                         </div>
@@ -30,7 +30,7 @@
                                         <th>หมายเลขประจำเครื่อง</th>
                                         <th>ปีที่จัดซื้อ</th>
                                         <th>ระยะเวลาการรับประกัน</th>
-                                        <th></th>
+                                        <th>แก้ไข</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,7 +44,11 @@
                                             <td>{{ $item->asset_serial_number }}</td>
                                             <td>{{ $item->asset_purchase_year }}</td>
                                             <td>{{ $item->asset_warranty_period }}</td>
-                                            <td><a href="/assets/asset/{{ $item->id }}/edit" class="btn btn-primary btn-xs">Edit</a></td>
+                                            <td>
+                                                <a href="/assets/asset/{{ $item->id }}/edit" class="btn btn-primary btn-xs">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -39,7 +39,18 @@ class LocationController extends Controller
      */
     public function store(CreateLocationRequest $request)
     {
-        //
+        $location = new Location;
+        $location->asset_id = $request->input('asset_id');
+        $location->building_id = $request->input('building_id');
+        $location->location_floor = $request->input('location_floor');
+        $location->location_room = $request->input('location_room');
+        $location->created_by = auth()->user()->name;
+
+        if($location->save()) {
+            Session::flash('success_msg', 'เพิ่มข้อมูลเรียบร้อย');
+
+            return redirect()->back();
+        }
     }
 
     /**
@@ -71,9 +82,21 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateLocationRequest $request, $id)
     {
-        //
+        /**
+         * Store in the database
+         */
+        Location::where('id', $id)->update([
+            'building_id' => $request->input('building_id'),
+            'location_floor' => $request->input('location_floor'),
+            'location_room' => $request->input('location_room'),
+            'updated_by' => auth()->user()->name,
+        ]);
+
+        Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
+
+        return redirect()->back();
     }
 
     /**

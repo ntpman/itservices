@@ -151,8 +151,8 @@
                         </div>
                         <!-- /.card-body -->        
                         <div class="card-footer">
+                            <a href="/supplier" class="btn btn-secondary">Back</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="/supplier" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                     <!-- end start -->

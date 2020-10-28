@@ -30,6 +30,11 @@
                         </ul>
                     </div>
                     <!-- /.card-body -->
+                    <div class="card-footer">
+                        <a href="/supplier" class="btn btn-secondary">Back</a>
+                        <a href="/supplier/{{ $supplier->id }}/edit" class="btn btn-primary">Edit</a>
+                    </div>
+                    <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
             </div>

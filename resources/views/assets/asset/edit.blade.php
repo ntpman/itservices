@@ -266,6 +266,8 @@
                         </div>
                         <!-- /.card-body -->        
                         <div class="card-footer">
+                            <a href="/assets/asset" class="btn btn-secondary">Back</a>
+                            <a href="/assets/asset/{{ $asset->id }}" class="btn btn-success">View</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
