@@ -13,7 +13,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/assets/asset/create" class="nav-link {{ Request::is('asset/asset/create') ? 'active' : '' }}">
+            <a href="/assets/asset/create" class="nav-link {{ Request::is('assets/asset/create') ? 'active' : '' }}">
                 <i class="far fa-edit nav-icon"></i>
                 <p>Create</p>
             </a>
