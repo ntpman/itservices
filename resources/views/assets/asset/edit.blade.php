@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Asset Create
+    | Asset Edit
 @endsection
 
 @section('content')
@@ -10,11 +10,12 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="far fa-edit"></i> Asset Create</h3>
+                        <h3 class="card-title"><i class="far fa-edit"></i> Asset Edit</h3>
                     </div>
                     <!-- form start -->
-                    <form action="/assets/asset" method="POST" enctype="multipart/form-data" role="form">
+                    <form action="/assets/asset/{{ $asset->id }}" method="POST" enctype="multipart/form-data" role="form">
                         @csrf
+                        @method('PUT')
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -27,7 +28,7 @@
                                             data-placeholder="type_id">
                                                 <option value="" selected></option>
                                             @foreach ($types as $item)
-                                                <option value="{{ $item->id }}" {{ ( old('type_id') == $item->id) ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" {{ ($asset->type_id == $item->id) ? 'selected' : '' }}>
                                                     {{ $item->type_name }}
                                                 </option>                                         
                                             @endforeach
@@ -50,7 +51,7 @@
                                             data-placeholder="subtype_id">
                                                 <option value="" selected></option>
                                             @foreach ($subtypes as $item)
-                                                <option value="{{ $item->id }}" {{ ( old('subtype_id') == $item->id) ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" {{ ($asset->subtype_id == $item->id) ? 'selected' : '' }}>
                                                     {{ $item->subtype_name }}
                                                 </option>                                         
                                             @endforeach
@@ -73,7 +74,7 @@
                                             data-placeholder="brand_id">
                                                 <option value="" selected></option>
                                             @foreach ($brands as $item)
-                                                <option value="{{ $item->id }}" {{ ( old('brand_id') == $item->id) ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" {{ ($asset->brand_id == $item->id) ? 'selected' : '' }}>
                                                     {{ $item->brand_full_name }}
                                                 </option>                                         
                                             @endforeach
@@ -96,7 +97,7 @@
                                             data-placeholder="brand_model_id">
                                                 <option value="" selected></option>
                                             @foreach ($brandModels as $item)
-                                                <option value="{{ $item->id }}" {{ ( old('brand_model_id') == $item->id) ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" {{ ($asset->brand_model_id == $item->id) ? 'selected' : '' }}>
                                                     {{ $item->brand_model_name }}
                                                 </option>                                         
                                             @endforeach
@@ -119,7 +120,7 @@
                                             data-placeholder="common_id">
                                                 <option value="" selected></option>
                                             @foreach ($commons as $item)
-                                                <option value="{{ $item->id }}" {{ ( old('common_id') == $item->id) ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" {{ ($asset->common_id == $item->id) ? 'selected' : '' }}>
                                                     {{ $item->common_name }}
                                                 </option>                                         
                                             @endforeach
@@ -142,7 +143,7 @@
                                             data-placeholder="usage_id">
                                                 <option value="" selected></option>
                                             @foreach ($usages as $item)
-                                                <option value="{{ $item->id }}" {{ ( old('usage_id') == $item->id) ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" {{ ($asset->usage_id == $item->id) ? 'selected' : '' }}>
                                                     {{ $item->usage_name }}
                                                 </option>                                         
                                             @endforeach
@@ -165,7 +166,7 @@
                                             data-placeholder="supplier_id">
                                                 <option value="" selected></option>
                                             @foreach ($suppliers as $item)
-                                                <option value="{{ $item->id }}" {{ ( old('supplier_id') == $item->id) ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" {{ ($asset->supplier_id == $item->id) ? 'selected' : '' }}>
                                                     {{ $item->supplier_name }}
                                                 </option>                                         
                                             @endforeach
@@ -185,7 +186,10 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_number">หมายเลขครุภัณฑ์</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_number') is-invalid @enderror" name="asset_number" id="asset_number" value="{{ old('asset_number') }}" placeholder="asset_number">
+                                        <a href="#" data-toggle="modal" data-target="#modal-asset_number">
+                                            <i class="far fa-edit"></i> Edit
+                                        </a>
+                                        <input type="text" class="form-control form-control-sm @error('asset_number') is-invalid @enderror" name="" id="" value="{{ $asset->asset_number }}" placeholder="asset_number" readonly>
                                         @error('asset_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -197,7 +201,10 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_serial_number">หมายเลขประจำเครื่อง</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_serial_number') is-invalid @enderror" name="asset_serial_number" id="asset_serial_number" value="{{ old('asset_serial_number') }}" placeholder="asset_serial_number">
+                                        <a href="#" data-toggle="modal" data-target="#modal-asset_serial_number">
+                                            <i class="far fa-edit"></i> Edit
+                                        </a>
+                                        <input type="text" class="form-control form-control-sm @error('asset_serial_number') is-invalid @enderror" name="" id="" value="{{ $asset->asset_serial_number }}" placeholder="asset_serial_number" readonly>
                                         @error('asset_serial_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -209,7 +216,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_purchase_year">ปีที่จัดซื้อ</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_purchase_year') is-invalid @enderror" name="asset_purchase_year" id="asset_purchase_year" value="{{ old('asset_purchase_year') }}" placeholder="asset_purchase_year">
+                                        <input type="text" class="form-control form-control-sm @error('asset_purchase_year') is-invalid @enderror" name="asset_purchase_year" id="asset_purchase_year" value="{{ $asset->asset_purchase_year }}" placeholder="asset_purchase_year">
                                         @error('asset_purchase_year')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -221,7 +228,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_warranty_period">ระยะเวลาการรับประกัน</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_warranty_period') is-invalid @enderror" name="asset_warranty_period" id="asset_warranty_period" value="{{ old('asset_warranty_period') }}" placeholder="asset_warranty_period">
+                                        <input type="text" class="form-control form-control-sm @error('asset_warranty_period') is-invalid @enderror" name="asset_warranty_period" id="asset_warranty_period" value="{{ $asset->asset_warranty_period }}" placeholder="asset_warranty_period">
                                         @error('asset_warranty_period')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -233,7 +240,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_recived">วันที่ตรวจรับครุภัณฑ์</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_recived') is-invalid @enderror" name="asset_recived" id="asset_recived" value="{{ old('asset_recived') }}" placeholder="asset_recived">
+                                        <input type="text" class="form-control form-control-sm @error('asset_recived') is-invalid @enderror" name="asset_recived" id="asset_recived" value="{{ $asset->asset_recived }}" placeholder="asset_recived">
                                         @error('asset_recived')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -245,7 +252,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_retired">วันที่แจ้งจำหน่ายครุภัณฑ์</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_retired') is-invalid @enderror" name="asset_retired" id="asset_retired" value="{{ old('asset_retired') }}" placeholder="asset_retired" readonly>
+                                        <input type="text" class="form-control form-control-sm @error('asset_retired') is-invalid @enderror" name="asset_retired" id="asset_retired" value="{{ $asset->asset_retired }}" placeholder="asset_retired">
                                         @error('asset_retired')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -270,4 +277,79 @@
         </div>
         <!-- /.row -->
     </div><!-- /.container-fluid -->
+@endsection
+
+@section('modal')
+    <div class="modal fade" id="modal-asset_number" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="far fa-edit"></i> Edit Asset Number</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- form start -->
+                {!! Form::open(['action' => ['Assets\AssetController@update', $asset->id], 'method' => 'PUT']) !!}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="asset_number">หมายเลขครุภัณฑ์</label>
+                        <input type="text" class="form-control form-control-sm @error('asset_number') is-invalid @enderror" name="asset_number" id="asset_number" value="{{ $asset->asset_number }}" placeholder="asset_number" required>
+                        @error('asset_number')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="edit-asset_number" value="1">
+                    {{ Form::hidden('_method','PUT') }}
+                    {{ Form::submit('Save', ['class'=>'btn btn-primary btn-sm']) }}
+                </div>
+                {!! Form::close() !!}
+                <!-- end start -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="modal fade" id="modal-asset_serial_number" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="far fa-edit"></i> Edit Asset Serial Number</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- form start -->
+                {!! Form::open(['action' => ['Assets\AssetController@update', $asset->id], 'method' => 'PUT']) !!}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="asset_serial_number">หมายเลขประจำเครื่อง</label>
+                        <input type="text" class="form-control form-control-sm @error('asset_serial_number') is-invalid @enderror" name="asset_serial_number" id="asset_serial_number" value="{{ $asset->asset_serial_number }}" placeholder="asset_serial_number" required>
+                        @error('asset_serial_number')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="edit-asset_serial_number" value="1">
+                    {{ Form::hidden('_method','PUT') }}
+                    {{ Form::submit('Save', ['class'=>'btn btn-primary btn-sm']) }}
+                </div>
+                {!! Form::close() !!}
+                <!-- end start -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 @endsection

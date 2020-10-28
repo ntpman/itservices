@@ -122,7 +122,7 @@ class SupplierController extends Controller
          */
         if($request->input('form_edit_supplier_name') == 1) {
             $request->validate([
-                'supplier_name' => ['required', 'string', 'max:255', 'unique:suppliers'],
+                'supplier_name' => ['required', 'string', 'max:255', 'unique:suppliers,supplier_name'],
             ]);
             /**
              * Store in the database
@@ -134,7 +134,7 @@ class SupplierController extends Controller
 
             Session::flash('success_msg', 'แก้ไขชื่อผู้จำหน่ายสินค้าเรียบร้อย');
 
-            return redirect("/supplier/$id/edit");
+            return redirect()->back();
         }
 
         /**
@@ -167,10 +167,9 @@ class SupplierController extends Controller
             'updated_by' => auth()->user()->name,
         ]);
 
-        Session::flash('success_msg', 'แก้ไขชื่อข้อมูลเรียบร้อย');
+        Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
 
         return redirect("/supplier");
-        
     }
 
     /**

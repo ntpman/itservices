@@ -28,7 +28,7 @@ class CreateLocationRequest extends FormRequest
             'building_id' => ['required', 'integer',],
             'location_floor' => ['required', 'string', 'max:25'],
             'location_room' => ['required', 'string', 'max:50'],
-            'created_by' => ['nullable', 'string', 'max:50'],
+            'created_by' => ['required', 'string', 'max:50'],
             'updated_by' => ['nullable', 'string', 'max:50'],
         ];
     }

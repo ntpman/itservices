@@ -24,6 +24,7 @@ class CreateSuppliersTable extends Migration
             $table->string('supplier_phone', 255)->comment('หมายเลขโทรศัพท์');
             $table->string('supplier_email', 255)->comment('อีเมล');
             $table->string('supplier_contact', 255)->comment('ผู้ติดต่อ');
+            $table->string('supplier_status', 1)->default('A')->comment('สถานะผู้จำหน่ายสินค้า');
             $table->string('created_by', 50)->comment('รหัสผู้สร้างข้อมูล');
             $table->string('updated_by', 50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();

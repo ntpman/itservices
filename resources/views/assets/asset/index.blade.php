@@ -27,9 +27,9 @@
                                     <tr>
                                         <th>#</th>
                                         <th>หมายเลขครุภัณฑ์</th>
-                                        <th>ปีที่จัดซื้อ</th>
                                         <th>หมายเลขประจำเครื่อง</th>
-                                        <th>recived_asset</th>
+                                        <th>ปีที่จัดซื้อ</th>
+                                        <th>ระยะเวลาการรับประกัน</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -41,9 +41,10 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $item->asset_number }}</td>
-                                            <td>{{ $item->purchase_year }}</td>
-                                            <td>{{ $item->serial_number }}</td>
-                                            <td></td>
+                                            <td>{{ $item->asset_serial_number }}</td>
+                                            <td>{{ $item->asset_purchase_year }}</td>
+                                            <td>{{ $item->asset_warranty_period }}</td>
+                                            <td><a href="/assets/asset/{{ $item->id }}/edit" class="btn btn-primary btn-xs">Edit</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
