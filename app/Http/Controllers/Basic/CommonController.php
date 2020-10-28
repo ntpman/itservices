@@ -69,7 +69,7 @@ class CommonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\BasicInformations\AssetModel  $assetModel
+     * @param  \App\Model\Basic\Common  $common
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,7 +80,7 @@ class CommonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\BasicInformations\Model  $model
+     * @param  \App\Model\Basic\Common  $common
      * @return \Illuminate\Http\Response
      */
     public function edit(Common $common)
@@ -94,13 +94,12 @@ class CommonController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\BasicInformations\AssetModel  $model
+     * @param  \App\Model\Basic\Common  $common
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Common $common)
     {
-        if($request->input('_name') === 'edit'){
-        
+        if($request->input('edit-commonName') == 1){
             //validate data
             $this->validate($request, [
                 'commonName' => 'required|unique:commons,common_name',
@@ -113,25 +112,26 @@ class CommonController extends Controller
             $updateCommon->save();
 
             Session::flash('success_msg', 'แก้ไขชื่อครุภัณฑ์เรียบร้อย');
+            //return index view
+            return redirect()->back();
         }
 
-        if($request->input('_name') === 'edit-commonStatus') {
+        if($request->input('edit-commonStatus') == 1) {
             $updateCommon = Common::find($common->id);
             $updateCommon->common_status = $request->input('commonStatus');
             $updateCommon->updated_by = auth()->user()->name;
             $updateCommon->save();
 
             Session::flash('success_msg', 'แก้ไขสถานะการใช้ข้อมูลเรียบร้อย');
+            //return index view
+            return redirect('/basic/common');
         }
-
-        //return index view
-        return redirect('/basic/common');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\BasicInformations\Model  $model
+     * @param  \App\Model\Basic\Common  $common
      * @return \Illuminate\Http\Response
      */
     public function destroy(Common $common)

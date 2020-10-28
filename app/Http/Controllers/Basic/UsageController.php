@@ -97,7 +97,7 @@ class UsageController extends Controller
      */
     public function update(Request $request, Usage $usage)
     {
-        if($request->input('_name') === 'edit-usageName') {
+        if($request->input('edit-usageName') == 1) {
             //validate data
             $this->validate($request, [
                 'usageName' => 'required|unique:usages,usage_name',
@@ -114,7 +114,7 @@ class UsageController extends Controller
             return redirect()->back();
         }
 
-        if ($request->input('_name') === 'edit') {
+        if ($request->input('edit') == 1) {
             //update data
             $updateUsage = Usage::find($usage->id);
             $updateUsage->usage_status = $request->input('usageStatus');

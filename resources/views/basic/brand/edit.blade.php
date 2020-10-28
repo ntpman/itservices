@@ -38,8 +38,8 @@
                             }}
                         </div>
                         <a href="/basic/brand" class="btn btn-secondary">ย้อนกลับ</a>
+                        <input type="hidden" name="edit-brandStatus" value="1">
                         {{ Form::hidden('_method','PUT') }}
-                        {{ Form::hidden('_name','edit-brandStatus') }}
                         {{ Form::submit('บันทึก', ['class'=>'btn btn-primary']) }}
                     </div>
                     {!! Form::close() !!}
@@ -73,8 +73,8 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="edit-brandFullName" value="1">
                     {{ Form::hidden('_method','PUT') }}
-                    {{ Form::hidden('_name','edit-brandFullName') }}
                     {{ Form::submit('บันทึก', ['class'=>'btn btn-primary btn-sm']) }}
                 </div>
                 {!! Form::close() !!}
@@ -104,8 +104,8 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="edit-brandAbbrName" value="1">
                     {{ Form::hidden('_method','PUT') }}
-                    {{ Form::hidden('_name','edit-brandAbbrName') }}
                     {{ Form::submit('บันทึก', ['class'=>'btn btn-primary btn-sm']) }}
                 </div>
                 {!! Form::close() !!}

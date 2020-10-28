@@ -99,7 +99,10 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        if($request->input('_name') === 'edit-brandStatus') {
+        /**
+         * Check Set Value: 1 => true
+         */
+        if($request->input('edit-brandStatus') == 1) {
             //update data
             $updateBrand = Brand::find($brand->id);
             $updateBrand->brand_status = $request->input('brandStatus');
@@ -111,7 +114,7 @@ class BrandController extends Controller
             return redirect('/basic/brand');
         }
 
-        if($request->input('_name') === 'edit-brandFullName') {
+        if($request->input('edit-brandFullName') == 1) {
             //validate data
             $this->validate($request, [
                 'brandFullName' => 'required|unique:brands,brand_full_name',
@@ -126,7 +129,7 @@ class BrandController extends Controller
             return redirect()->back();
         }
         
-        if($request->input('_name') === 'edit-brandAbbrName') {
+        if($request->input('edit-brandAbbrName') == 1) {
             //validate data
             $this->validate($request, [
                 'brandAbbrName' => 'nullable|unique:brands,brand_abbr_name',

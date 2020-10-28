@@ -111,7 +111,7 @@ class SubtypeController extends Controller
      */
     public function update(Request $request, Subtype $subtype)
     {
-        if($request->input('_name') === 'edit-subTypeName') {
+        if($request->input('edit-subTypeName') == 1) {
         
             //validate data
             $this->validate($request, [
@@ -129,7 +129,7 @@ class SubtypeController extends Controller
             return redirect()->back();
         }
 
-        if($request->input('_name') === 'edit') {
+        if($request->input('edit') == 1) {
             //update data
             $updateModel = Subtype::find($subtype->id);
             $updateModel->type_id = $request->input('typeId');

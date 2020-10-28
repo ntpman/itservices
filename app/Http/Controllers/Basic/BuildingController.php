@@ -69,7 +69,7 @@ class BuildingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\BasicInformations\AssetModel  $assetModel
+     * @param  \App\Model\Basic\Building  $building
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,7 +80,7 @@ class BuildingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\BasicInformations\Model  $model
+     * @param  \App\Model\Basic\Building  $building
      * @return \Illuminate\Http\Response
      */
     public function edit(Building $building)
@@ -94,7 +94,7 @@ class BuildingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\BasicInformations\AssetModel  $model
+     * @param  \App\Model\Basic\Building  $building
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Building $building)
@@ -130,7 +130,7 @@ class BuildingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\BasicInformations\Model  $model
+     * @param  \App\Model\Basic\Building  $building
      * @return \Illuminate\Http\Response
      */
     public function destroy(Building $building)

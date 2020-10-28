@@ -35,8 +35,8 @@
                             }}
                         </div>
                         <a href="/basic/subtype" class="btn btn-secondary">ย้อนกลับ</a>
+                        <input type="hidden" name="edit" value="1">
                         {{ Form::hidden('_method','PUT') }}
-                        {{ Form::hidden('_name','edit') }}
                         {{ Form::submit('บันทึก', ['class'=>'btn btn-primary']) }}
                     </div>
                     {!! Form::close() !!}
@@ -70,8 +70,8 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="edit-subTypeName" value="1">
                     {{ Form::hidden('_method','PUT') }}
-                    {{ Form::hidden('_name','edit-subTypeName') }}
                     {{ Form::submit('บันทึก', ['class'=>'btn btn-primary']) }}
                 </div>
                 {!! Form::close() !!}

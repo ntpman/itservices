@@ -109,7 +109,7 @@ class BrandModelController extends Controller
      */
     public function update(Request $request, BrandModel $brandModel)
     {
-        if ($request->input('_name') === 'edit-brandModelName') {
+        if ($request->input('edit-brandModelName') == 1) {
             //validate data
             $this->validate($request, [
                 'brandModelName' => 'required|unique:brand_models,brand_model_name',
@@ -125,7 +125,7 @@ class BrandModelController extends Controller
             return redirect()->back();
         }
 
-        if($request->input('_name') === 'edit') {
+        if($request->input('edit') == 1) {
 
             //update data
             $updateBrandModel = BrandModel::find($brandModel->id);

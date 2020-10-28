@@ -24,7 +24,7 @@
                             <a href="#" data-toggle="modal" data-target="#modal-brandModelName">
                                 <i class="far fa-edit"></i> Edit
                             </a>
-							{{ Form::text('brandModelName', $editBrandModel->brand_model_name, ['class' => 'form-control', 'readonly']) }}
+							{{ Form::text('', $editBrandModel->brand_model_name, ['class' => 'form-control', 'readonly']) }}
                         </div>
                         <div class="form-group">
                             {{ Form::label('title', 'สถานะการใช้งานข้อมูล') }}
@@ -35,8 +35,8 @@
                             }}
                         </div>
                         <a href="/basic/brandmodel" class="btn btn-secondary">ย้อนกลับ</a>
+                        <input type="hidden" name="edit" value="1">
                         {{ Form::hidden('_method','PUT') }}
-                        {{ Form::hidden('_name','edit') }}
                         {{ Form::submit('บันทึก', ['class'=>'btn btn-primary']) }}
                     </div>
                     {!! Form::close() !!}
@@ -70,8 +70,8 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="edit-brandModelName" value="1">
                     {{ Form::hidden('_method','PUT') }}
-                    {{ Form::hidden('_name','edit-brandModelName') }}
                     {{ Form::submit('บันทึก', ['class'=>'btn btn-primary btn-sm']) }}
                 </div>
                 {!! Form::close() !!}
