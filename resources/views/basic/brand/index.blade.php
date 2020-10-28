@@ -14,7 +14,7 @@
                         <div class="card-tools">
                             <ul class="nav nav-pills ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/basic/brand/create"><i class="fas fa-edit"></i>เพิ่มข้อมูล</a>
+                                    <a class="nav-link active" href="/basic/brand/create"><i class="fas fa-edit"></i> เพิ่มข้อมูล</a>
                                 </li>
                             </ul>
                         </div>

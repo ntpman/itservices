@@ -1,0 +1,112 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
+use App\Http\Requests\CreateLocationRequest;
+
+use App\Model\Location;
+
+class LocationController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CreateLocationRequest $request)
+    {
+        $location = new Location;
+        $location->asset_id = $request->input('asset_id');
+        $location->building_id = $request->input('building_id');
+        $location->location_floor = $request->input('location_floor');
+        $location->location_room = $request->input('location_room');
+        $location->created_by = auth()->user()->name;
+
+        if($location->save()) {
+            Session::flash('success_msg', 'เพิ่มข้อมูลเรียบร้อย');
+
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CreateLocationRequest $request, $id)
+    {
+        /**
+         * Store in the database
+         */
+        Location::where('id', $id)->update([
+            'building_id' => $request->input('building_id'),
+            'location_floor' => $request->input('location_floor'),
+            'location_room' => $request->input('location_room'),
+            'updated_by' => auth()->user()->name,
+        ]);
+
+        Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
+
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}

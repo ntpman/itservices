@@ -18,8 +18,8 @@ $(function() {
             $.each(res.data, function(key, value) {
                 if (oldChId == value.province_id) {
                     $("#supplier_province_id").append(`    
-                    <option value="${value.province_id}" selected>${value.province_name}</option>
-                `);
+                        <option value="${value.province_id}" selected>${value.province_name}</option>
+                    `);
                     if (oldChId != "") {
                         $.ajax({
                             url: "/api/districts/" + oldChId,
@@ -28,57 +28,52 @@ $(function() {
                             success: function(res) {
                                 $.each(res.data, function(key, value) {
                                     $("#supplier_district_id").append(`
-                                    <option value="${value.district_id}">${value.district_name}</option>
-                                `);
+                                        <option value="${value.district_id}">${value.district_name}</option>
+                                    `);
                                 });
                             }
                         });
                     }
                 } else {
                     $("#supplier_province_id").append(`    
-                    <option value="${value.province_id}">${value.province_name}</option>
-                `);
+                        <option value="${value.province_id}">${value.province_name}</option>
+                    `);
                 }
             });
         }
     });
-    
+
     /**
      * Check Value DistrictId
      */
     var oldAmId = $("#supplier_district_id").attr("data-value");
     if (oldChId != "") {
         $.ajax({
-            url: "/districts/" + oldChId,
+            url: "/api/districts/" + oldChId,
             type: "GET",
             dataType: "JSON",
-            success: function(data) {
-                $.each(data, function(key, value) {
+            success: function(res) {
+                $.each(res.data, function(key, value) {
                     if (oldAmId == value.district_id) {
                         $("#supplier_district_id").append(`
-                        <option value="${value.district_id}" selected>${value.district_name}</option>
-                    `);
-                        var oldTmId = $("#supplier_subdistrict_id").attr(
-                            "data-value"
-                        );
+                            <option value="${value.district_id}" selected>${value.district_name}</option>
+                        `);
+                        var oldTmId = $("#supplier_subdistrict_id").attr("data-value");
                         if (oldAmId != "") {
                             $.ajax({
-                                url: "/subdistricts/" + oldAmId,
+                                url: "/api/subdistricts/" + oldAmId,
                                 type: "GET",
                                 dataType: "JSON",
-                                success: function(data) {
-                                    // console.log(data);
-                                    $.each(data, function(key, value) {
-                                        if (oldTmId == value.ta_id) {
-                                            $("#supplier_subdistrict_id")
-                                                .append(`
-                                            <option value="${value.ta_id}" selected>${value.tambon_t}</option>
-                                        `);
+                                success: function(res) {
+                                    $.each(res.data, function(key, value) {
+                                        if (oldTmId == value.subdistrict_id) {
+                                            $("#supplier_subdistrict_id").append(`
+                                                <option value="${value.subdistrict_id}" selected>${value.subdistrict_name}</option>
+                                            `);
                                         } else {
-                                            $("#supplier_subdistrict_id")
-                                                .append(`
-                                            <option value="${value.ta_id}">${value.tambon_t}</option>
-                                        `);
+                                            $("#supplier_subdistrict_id").append(`
+                                                <option value="${value.subdistrict_id}">${value.subdistrict_name}</option>
+                                            `);
                                         }
                                     });
                                 }
@@ -86,22 +81,22 @@ $(function() {
                         }
                     } else {
                         $("#supplier_district_id").append(`
-                        <option value="${value.district_id}">${value.district_name}</option>
-                    `);
+                            <option value="${value.district_id}">${value.district_name}</option>
+                        `);
                     }
                 });
             }
         });
     }
 
-    // Event on change changwat
+    /**
+     * Event On Change ProvinceId
+     */
     $("#supplier_province_id").on("change", function() {
         var ch_id = $(this).val();
-        $("#supplier_district_id").html(
-            '<option value="">-- เลือกเขต/อำเภอ --</option>'
-        );
+        $("#supplier_district_id").html('<option value="" selected></option>');
         $("#supplier_subdistrict_id").html(
-            '<option value="">-- เลือกแขวง/ตำบล --</option>'
+            '<option value="" selected></option>'
         );
         if (ch_id != "") {
             $.ajax({
@@ -111,43 +106,45 @@ $(function() {
                 success: function(res) {
                     $.each(res.data, function(key, value) {
                         $("#supplier_district_id").append(`
-                        <option value="${value.district_id}">${value.district_name}</option>
-                    `);
+                            <option value="${value.district_id}">${value.district_name}</option>
+                        `);
                     });
                 }
             });
         } else {
             $("#supplier_district_id").html(
-                '<option value="">-- เลือกเขต/อำเภอ --</option>'
+                '<option value="" selected></option>'
             );
             $("#supplier_subdistrict_id").html(
-                '<option value="">-- เลือกแขวง/ตำบล --</option>'
+                '<option value="" selected></option>'
             );
         }
     });
 
-    // Event on change amphoe
+    /**
+     * Event On Change DistrictId
+     */
     $("#supplier_district_id").on("change", function() {
         var am_id = $(this).val();
         $("#supplier_subdistrict_id").html(
-            '<option value="">-- เลือกแขวง/ตำบล --</option>'
+            '<option value="" selected></option>'
         );
         if (am_id != "") {
             $.ajax({
-                url: "/subdistricts/" + am_id,
+                url: "/api/subdistricts/" + am_id,
                 type: "GET",
                 dataType: "JSON",
-                success: function(data) {
-                    $.each(data, function(key, value) {
+                success: function(res) {
+                    $.each(res.data, function(key, value) {
                         $("#supplier_subdistrict_id").append(`
-                        <option value="${value.ta_id}">${value.tambon_t}</option>
-                    `);
+                            <option value="${value.subdistrict_id}">${value.subdistrict_name}</option>
+                        `);
                     });
                 }
             });
         } else {
             $("#supplier_subdistrict_id").html(
-                '<option value="">-- เลือกแขวง/ตำบล --</option>'
+                '<option value="" selected></option>'
             );
         }
     });

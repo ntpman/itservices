@@ -37,17 +37,9 @@
                                         <td>{{ $usage->usage_name }}</td>
                                         <td class="text-center">{{ $usage->usage_status }}</td>
                                         <td>
-                                            <br />
                                             <a href="/basic/usage/{{ $usage->id }}/edit" class="bth btn-primary btn-sm">
                                                 <i class="fas fa-edit"></i> แก้ไข
                                             </a>
-                                            <br />
-                                            <br />
-                                            <a href="/basic/usage/{{ $usage->id }}/change_status" class="bth btn-danger btn-sm">
-                                                <i class="fas fa-edit"></i> เปลี่ยนสถานะ
-                                            </a>
-                                            <br />
-                                            <br />
                                         </td>
                                     </tr>
                                 @endforeach

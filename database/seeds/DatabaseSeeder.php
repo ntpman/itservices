@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         $user = new User;
-        $user->name = 'Administrator';
+        $user->name = 'Nititpong Cha.';
         $user->email = 'nititpong@dss.go.th';
         $user->password = bcrypt('12345678');
         $user->role = 3;
@@ -47,4 +47,10 @@ class DatabaseSeeder extends Seeder
         $user4->save();
         
     }
+
+    /**
+     * Basic
+     * building = ['อาคารตั้ว', 'อาคารหอสมุด', 'อาคารสถานศึกษาเคมีปฏิบัติ', 'อาคาร SAL']
+     * brand = ['ACER', 'ASUS', 'HP', 'LENOVO', 'DELL']
+     */
 }

@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Create User <i class="far fa-edit"></i></h3>
+                        <h3 class="card-title"><i class="far fa-edit"></i> Create User</h3>
                     </div>
                     <!-- form start -->
                     <form action="/admin/users" method="POST" enctype="multipart/form-data" role="form">

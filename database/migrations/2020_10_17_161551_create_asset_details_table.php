@@ -16,11 +16,11 @@ class CreateAssetDetailsTable extends Migration
         Schema::create('asset_details', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('รหัสรายการ');
             $table->unsignedBigInteger('asset_id')->comment('รหัสชื่อครุภัณฑ์');
-            $table->string('asset_detail',255)->comment('รายละเอียดครุภัณฑ์');
-            $table->string('amont',50)->comment('จำนวนหน่วย');
-            $table->string('comment',255)->comment('หมายเหตุ');
-            $table->string('created_by',50)->comment('รหัสผู้สร้างข้อมูล');
-            $table->string('updated_by',50)->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
+            $table->text('asset_detail_description')->comment('รายละเอียดครุภัณฑ์');
+            $table->string('asset_detail_amont', 50)->comment('จำนวนหน่วย');
+            $table->text('asset_detail_comment')->nullable()->comment('หมายเหตุ');
+            $table->string('created_by', 50)->comment('รหัสผู้สร้างข้อมูล');
+            $table->string('updated_by', 50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
 
             $table->foreign('asset_id')->references('id')->on('assets');

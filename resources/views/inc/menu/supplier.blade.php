@@ -1,7 +1,7 @@
 <li class="nav-item has-treeview {{ Request::is('supplier*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link {{ Request::is('supplier*') ? 'active' : '' }}">
         <p>
-            Supplier
+            ผู้แทนจำหน่าย
             <i class="right fas fa-angle-left"></i>
         </p>
     </a>

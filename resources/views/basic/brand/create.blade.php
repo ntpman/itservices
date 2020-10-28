@@ -10,7 +10,7 @@
             <div class="col-lg-6">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">เพิ่มข้อมูลยี่ห้อผลิตภัณฑ์ <i class="far fa-edit"></i></h3>
+                        <h3 class="card-title"><i class="far fa-edit"></i> เพิ่มข้อมูลยี่ห้อผลิตภัณฑ์</h3>
                     </div>
 					<!-- form start -->
 					{!! Form::open(['action' => 'Basic\BrandController@store', 'method' => 'POST', 'class' => 'was-validate']) !!}

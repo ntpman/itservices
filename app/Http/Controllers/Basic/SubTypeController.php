@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Model\Basic\Subtype;
 use App\Model\Basic\Type;
 
-class SubTypeController extends Controller
+class SubtypeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,8 +27,8 @@ class SubTypeController extends Controller
      */
     public function index()
     {
-        $allSubType = SubType::all();
-        return view('basic.sub_type.index',['showAllSubType' => $allSubType]);
+        $allSubType = Subtype::all();
+        return view('basic.subtype.index',['showAllSubType' => $allSubType]);
     }
 
     /**
@@ -39,10 +39,11 @@ class SubTypeController extends Controller
     public function create()
     {   
         $types = Type::all()
-            ->where('asset_type_status','=', 'A')
-            ->pluck('asset_type_name', 'id')->toArray();
+        ->where('type_status','=', 'A')
+        ->pluck('type_name', 'id')->toArray();
+        // return $types;
 
-        return view('basic.sub_type.create', ['allType' => $types]);
+        return view('basic.subtype.create', ['allType' => $types]);
     }
 
     /**
@@ -55,20 +56,21 @@ class SubTypeController extends Controller
     {
         //validate date
         $this->validate($request, [
-            'typeName' => 'required',
-            'subTypeName' => 'required|unique:asset_subtypes,subtype_name',
+            'typeId' => 'required',
+            'subTypeName' => 'required|unique:subtypes,subtype_name',
         ]);
 
         //Add new data
-            $addSubType = new SubType;
-            $addSubType->asset_type_id = $request->input('typeName');
-            $addSubType->subtype_name = $request->input('subTypeName');
-            $addSubType->subtype_status = 'A';
-            $addSubType->created_by = auth()->user()->name;
-            $addSubType->save();
+        $addSubType = new Subtype;
+        $addSubType->type_id = $request->input('typeId');
+        $addSubType->subtype_name = $request->input('subTypeName');
+        $addSubType->subtype_status = 'A';
+        $addSubType->created_by = auth()->user()->name;
+        $addSubType->save();
 
+        Session::flash('success_msg', 'บันทึกข้อมูลประเภทครุภัณฑ์ย่อยเรียบร้อย');
         //return index view
-        return redirect('/basic/sub_type');
+        return redirect('/basic/subtype');
     }
 
     /**
@@ -88,14 +90,14 @@ class SubTypeController extends Controller
      * @param  \App\Model\BasicInformations\Model  $model
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubType $subType)
+    public function edit(Subtype $subtype)
     {
         $types = Type::all()
-        ->where('asset_type_status','=', 'A')
-        ->pluck('asset_type_name', 'id')->toArray();
+        ->where('type_status','=', 'A')
+        ->pluck('type_name', 'id')->toArray();
 
-        return view('basic.sub_type.edit', [
-            'editSubType' => $subType,
+        return view('basic.subtype.edit', [
+            'editSubType' => $subtype,
             'allType' => $types,
         ]);
     }
@@ -107,35 +109,49 @@ class SubTypeController extends Controller
      * @param  \App\Model\BasicInformations\AssetModel  $model
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubType $subType)
+    public function update(Request $request, Subtype $subtype)
     {
-        if ($request->input('_name')==='edit'){
+        if($request->input('edit-subTypeName') == 1) {
         
             //validate data
-        $this->validate($request, [
-            'subTypeName' => 'required|unique:asset_subtypes,subtype_name',
-        ]);
+            $this->validate($request, [
+                'subTypeName' => 'required|unique:subtypes,subtype_name',
+            ]);
 
-        //update data
-            $updateModel = SubType::find($subType->id);
-            $updateModel->asset_type_id = $request->input('typeName');
+            //update data
+            $updateModel = Subtype::find($subtype->id);
             $updateModel->subtype_name = $request->input('subTypeName');
             $updateModel->updated_by = auth()->user()->name;
             $updateModel->save();
 
+<<<<<<< HEAD
             Session::flash('success_msg', 'บันทึกข้อมูลประเภทครุภัณฑ์ย่อยเรียบร้อย');
+=======
+            Session::flash('success_msg', 'แก้ไขชื่อรุ่นผลิตภัณฑ์เรียบร้อย');
+            
+            return redirect()->back();
+>>>>>>> e8275cf437606d269707a3316971e8f6226ef0b2
         }
-        else {
-            $updateModel = SubType::find($subType->id);
+
+        if($request->input('edit') == 1) {
+            //update data
+            $updateModel = Subtype::find($subtype->id);
+            $updateModel->type_id = $request->input('typeId');
             $updateModel->subtype_status = $request->input('subTypeStatus');
             $updateModel->updated_by = auth()->user()->name;
             $updateModel->save();
+<<<<<<< HEAD
 
             Session::flash('success_msg', 'แก้ไขสถานะการใช้ข้อมูลเรียบร้อย');
         }
+=======
+>>>>>>> e8275cf437606d269707a3316971e8f6226ef0b2
 
-        //return index view
-        return redirect('/basic/sub_type');
+            Session::flash('success_msg', 'บันทึกข้อมูลประเภทครุภัณฑ์ย่อยเรียบร้อย');
+            //return index view
+            return redirect('/basic/subtype');
+            
+        }
     }
 
     /**
@@ -144,7 +160,7 @@ class SubTypeController extends Controller
      * @param  \App\Model\BasicInformations\Model  $model
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubType $subType)
+    public function destroy(Subtype $subtype)
     {
         //
     }

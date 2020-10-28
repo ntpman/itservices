@@ -34,8 +34,8 @@
                                 @foreach ($showAllType as $type)
                                     <tr>
                                         <td class="text-center">{{ $type->id }}</td>
-                                        <td>{{ $type->asset_type_name }}</td>
-                                        <td class="text-center">{{ $type->asset_type_status }}</td>
+                                        <td>{{ $type->type_name }}</td>
+                                        <td class="text-center">{{ $type->type_status }}</td>
                                         <td>
                                             <br />
                                             <a href="/basic/type/{{ $type->id }}/edit" class="bth btn-primary btn-sm">

@@ -117,6 +117,9 @@
     <script src="{{ asset('/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- Select2 -->
     <script src="{{ asset('/adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
+    <!-- InputMask -->
+    <script src="{{ asset('/adminlte/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('/adminlte/plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
     <!-- SweetAlert2 -->
     <script src="{{ asset('/adminlte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <!-- bs-custom-file-input -->
@@ -136,7 +139,6 @@
 
                 Toast.fire({
                     icon: 'success',
-                    type: 'success',
                     title: `<span class="ml-1 font-mitr">{{ session('success_msg') }}</span>`,
                 });
             });
@@ -145,6 +147,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             bsCustomFileInput.init();
+
+            $('[data-mask]').inputmask()
 
             // DataTables
             $('.datatables').DataTable({

@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Create Supplier <i class="far fa-edit"></i></h3>
+                        <h3 class="card-title"><i class="far fa-edit"></i> Create Supplier</h3>
                     </div>
                     <!-- form start -->
                     <form action="/supplier" method="POST" enctype="multipart/form-data" role="form">
@@ -81,9 +81,14 @@
                                 <!-- /.col -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="supplier_subdistrict_id">ตำบล/แขวง</label>
-                                        <select class="form-control custom-select" style="width: 100%;" name="supplier_subdistrict_id" id="supplier_subdistrict_id">
-                                            <option value="1" {{ old('supplier_subdistrict_id') ==  1 ? 'selected' : '' }}>supplier_subdistrict_id</option>
+                                        <label for="supplier_subdistrict_id">แขวง/ตำบล</label>
+                                        <select class="form-control select2bs4 @error('supplier_subdistrict_id') is-invalid @enderror" 
+                                            style="width: 100%;" 
+                                            name="supplier_subdistrict_id" 
+                                            id="supplier_subdistrict_id" 
+                                            data-value="{{ old('supplier_subdistrict_id') }}" 
+                                            data-placeholder="supplier_subdistrict_id">
+                                                <option value="" selected></option>
                                         </select>
                                         @error('supplier_subdistrict_id')
                                             <span class="invalid-feedback" role="alert">
@@ -146,8 +151,8 @@
                         </div>
                         <!-- /.card-body -->        
                         <div class="card-footer">
+                            <a href="/supplier" class="btn btn-secondary">Back</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="/supplier" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                     <!-- end start -->

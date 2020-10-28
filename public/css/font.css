@@ -14,13 +14,15 @@
 
 /* Fonts */
 .font-mitr,
-.content .card .card-body span.invalid-feedback {
+.content .card .card-body span.invalid-feedback, 
+.content .modal .modal-body span.invalid-feedback {
     font-family: "Mitr-Light";
 }
 .content .card h3.card-title {
     font-family: "Mitr-Medium";
 }
 .content .card .card-body label,
+.content .modal .modal-body label,
 .content .card .card-body table.table {
     font-family: "Sarabun-Regular";
 }

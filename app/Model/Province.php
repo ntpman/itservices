@@ -25,6 +25,9 @@ class Province extends Model
     /**
      * Eloquent: Relationships
      */
+    // belongsTo
+    
+    // hasMany
     public function suppliers()
     {
         return $this->hasMany(Supplier::class);
