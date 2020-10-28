@@ -1,7 +1,7 @@
 <li class="nav-item has-treeview {{ Request::is('assets*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link {{ Request::is('assets*') ? 'active' : '' }}">
         <p>
-            ครุภัณฑ์
+            คลังครุภัณฑ์
             <i class="right fas fa-angle-left"></i>
         </p>
     </a>

@@ -40,12 +40,12 @@
                     
                     {{-- User --}}
                     @include('inc.menu.user')
-                    
-                    {{-- Asset --}}
-                    @include('inc.menu.asset')
 
                     {{-- Supplier --}}
                     @include('inc.menu.supplier')
+                    
+                    {{-- Asset --}}
+                    @include('inc.menu.asset')                    
 
                     <!-- /.include flie menu -->
                     
