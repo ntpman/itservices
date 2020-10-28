@@ -7,7 +7,14 @@ use App\Http\Requests\Assets\CreateAssetRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+use App\Model\Location;
+use App\Model\Basic\Building;
+
 use App\Model\Assets\Asset;
+use App\Model\Assets\AssetDetail;
+use App\Model\Assets\AssetOwner;
+use App\Model\Assets\AssetPicture;
+use App\Model\Assets\AssetRepair;
 
 use App\Model\Basic\Type;
 use App\Model\Basic\Subtype;
@@ -39,10 +46,8 @@ class AssetController extends Controller
     {
         $assets = Asset::all();
 
-        // return $assets;
-
         return view('assets.asset.index', [
-            'assets' => $assets
+            'assets' => $assets,
         ]);
     }
 
@@ -104,7 +109,7 @@ class AssetController extends Controller
             
             Session::flash('success_msg', 'บันทึกข้อมูลเรียบร้อย');
 
-            return redirect('/assets/asset');
+            return redirect("/assets/asset/{{ $asset->id }}");
         }
     }
 
@@ -114,9 +119,14 @@ class AssetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Asset $asset)
     {
-        //
+        $buildings = Building::where('building_status', 'A')->get();
+
+        return view('assets.asset.show', [
+            'asset' => $asset,
+            'buildings' => $buildings,
+        ]);
     }
 
     /**
@@ -205,7 +215,7 @@ class AssetController extends Controller
             'usage_id' => ['required', 'integer'],
             'supplier_id' => ['required', 'integer'],
             'asset_purchase_year' => ['required', 'string', 'min:4', 'max:4'],
-            'asset_warranty_period' => ['required', 'string', 'min:1', 'max:2'],
+            'asset_warranty_period' => ['required', 'string', 'max:50'],
             'asset_recived' => ['required', 'date'],
             'asset_retired' => ['nullable', 'date'],
         ]);
@@ -230,7 +240,7 @@ class AssetController extends Controller
 
         Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
 
-        return redirect("/assets/asset");
+        return redirect("/assets/asset/{{ $id }}");
     }
 
     /**

@@ -34,7 +34,7 @@ class CreateAssetRequest extends FormRequest
             'asset_number' => ['required', 'string', 'max:50', 'unique:assets,asset_number'],
             'asset_serial_number' => ['required', 'string', 'max:50', 'unique:assets,asset_serial_number'],
             'asset_purchase_year' => ['required', 'string', 'min:4', 'max:4'],
-            'asset_warranty_period' => ['required', 'string', 'min:1', 'max:2'],
+            'asset_warranty_period' => ['required', 'string', 'max:50'],
             'asset_recived' => ['required', 'date'],
             'asset_retired' => ['nullable', 'date'],
         ];

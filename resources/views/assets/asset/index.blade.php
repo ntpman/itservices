@@ -40,7 +40,7 @@
                                     @foreach ($assets as $item)                                  
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $item->asset_number }}</td>
+                                            <td><a href="/assets/asset/{{ $item->id }}">{{ $item->asset_number }}</a></td>
                                             <td>{{ $item->asset_serial_number }}</td>
                                             <td>{{ $item->asset_purchase_year }}</td>
                                             <td>{{ $item->asset_warranty_period }}</td>

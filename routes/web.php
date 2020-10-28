@@ -145,5 +145,16 @@ Route::name('supplier.')->group(function () {
     Route::get('/supplier/{supplier}/edit', 'Supplier\SupplierController@edit')->name('edit');
     Route::put('/supplier/{supplier}', 'Supplier\SupplierController@update')->name('update');
 });
+/**
+ * Route locations
+ */
+Route::name('location.')->group(function () {
+    Route::get('/location', 'LocationController@index')->name('index');
+    Route::get('/location/create', 'LocationController@create')->name('create');
+    Route::post('/location', 'LocationController@store')->name('store');
+    Route::get('/location/{supplier}', 'LocationController@show')->name('show');
+    Route::get('/location/{supplier}/edit', 'LocationController@edit')->name('edit');
+    Route::put('/location/{supplier}', 'LocationController@update')->name('update');
+});
 
 

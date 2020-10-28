@@ -216,7 +216,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_purchase_year">ปีที่จัดซื้อ</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_purchase_year') is-invalid @enderror" name="asset_purchase_year" id="asset_purchase_year" value="{{ $asset->asset_purchase_year }}" placeholder="asset_purchase_year">
+                                        <input type="text" class="form-control form-control-sm @error('asset_purchase_year') is-invalid @enderror" name="asset_purchase_year" id="asset_purchase_year" value="{{ $asset->asset_purchase_year }}" placeholder="2563" data-inputmask='"mask": "9999"' data-mask>
                                         @error('asset_purchase_year')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -240,7 +240,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_recived">วันที่ตรวจรับครุภัณฑ์</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_recived') is-invalid @enderror" name="asset_recived" id="asset_recived" value="{{ $asset->asset_recived }}" placeholder="asset_recived">
+                                        <input type="text" class="form-control form-control-sm @error('asset_recived') is-invalid @enderror" name="asset_recived" id="asset_recived" value="{{ $asset->asset_recived }}" placeholder="2020-05-05" data-inputmask='"mask": "9999-99-99"' data-mask>
                                         @error('asset_recived')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -252,7 +252,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="asset_retired">วันที่แจ้งจำหน่ายครุภัณฑ์</label>
-                                        <input type="text" class="form-control form-control-sm @error('asset_retired') is-invalid @enderror" name="asset_retired" id="asset_retired" value="{{ $asset->asset_retired }}" placeholder="asset_retired">
+                                        <input type="text" class="form-control form-control-sm @error('asset_retired') is-invalid @enderror" name="asset_retired" id="asset_retired" value="{{ $asset->asset_retired }}" placeholder="2020-05-05" data-inputmask='"mask": "9999-99-99"' data-mask>
                                         @error('asset_retired')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
