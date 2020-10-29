@@ -35,11 +35,7 @@
                                 @foreach ($showAllSubType as $subType)
                                     <tr>
                                         <td class="text-center">{{ $subType->id }}</td>
-<<<<<<< HEAD:resources/views/basic/sub_type/index.blade.php
-                                        <td>{{ $subType->assetType->asset_type_name }}</td>
-=======
                                         <td>{{ $subType->type->type_name }}</td>
->>>>>>> e8275cf437606d269707a3316971e8f6226ef0b2:resources/views/basic/subtype/index.blade.php
                                         <td>{{ $subType->subtype_name }}</td>
                                         <td class="text-center">{{ $subType->subtype_status }}</td>
                                         <td>

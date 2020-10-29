@@ -15,10 +15,6 @@ class Type extends Model
 
     public $timestamps = true;
 
-<<<<<<< HEAD
-    public function assetSubtypes() {
-        return $this->hasMany(SubType::class);
-=======
     /**
      * Eloquent: Relationships
      */
@@ -30,6 +26,5 @@ class Type extends Model
     }
     public function subtypes() {
         return $this->hasMany(Subtype::class);
->>>>>>> e8275cf437606d269707a3316971e8f6226ef0b2
     }
 }
