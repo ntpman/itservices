@@ -24,8 +24,15 @@
                         <table class="table table-bordered table-hover">
                             <tbody>
                                 <tr>
+                                    <th style="width: 25%;">รหัสเอกสาร</th>
+                                    <td style="width: 25%;">{{ $asset->id }}</td>
                                     <th style="width: 25%;">รหัสประเภทครุภัณฑ์</th>
                                     <td style="width: 25%;">{{ $asset->type->type_name }}</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <th style="width: 25%;">รหัสยี่ห้อครุภัณฑ์</th>
+                                    <td style="width: 25%;">{{ $asset->brand->brand_full_name }}</td>
                                     <th style="width: 25%;">รหัสประเภทครุภัณฑ์ย่อย</th>
                                     <td style="width: 25%;">
                                         @if (!empty($asset->subtype_id))
@@ -34,26 +41,20 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="width: 25%;">รหัสยี่ห้อครุภัณฑ์</th>
-                                    <td style="width: 25%;">{{ $asset->brand->brand_full_name }}</td>
                                     <th style="width: 25%;">รหัสรุ่นครุภัณฑ์</th>
                                     <td style="width: 25%;">
                                         @if (!empty($asset->brand_model_id))
                                             {{ $asset->brandModel->brand_model_name }}
                                         @endif
                                     </td>
-                                </tr>
-                                <tr>
                                     <th style="width: 25%;">รหัสชื่อครุภัณฑ์</th>
                                     <td style="width: 25%;">{{ $asset->common->common_name }}</td>
-                                    <th style="width: 25%;">รหัสสถานะการใช้งานครุภัณฑ์</th>
-                                    <td style="width: 25%;">{{ $asset->usage->usage_name }}</td>
                                 </tr>
                                 <tr>
+                                    <th style="width: 25%;">รหัสสถานะการใช้งานครุภัณฑ์</th>
+                                    <td style="width: 25%;">{{ $asset->usage->usage_name }}</td>
                                     <th style="width: 25%;">รหัสผู้แทนจำหน่ายครุภัณฑ์</th>
                                     <td style="width: 25%;">{{ $asset->supplier->supplier_name }}</td>
-                                    <th></th>
-                                    <td></td>
                                 </tr>
                                 <tr>
                                     <th style="width: 25%;">หมายเลขครุภัณฑ์</th>
