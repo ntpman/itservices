@@ -124,13 +124,9 @@ class SubtypeController extends Controller
             $updateModel->updated_by = auth()->user()->name;
             $updateModel->save();
 
-<<<<<<< HEAD
-            Session::flash('success_msg', 'บันทึกข้อมูลประเภทครุภัณฑ์ย่อยเรียบร้อย');
-=======
             Session::flash('success_msg', 'แก้ไขชื่อรุ่นผลิตภัณฑ์เรียบร้อย');
             
             return redirect()->back();
->>>>>>> e8275cf437606d269707a3316971e8f6226ef0b2
         }
 
         if($request->input('edit') == 1) {
@@ -140,12 +136,6 @@ class SubtypeController extends Controller
             $updateModel->subtype_status = $request->input('subTypeStatus');
             $updateModel->updated_by = auth()->user()->name;
             $updateModel->save();
-<<<<<<< HEAD
-
-            Session::flash('success_msg', 'แก้ไขสถานะการใช้ข้อมูลเรียบร้อย');
-        }
-=======
->>>>>>> e8275cf437606d269707a3316971e8f6226ef0b2
 
             Session::flash('success_msg', 'บันทึกข้อมูลประเภทครุภัณฑ์ย่อยเรียบร้อย');
             //return index view
