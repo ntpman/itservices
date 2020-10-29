@@ -49,7 +49,21 @@ class AssetOwnerController extends Controller
      */
     public function store(CreateOwnerRequest $request)
     {
-        //
+        /**
+         * store in the database
+         */
+        $assetOwner = new AssetOwner;
+        $assetOwner->asset_id = $request->input('asset_id');
+        $assetOwner->asset_owner_name = $request->input('asset_owner_name');
+        $assetOwner->asset_owner_started = $request->input('asset_owner_started');
+        $assetOwner->asset_owner_ended = $request->input('asset_owner_ended');
+        $assetOwner->created_by = auth()->user()->name;
+
+        if($assetOwner->save()) {
+            Session::flash('success_msg', 'บันทึกข้อมูลเรียบร้อย');
+
+            return redirect()->back();
+        }
     }
 
     /**
@@ -81,9 +95,21 @@ class AssetOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateOwnerRequest $request, $id)
     {
-        //
+        /**
+         * Store in the database
+         */
+        AssetOwner::where('id', $id)->update([
+            'asset_owner_name' => $request->input('asset_owner_name'),
+            'asset_owner_started' => $request->input('asset_owner_started'),
+            'asset_owner_ended' => $request->input('asset_owner_ended'),
+            'updated_by' => auth()->user()->name,
+        ]);
+
+        Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
+
+        return redirect()->back();
     }
 
     /**

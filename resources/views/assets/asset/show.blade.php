@@ -21,7 +21,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-bordered table-hover table-sm">
                             <tbody>
                                 <tr>
                                     <th style="width: 25%;">รหัสเอกสาร</th>
@@ -77,7 +77,7 @@
                             </tbody>
                         </table>
                         <br>
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-bordered table-hover table-sm">
                             <tbody>
                                 @if (count($asset->locations) > 0)
                                     <tr>
@@ -115,7 +115,49 @@
                                             <i class="fas fa-plus"></i> location
                                         </a>
                                     </th>
-                                    <td style="width: 25%;"></td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                        <br>
+                        <table class="table table-bordered table-hover table-sm">
+                            <tbody>
+                                @if (count($asset->assetOwners) > 0)
+                                    <tr>
+                                        <td colspan="2">
+                                            <i class="fas fa-user"></i> Owner
+                                            <a href="#" data-toggle="modal" data-target="#modal-edit-owner">
+                                                <i class="far fa-edit"></i> edit
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @foreach ($asset->assetOwners as $item)
+                                    <tr>
+                                        <th style="width: 25%;">ผู้รับผิดชอบครุภัณฑ์</th>
+                                        <td>
+                                            {{ $item->asset_owner_name }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 25%;">วันที่รับมอบครุภัณฑ์</th>
+                                        <td>
+                                            {{ $item->asset_owner_started }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 25%;">วันที่ส่งคืนครุภัณฑ์</th>
+                                        <td>
+                                            {{ $item->asset_owner_ended }}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <th>
+                                        <a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-owner">
+                                            <i class="fas fa-plus"></i> Owner
+                                        </a>
+                                    </th>
                                 </tr>
                                 @endif
                             </tbody>
@@ -129,8 +171,7 @@
                     </div>
                     <!-- /.card-footer -->
                 </div>
-                <!-- /.card -->
-                @if (count($asset->locations) > 0)                        
+                <!-- /.card -->                       
                 <div class="card card-outline card-dark">
                     <div class="card-header">
                         <h3 class="card-title"><i class="fas fa-cog"></i> TEXT</h3>                   
@@ -148,7 +189,6 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                @endif
             </div>
             <!-- /.col -->
         </div>
@@ -157,6 +197,7 @@
 @endsection
 
 @section('modal')
+    {{-- location --}}
     <div class="modal fade" id="modal-location" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -167,7 +208,7 @@
                     </button>
                 </div>
                 <!-- form start -->
-                {!! Form::open(['action' => ['LocationController@store', $asset->id], 'method' => 'POST']) !!}
+                {!! Form::open(['action' => ['LocationController@store'], 'method' => 'POST']) !!}
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="building_id">รหัสชื่ออาคารที่ติดตั้งใช้งาน</label>
@@ -276,7 +317,120 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                    <input type="hidden" name="asset_id" value="{{ $location->asset_id }}">
+                    <input type="hidden" name="asset_id" value="{{ $asset->id }}">
+                    {{ Form::hidden('_method','PUT') }}
+                    {{ Form::submit('Save', ['class' => 'btn btn-primary btn-sm']) }}
+                </div>
+                {!! Form::close() !!}
+                @endforeach
+                <!-- end start -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    @endif
+    <!-- /.modal -->
+
+    {{-- owner --}}
+    <div class="modal fade" id="modal-owner" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="far fa-edit"></i> Add owner</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- form start -->
+                {!! Form::open(['action' => ['Assets\AssetOwnerController@store'], 'method' => 'POST']) !!}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="asset_owner_name">ผู้รับผิดชอบครุภัณฑ์</label>
+                        <input type="text" class="form-control form-control-sm @error('asset_owner_name') is-invalid @enderror" name="asset_owner_name" id="asset_owner_name" value="{{ old('asset_owner_name') }}" placeholder="asset_owner_name" required>
+                        @error('asset_owner_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="asset_owner_started">วันที่รับมอบครุภัณฑ์</label>
+                        <input type="text" class="form-control form-control-sm @error('asset_owner_started') is-invalid @enderror" name="asset_owner_started" id="asset_owner_started" value="{{ old('asset_owner_started') }}" placeholder="2020-05-05" data-inputmask='"mask": "9999-99-99"' data-mask required>
+                        @error('asset_owner_started')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="asset_owner_ended">วันที่ส่งคืนครุภัณฑ์</label>
+                        <input type="text" class="form-control form-control-sm @error('asset_owner_ended') is-invalid @enderror" name="asset_owner_ended" id="asset_owner_ended" value="{{ old('asset_owner_ended') }}" placeholder="2020-05-05" data-inputmask='"mask": "9999-99-99"' data-mask>
+                        @error('asset_owner_ended')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="asset_id" value="{{ $asset->id }}">
+                    {{ Form::submit('Save', ['class' => 'btn btn-primary btn-sm']) }}
+                </div>
+                {!! Form::close() !!}
+                <!-- end start -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    @if (count($asset->assetOwners) > 0)
+    <div class="modal fade" id="modal-edit-owner" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="far fa-edit"></i> Edit owner</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- form start -->
+                @foreach ($asset->assetOwners as $owner)
+                {!! Form::open(['action' => ['Assets\AssetOwnerController@update', $owner->id], 'method' => 'PUT']) !!}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="asset_owner_name">ผู้รับผิดชอบครุภัณฑ์</label>
+                        <input type="text" class="form-control form-control-sm @error('asset_owner_name') is-invalid @enderror" name="asset_owner_name" id="asset_owner_name" value="{{ $owner->asset_owner_name }}" placeholder="asset_owner_name" required>
+                        @error('asset_owner_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="asset_owner_started">วันที่รับมอบครุภัณฑ์</label>
+                        <input type="text" class="form-control form-control-sm @error('asset_owner_started') is-invalid @enderror" name="asset_owner_started" id="asset_owner_started" value="{{ $owner->asset_owner_started }}" placeholder="2020-05-05" data-inputmask='"mask": "9999-99-99"' data-mask required>
+                        @error('asset_owner_started')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="asset_owner_ended">วันที่ส่งคืนครุภัณฑ์</label>
+                        <input type="text" class="form-control form-control-sm @error('asset_owner_ended') is-invalid @enderror" name="asset_owner_ended" id="asset_owner_ended" value="{{ $owner->asset_owner_ended }}" placeholder="2020-05-05" data-inputmask='"mask": "9999-99-99"' data-mask>
+                        @error('asset_owner_ended')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="asset_id" value="{{ $asset->id }}">
                     {{ Form::hidden('_method','PUT') }}
                     {{ Form::submit('Save', ['class' => 'btn btn-primary btn-sm']) }}
                 </div>

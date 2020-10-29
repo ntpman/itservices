@@ -13,7 +13,7 @@ class CreateOwnerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,11 +25,9 @@ class CreateOwnerRequest extends FormRequest
     {
         return [
             'asset_id' => ['required', 'integer'],
-            'owner_name' => ['required', 'string', 'max:150'],
-            'owner_started' => ['nullable', 'date'],
-            'owner_ended' => ['nullable', 'date'],
-            'created_by' => ['nullable', 'string', 'max:50'],
-            'updated_by' => ['nullable', 'string', 'max:50'],
+            'asset_owner_name' => ['required', 'string', 'max:150'],
+            'asset_owner_started' => ['required', 'date'],
+            'asset_owner_ended' => ['nullable', 'date'],
         ];
     }
 }
