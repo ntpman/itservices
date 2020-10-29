@@ -155,4 +155,16 @@ class SubtypeController extends Controller
         //
     }
 
+    public function changeStatus(SubType $subType)
+    {
+        $types = Type::all()
+        ->where('asset_type_status','=', 'A')
+        ->pluck('asset_type_name', 'id')->toArray();
+
+        return view('basic.sub_type.change_status', [
+            'editSubType' => $subType,
+            'allType' => $types,
+        ]);
+    }
+
 }
