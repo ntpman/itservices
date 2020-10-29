@@ -15,15 +15,11 @@ class Subtype extends Model
 
     public $timestapms = true;
 
-<<<<<<< HEAD
-    public function assetType() {
-=======
     /**
      * Eloquent: Relationships
      */
     // belongsTo
     public function type() {
->>>>>>> e8275cf437606d269707a3316971e8f6226ef0b2
         return $this->belongsTo(Type::class);
     }
 
