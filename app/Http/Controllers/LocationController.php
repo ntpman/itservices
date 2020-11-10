@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Session;
 
 use App\Http\Requests\CreateLocationRequest;
 
+use App\Model\Basic\Building;
+
 use App\Model\Location;
 
 class LocationController extends Controller
@@ -72,7 +74,16 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $buildings = Building::where('building_status', 'A')->get();
+
+        $location = Location::FindOrFail($id);
+
+        // return $location;
+
+        return view('assets.asset.location.edit', [
+            'location' => $location,
+            'buildings' => $buildings,
+        ]);
     }
 
     /**
@@ -82,21 +93,30 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateLocationRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'building_id' => ['required', 'integer',],
+            'location_floor' => ['required', 'string', 'max:25'],
+            'location_room' => ['required', 'string', 'max:50'],
+        ]);
         /**
          * Store in the database
          */
-        Location::where('id', $id)->update([
-            'building_id' => $request->input('building_id'),
-            'location_floor' => $request->input('location_floor'),
-            'location_room' => $request->input('location_room'),
-            'updated_by' => auth()->user()->name,
-        ]);
+        $location = Location::find($id);
+        $location->building_id = $request->input('building_id');
+        $location->location_floor = $request->input('location_floor');
+        $location->location_room = $request->input('location_room');
+        $location->updated_by = auth()->user()->name;
+        
+        if($location->save()){
+            
+            Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
 
-        Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
+            return redirect("/assets/asset/$location->asset_id");
+        }
 
-        return redirect()->back();
+        
     }
 
     /**

@@ -25,9 +25,9 @@ class CreateDetailRequest extends FormRequest
     {
         return [
             'asset_id' => ['required', 'integer'],
-            'asset_detail' => ['required', 'string'],
-            'amont' => ['required', 'string', 'max:50'],
-            'comment' => ['nullable', 'string'],
+            'asset_detail_description' => ['required', 'string'],
+            'asset_detail_amont' => ['required', 'string', 'max:50'],
+            'asset_detail_comment' => ['nullable', 'string'],
             'created_by' => ['nullable', 'string', 'max:50'],
             'updated_by' => ['nullable', 'string', 'max:50'],
         ];

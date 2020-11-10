@@ -78,7 +78,12 @@ class SupplierController extends Controller
             
             Session::flash('success_msg', 'เพิ่มผู้จำหน่ายสินค้าเรียบร้อย');
 
-            return redirect('/supplier');
+            if($request->input('asset-add-supplier') == 1){
+                return redirect()->back();
+            } else {
+                return redirect('/supplier');
+            }
+
         }
     }
 

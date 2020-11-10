@@ -4,13 +4,20 @@
     | Asset Show
 @endsection
 
+@section('content-header')
+    <a href="/assets/asset" class="btn btn-secondary"><i class="fas fa-backward"></i> Back</a>
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="far fa-edit"></i> Asset Show</h3>
+                        <h3 class="card-title"><i class="far fa-file"></i> Asset Show
+                            <a href="/assets/asset/{{ $asset->id }}/edit" class="btn btn-primary btn-xs"><i class="far fa-edit"></i> Edit</a>
+                            <a href="/assets/asset/create" class="btn btn-primary btn-xs"><i class="fas fa-plus"></i> Asset</a>
+                        </h3>
                         <div class="card-tools">
                             <!-- This will cause the card to maximize when clicked -->
                             <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
@@ -79,49 +86,6 @@
                         <br>
                         <table class="table table-bordered table-hover table-sm">
                             <tbody>
-                                @if (count($asset->locations) > 0)
-                                    <tr>
-                                        <td colspan="2">
-                                            <i class="fas fa-map-marker-alt"></i> Location
-                                            <a href="#" data-toggle="modal" data-target="#modal-edit-location">
-                                                <i class="far fa-edit"></i> edit
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @foreach ($asset->locations as $item)
-                                    <tr>
-                                        <th style="width: 25%;">รหัสชื่ออาคารที่ติดตั้งใช้งาน</th>
-                                        <td>
-                                            {{ $item->building->building_name }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th style="width: 25%;">ชั้นที่ติดตั้งใช้งาน</th>
-                                        <td>
-                                            {{ $item->location_floor }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th style="width: 25%;">ห้องที่ติดตั้งใช้งาน</th>
-                                        <td>
-                                            {{ $item->location_room }}
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                @else
-                                <tr>
-                                    <th>
-                                        <a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-location">
-                                            <i class="fas fa-plus"></i> location
-                                        </a>
-                                    </th>
-                                </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                        <br>
-                        <table class="table table-bordered table-hover table-sm">
-                            <tbody>
                                 @if (count($asset->assetOwners) > 0)
                                     <tr>
                                         <td colspan="2">
@@ -164,17 +128,16 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer">
-                        <a href="/assets/asset" class="btn btn-secondary">Back</a>
-                        <a href="/assets/asset/{{ $asset->id }}/edit" class="btn btn-info">Edit</a>
-                        <a href="/assets/asset/create" class="btn btn-success">Create</a>
-                    </div>
-                    <!-- /.card-footer -->
                 </div>
                 <!-- /.card -->                       
-                <div class="card card-outline card-dark">
+                <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="fas fa-cog"></i> TEXT</h3>                   
+                        <h3 class="card-title">
+                            <i class="far fa-sticky-note"></i> Detail
+                            <a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-create-detail">
+                                <i class="fas fa-plus"></i> Detail
+                            </a>
+                        </h3>                   
                         <div class="card-tools">
                             <!-- This will cause the card to maximize when clicked -->
                             <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
@@ -185,10 +148,82 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        CONTENT
+                        <table class="table table-bordered table-hover table-sm">
+                            <tbody>
+                                @if (count($asset->assetDetails) > 0)
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 25%;">รายละเอียดครุภัณฑ์</th>
+                                            <th style="width: 25%;">จำนวนหน่วย</th>
+                                            <th style="width: 25%;">หมายเหตุ</th>
+                                            <th>แก้ไข</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($asset->assetDetails as $detail)                                  
+                                        <tr>
+                                            <td>{{ $detail->asset_detail_description }}</td>
+                                            <td>{{ $detail->asset_detail_amont }}</td>
+                                            <td>{{ $detail->asset_detail_comment }}</td>
+                                            <td><a href="{{ route('detail.edit', $detail->id) }}"><i class="far fa-edit"></i> Edit</a></td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                @endif
+                            </tbody>
+                        </table>
+                        <br>
                     </div>
                     <!-- /.card-body -->
                 </div>
+                <!-- /.card -->
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-map-marker-alt"></i> Location
+                            <a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-create-location">
+                                <i class="fas fa-plus"></i> Location
+                            </a>
+                        </h3>                   
+                        <div class="card-tools">
+                            <!-- This will cause the card to maximize when clicked -->
+                            <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
+                            <!-- This will cause the card to collapse when clicked -->
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                        <!-- /.card-tools -->
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover table-sm">
+                            <tbody>
+                                @if (count($asset->locations) > 0)
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 25%;">รหัสชื่ออาคารที่ติดตั้งใช้งาน</th>
+                                            <th style="width: 25%;">ชั้นที่ติดตั้งใช้งาน</th>
+                                            <th style="width: 25%;">ห้องที่ติดตั้งใช้งาน</th>
+                                            <th>แก้ไข</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($asset->locations as $location)                                  
+                                        <tr>
+                                            <td>{{ $location->building->building_name }}</td>
+                                            <td>{{ $location->location_floor }}</td>
+                                            <td>{{ $location->location_room }}</td>
+                                            <td><a href="/location/{{ $location->id }}/edit"><i class="far fa-edit"></i> Edit</a></td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                @endif
+                            </tbody>
+                        </table>
+                        <br>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
             <!-- /.col -->
         </div>
@@ -197,140 +232,11 @@
 @endsection
 
 @section('modal')
-    {{-- location --}}
-    <div class="modal fade" id="modal-location" data-backdrop="static">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"><i class="far fa-edit"></i> Add location</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!-- form start -->
-                {!! Form::open(['action' => ['LocationController@store'], 'method' => 'POST']) !!}
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="building_id">รหัสชื่ออาคารที่ติดตั้งใช้งาน</label>
-                        <select class="form-control select2bs4 @error('building_id') is-invalid @enderror" 
-                            style="width: 100%;"
-                            name="building_id"
-                            id="building_id"
-                            data-placeholder="building_id" required>
-                                <option value="" selected></option>
-                            @foreach ($buildings as $item)
-                                <option value="{{ $item->id }}" {{ ( old('building_id') == $item->id) ? 'selected' : '' }}>
-                                    {{ $item->building_name }}
-                                </option>                                         
-                            @endforeach
-                        </select>
-                        @error('building_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="location_floor">ชั้นที่ติดตั้งใช้งาน</label>
-                        <input type="text" class="form-control form-control-sm @error('location_floor') is-invalid @enderror" name="location_floor" id="location_floor" value="{{ old('location_floor') }}" required>
-                        @error('location_floor')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="location_room">ห้องที่ติดตั้งใช้งาน</label>
-                        <input type="text" class="form-control form-control-sm @error('location_room') is-invalid @enderror" name="location_room" id="location_room" value="{{ old('location_room') }}" required>
-                        @error('location_room')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                    <input type="hidden" name="asset_id" value="{{ $asset->id }}">
-                    {{ Form::submit('Save', ['class' => 'btn btn-primary btn-sm']) }}
-                </div>
-                {!! Form::close() !!}
-                <!-- end start -->
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-    @if (count($asset->locations) > 0)
-    <div class="modal fade" id="modal-edit-location" data-backdrop="static">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"><i class="far fa-edit"></i> Edit location</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!-- form start -->
-                @foreach ($asset->locations as $location)
-                {!! Form::open(['action' => ['LocationController@update', $location->id], 'method' => 'PUT']) !!}
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="building_id">รหัสชื่ออาคารที่ติดตั้งใช้งาน</label>
-                        <select class="form-control select2bs4 @error('building_id') is-invalid @enderror" 
-                            style="width: 100%;"
-                            name="building_id"
-                            id="building_id"
-                            data-placeholder="building_id" required>
-                                <option value="" selected></option>
-                            @foreach ($buildings as $item)
-                                <option value="{{ $item->id }}" {{ ( $location->building_id == $item->id) ? 'selected' : '' }}>
-                                    {{ $item->building_name }}
-                                </option>                                         
-                            @endforeach
-                        </select>
-                        @error('building_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="location_floor">ชั้นที่ติดตั้งใช้งาน</label>
-                        <input type="text" class="form-control form-control-sm @error('location_floor') is-invalid @enderror" name="location_floor" id="location_floor" value="{{ $location->location_floor }}" required>
-                        @error('location_floor')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="location_room">ห้องที่ติดตั้งใช้งาน</label>
-                        <input type="text" class="form-control form-control-sm @error('location_room') is-invalid @enderror" name="location_room" id="location_room" value="{{ $location->location_room }}" required>
-                        @error('location_room')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                    <input type="hidden" name="asset_id" value="{{ $asset->id }}">
-                    {{ Form::hidden('_method','PUT') }}
-                    {{ Form::submit('Save', ['class' => 'btn btn-primary btn-sm']) }}
-                </div>
-                {!! Form::close() !!}
-                @endforeach
-                <!-- end start -->
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    @endif
-    <!-- /.modal -->
+    @include('assets.asset.modal.create-location')
+    {{-- create location --}}
+    @include('assets.asset.modal.create-detail')
+    {{-- create detail --}}
+    
 
     {{-- owner --}}
     <div class="modal fade" id="modal-owner" data-backdrop="static">

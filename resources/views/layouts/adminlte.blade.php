@@ -41,9 +41,10 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2">
+                    <div class="row">
                         <div class="col-sm-6">
                             <h1 class="m-0 text-dark"></h1>
+                            @yield('content-header')
                         </div><!-- /.col -->
                         <div class="col-sm-6 d-none">
                             <ol class="breadcrumb float-sm-right">
@@ -61,7 +62,7 @@
                             @endif --}}
 
                             @if (count($errors) > 0)
-                                <div class="alert alert-danger mb-0">
+                                <div class="alert alert-danger mt-1 mb-0">
                                     <ol class="mb-0">
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>

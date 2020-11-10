@@ -49,7 +49,21 @@ class AssetDetailController extends Controller
      */
     public function store(CreateDetailRequest $request)
     {
-        //
+        /**
+         * store in the database
+         */
+        $assetDetail = new AssetDetail;
+        $assetDetail->asset_id = $request->input('asset_id');
+        $assetDetail->asset_detail_description = $request->input('asset_detail_description');
+        $assetDetail->asset_detail_amont = $request->input('asset_detail_amont');
+        $assetDetail->asset_detail_comment = $request->input('asset_detail_comment');
+        $assetDetail->created_by = auth()->user()->name;
+
+        if($assetDetail->save()) {
+            Session::flash('success_msg', 'บันทึกข้อมูลเรียบร้อย');
+
+            return redirect()->back();
+        }
     }
 
     /**
@@ -69,9 +83,11 @@ class AssetDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(AssetDetail $detail)
     {
-        //
+        return view ('assets.detail.edit', [
+            'assetDetail' => $detail
+        ]);
     }
 
     /**
@@ -83,7 +99,27 @@ class AssetDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $request->validate([
+            'asset_detail_description' => ['required', 'string'],
+            'asset_detail_amont' => ['required', 'string', 'max:50'],
+            'asset_detail_comment' => ['nullable', 'string'],
+        ]);
+        /**
+         * Store in the database
+         */
+        $assetDetail = AssetDetail::find($id);
+        $assetDetail->asset_detail_description = $request->input('asset_detail_description');
+        $assetDetail->asset_detail_amont = $request->input('asset_detail_amont');
+        $assetDetail->asset_detail_comment = $request->input('asset_detail_comment');
+        $assetDetail->updated_by = auth()->user()->name;
+        
+        if($assetDetail->save()){
+            
+            Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
+
+            return redirect("/assets/asset/$assetDetail->asset_id");
+        }
     }
 
     /**

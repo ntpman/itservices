@@ -25,25 +25,20 @@
                             @if (count($assets) > 0)
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>หมายเลขครุภัณฑ์</th>
                                         <th>หมายเลขประจำเครื่อง</th>
                                         <th>ปีที่จัดซื้อ</th>
-                                        <th>ระยะเวลาการรับประกัน</th>
+                                        <th>ผู้สร้างรายการ</th>
                                         <th>แก้ไข</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $i = 1;
-                                    @endphp
                                     @foreach ($assets as $item)                                  
                                         <tr>
-                                            <td>{{ $i++ }}</td>
                                             <td><a href="/assets/asset/{{ $item->id }}">{{ $item->asset_number }}</a></td>
                                             <td>{{ $item->asset_serial_number }}</td>
                                             <td>{{ $item->asset_purchase_year }}</td>
-                                            <td>{{ $item->asset_warranty_period }}</td>
+                                            <td>{{ $item->created_by }}</td>
                                             <td>
                                                 <a href="/assets/asset/{{ $item->id }}/edit" class="btn btn-primary btn-xs">
                                                     <i class="fas fa-edit"></i> Edit

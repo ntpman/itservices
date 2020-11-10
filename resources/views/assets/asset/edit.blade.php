@@ -4,6 +4,10 @@
     | Asset Edit
 @endsection
 
+@section('content-header')
+    <a href="/assets/asset/{{ $asset->id }}" class="btn btn-secondary"><i class="fas fa-backward"></i> Back</a>
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -266,7 +270,6 @@
                         </div>
                         <!-- /.card-body -->        
                         <div class="card-footer">
-                            <a href="/assets/asset" class="btn btn-secondary">Back</a>
                             <a href="/assets/asset/{{ $asset->id }}" class="btn btn-success">View</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
