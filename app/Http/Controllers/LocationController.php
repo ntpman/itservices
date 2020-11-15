@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Session;
 
 use App\Http\Requests\CreateLocationRequest;
 
-use App\Model\Basic\Building;
+use App\Models\Basics\Building;
 
-use App\Model\Location;
+use App\Models\Location;
 
 class LocationController extends Controller
 {

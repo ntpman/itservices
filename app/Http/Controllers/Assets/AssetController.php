@@ -7,21 +7,21 @@ use App\Http\Requests\Assets\CreateAssetRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-use App\Model\Assets\Asset;
-use App\Model\Assets\AssetDetail;
-use App\Model\Assets\AssetOwner;
-use App\Model\Assets\AssetPicture;
-use App\Model\Assets\AssetRepair;
+use App\Models\Assets\Asset;
+use App\Models\Assets\AssetDetail;
+use App\Models\Assets\AssetOwner;
+use App\Models\Assets\AssetPicture;
+use App\Models\Assets\AssetRepair;
 
-use App\Model\Basic\Type;
-use App\Model\Basic\Subtype;
-use App\Model\Basic\Brand;
-use App\Model\Basic\BrandModel;
-use App\Model\Basic\Common;
-use App\Model\Basic\Usage;
-use App\Model\Basic\Building;
+use App\Models\Basics\Type;
+use App\Models\Basics\Subtype;
+use App\Models\Basics\Brand;
+use App\Models\Basics\BrandModel;
+use App\Models\Basics\Common;
+use App\Models\Basics\Usage;
+use App\Models\Basics\Building;
 
-use App\Model\Supplier\Supplier;
+use App\Models\Supplier;
 
 class AssetController extends Controller
 {
