@@ -16,7 +16,7 @@ use App\Models\Basics\Common;
 use App\Models\Basics\Brand;
 use App\Models\Basics\BrandModel;
 use App\Models\Basics\Usage;
-use App\Models\Supplier\Supplier;
+use App\Models\Supplier;
 
 class Asset extends Model
 {

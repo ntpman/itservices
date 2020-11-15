@@ -99,15 +99,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/asset/{asset}/edit', 'Assets\AssetController@edit')->name('edit');
             Route::put('/asset/{asset}', 'Assets\AssetController@update')->name('update');
         });
-        // picture
-        Route::name('picture.')->group(function () {
-            Route::get('/picture', 'Assets\AssetPictureController@index')->name('index');
-            Route::get('/picture/create', 'Assets\AssetPictureController@create')->name('create');
-            Route::post('/picture', 'Assets\AssetPictureController@store')->name('store');
-            Route::get('/picture/{picture}', 'Assets\AssetPictureController@show')->name('show');
-            Route::get('/picture/{picture}/edit', 'Assets\AssetPictureController@edit')->name('edit');
-            Route::put('/picture/{picture}', 'Assets\AssetPictureController@update')->name('update');
-        });
         // detail
         Route::name('detail.')->group(function () {
             Route::get('/detail', 'Assets\AssetDetailController@index')->name('index');
@@ -126,6 +117,15 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/owner/{owner}', 'Assets\AssetOwnerController@show')->name('show');
             Route::get('/owner/{owner}/edit', 'Assets\AssetOwnerController@edit')->name('edit');
             Route::put('/owner/{owner}', 'Assets\AssetOwnerController@update')->name('update');
+        });
+        // picture
+        Route::name('picture.')->group(function () {
+            Route::get('/picture', 'Assets\AssetPictureController@index')->name('index');
+            Route::get('/picture/create', 'Assets\AssetPictureController@create')->name('create');
+            Route::post('/picture', 'Assets\AssetPictureController@store')->name('store');
+            Route::get('/picture/{picture}', 'Assets\AssetPictureController@show')->name('show');
+            Route::get('/picture/{picture}/edit', 'Assets\AssetPictureController@edit')->name('edit');
+            Route::put('/picture/{picture}', 'Assets\AssetPictureController@update')->name('update');
         });
         /**
          * Route locations

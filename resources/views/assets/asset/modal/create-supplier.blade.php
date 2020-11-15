@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-create-supplier_id" data-backdrop="static">
+<div class="modal fade" id="create-supplier_id" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -149,7 +149,7 @@
                 <!-- /.modal-body -->
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                    <input type="hidden" name="asset-add-supplier" value="1">
+                    <input type="hidden" name="create-supplier_id" value="1">
                     <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                 </div>
                 <!-- /.modal-footer -->

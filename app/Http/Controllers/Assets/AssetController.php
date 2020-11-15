@@ -12,6 +12,7 @@ use App\Models\Assets\AssetDetail;
 use App\Models\Assets\AssetOwner;
 use App\Models\Assets\AssetPicture;
 use App\Models\Assets\AssetRepair;
+use App\Models\Location;
 
 use App\Models\Basics\Type;
 use App\Models\Basics\Subtype;
@@ -25,16 +26,6 @@ use App\Models\Supplier;
 
 class AssetController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *

@@ -14,7 +14,7 @@
         </li>
         <li class="nav-item">
             <a href="/assets/asset/create" class="nav-link {{ Request::is('assets/asset/create') ? 'active' : '' }}">
-                <i class="far fa-edit nav-icon"></i>
+                <i class="fas fa-plus nav-icon"></i>
                 <p>Create</p>
             </a>
         </li>

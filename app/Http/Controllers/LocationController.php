@@ -113,7 +113,7 @@ class LocationController extends Controller
             
             Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อย');
 
-            return redirect("/assets/asset/$location->asset_id");
+            return redirect()->back();
         }
 
         

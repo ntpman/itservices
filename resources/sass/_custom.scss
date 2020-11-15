@@ -1,0 +1,24 @@
+.wizard .nav-tabs {
+    border-bottom-color: transparent;
+}
+.list-inline li {
+    display: inline-block;
+}
+.pull-right {
+    float: right;
+}
+.connecting-line {
+    height: 4px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 95%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 15px;
+    z-index: 1;
+}
+.round-tab {
+    position: relative;
+    z-index: 2;
+}

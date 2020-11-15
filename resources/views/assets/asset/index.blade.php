@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Asset Index
+    | Assets Index
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">All Assets</h3>
+                        <h3 class="card-title">All Assets ครุภัณฑ์</h3>
                         <div class="card-tools">
                             <ul class="nav nav-pills ml-auto">
                                 <li class="nav-item">
@@ -29,7 +29,7 @@
                                         <th>หมายเลขประจำเครื่อง</th>
                                         <th>ปีที่จัดซื้อ</th>
                                         <th>ผู้สร้างรายการ</th>
-                                        <th>แก้ไข</th>
+                                        <th>ดำเนินการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,7 +41,7 @@
                                             <td>{{ $item->created_by }}</td>
                                             <td>
                                                 <a href="/assets/asset/{{ $item->id }}/edit" class="btn btn-primary btn-xs">
-                                                    <i class="fas fa-edit"></i> Edit
+                                                    <i class="fas fa-edit"></i> แก้ไข
                                                 </a>
                                             </td>
                                         </tr>

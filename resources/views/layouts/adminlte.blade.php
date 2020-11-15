@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{ asset('/adminlte/dist/css/adminlte.min.css') }}">
     <!-- Google Font: Source -->
     <link rel="stylesheet" href="{{ asset('/css/font.css') }}">
+    <!-- Custom Css -->
+    @yield('custom-css')
 </head>
 <body class="hold-transition sidebar-mini text-sm">
     <div class="wrapper">
