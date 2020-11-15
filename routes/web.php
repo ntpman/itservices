@@ -117,6 +117,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/detail/{detail}/edit', 'Assets\AssetDetailController@edit')->name('edit');
             Route::put('/detail/{detail}', 'Assets\AssetDetailController@update')->name('update');
         });
+        
         // owner
         Route::name('owner.')->group(function () {
             Route::get('/owner', 'Assets\AssetOwnerController@index')->name('index');
@@ -125,17 +126,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/owner/{owner}', 'Assets\AssetOwnerController@show')->name('show');
             Route::get('/owner/{owner}/edit', 'Assets\AssetOwnerController@edit')->name('edit');
             Route::put('/owner/{owner}', 'Assets\AssetOwnerController@update')->name('update');
-        });
-        /**
-         * Route Suppliers
-         */
-        Route::name('supplier.')->group(function () {
-            Route::get('/supplier', 'SupplierController@index')->name('index');
-            Route::get('/supplier/create', 'SupplierController@create')->name('create');
-            Route::post('/supplier', 'SupplierController@store')->name('store');
-            Route::get('/supplier/{supplier}', 'SupplierController@show')->name('show');
-            Route::get('/supplier/{supplier}/edit', 'SupplierController@edit')->name('edit');
-            Route::put('/supplier/{supplier}', 'SupplierController@update')->name('update');
         });
         /**
          * Route locations
@@ -149,5 +139,17 @@ Route::group(['middleware' => ['auth']], function () {
             Route::put('/location/{supplier}', 'LocationController@update')->name('update');
         });
     });
+    /**
+     * Route Suppliers
+     */
+    Route::name('supplier.')->group(function () {
+        Route::get('/supplier', 'SupplierController@index')->name('index');
+        Route::get('/supplier/create', 'SupplierController@create')->name('create');
+        Route::post('/supplier', 'SupplierController@store')->name('store');
+        Route::get('/supplier/{supplier}', 'SupplierController@show')->name('show');
+        Route::get('/supplier/{supplier}/edit', 'SupplierController@edit')->name('edit');
+        Route::put('/supplier/{supplier}', 'SupplierController@update')->name('update');
+    });
+    
 });
 

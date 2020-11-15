@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">All Suppliers</h3>
+                        <h3 class="card-title">All Suppliers ผู้จำหน่ายสินค้า</h3>
                         <div class="card-tools">
                             <ul class="nav nav-pills ml-auto">
                                 <li class="nav-item">
@@ -29,7 +29,7 @@
                                         <th>ชื่อผู้จำหน่ายสินค้า</th>
                                         <th>หมายเลขโทรศัพท์</th>
                                         <th>อีเมล</th>
-                                        <th>แก้ไข</th>
+                                        <th>ดำเนินการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,14 +39,12 @@
                                     @foreach ($suppliers as $item)                                  
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>
-                                                <a href="/supplier/{{ $item->id }}">{{ $item->supplier_name }}</a>
-                                            </td>
+                                            <td>{{ $item->supplier_name }}</td>
                                             <td>{{ $item->supplier_phone }}</td>
                                             <td>{{ $item->supplier_email }}</td>
                                             <td>
-                                                <a href="/supplier/{{ $item->id }}/edit" class="">
-                                                    <i class="far fa-edit"></i> Edit
+                                                <a href="/supplier/{{ $item->id }}/edit" class="btn btn-info btn-xs">
+                                                    <i class="far fa-edit"></i> แก้ไข
                                                 </a>
                                             </td>
                                         </tr>

@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="far fa-edit"></i> Create Supplier</h3>
+                        <h3 class="card-title"><i class="far fa-edit"></i> Create Supplier ผู้จำหน่ายสินค้า</h3>
                     </div>
                     <!-- form start -->
                     <form action="/supplier" method="POST" enctype="multipart/form-data" role="form">

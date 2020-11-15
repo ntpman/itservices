@@ -8,7 +8,7 @@ use App\Http\Resources\DistrictResource;
 use App\Http\Resources\SubdistrictResource;
 use Illuminate\Http\Request;
 
-use App\Model\Province;
+use App\Models\Province;
 
 class ProvinceController extends Controller
 {

@@ -64,15 +64,11 @@ class SupplierController extends Controller
         $supplier->supplier_contact = $request->input('supplier_contact');
         $supplier->created_by = auth()->user()->name;
 
-        if($supplier->save()) {
+        if ($supplier->save()) {
             
             Session::flash('success_msg', 'เพิ่มผู้จำหน่ายสินค้าเรียบร้อย');
 
-            if($request->input('asset-add-supplier') == 1){
-                return redirect()->back();
-            } else {
-                return redirect('/supplier');
-            }
+            return redirect('/supplier');
 
         }
     }
@@ -85,9 +81,7 @@ class SupplierController extends Controller
      */
     public function show(Supplier $supplier)
     {
-        return view('supplier.show', [
-            'supplier' => $supplier
-        ]);
+        //
     }
 
     /**
@@ -115,7 +109,7 @@ class SupplierController extends Controller
         /**
          * Check Value Input Name hide 
          */
-        if($request->input('form_edit_supplier_name') == 1) {
+        if ($request->input('edit-supplier_name') == 1) {
             $request->validate([
                 'supplier_name' => ['required', 'string', 'max:255', 'unique:suppliers,supplier_name'],
             ]);
@@ -144,7 +138,6 @@ class SupplierController extends Controller
             'supplier_phone' => ['required', 'string', 'max:255'],
             'supplier_email' => ['required', 'string', 'email', 'max:255'],
             'supplier_contact' => ['required', 'string', 'max:255'],
-            'updated_by' => ['nullable', 'string', 'max:50'],
         ]);
         
         /**
