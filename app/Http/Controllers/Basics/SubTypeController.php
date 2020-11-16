@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Basics\Subtype;
 use App\Models\Basics\Type;
 
-class SubtypeController extends Controller
+class SubTypeController extends Controller
 { 
     /**
      * Display a listing of the resource.
