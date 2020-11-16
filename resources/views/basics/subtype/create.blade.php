@@ -13,7 +13,7 @@
                         <h3 class="card-title"><i class="far fa-edit"></i> เพิ่มข้อมูลประเภทครุภัณฑ์ย่อย</h3>
                     </div>
 					<!-- form start -->
-					{!! Form::open(['action' => 'Basics\SubtypeController@store', 'method' => 'POST', 'class' => 'was-validate']) !!}
+					{!! Form::open(['action' => 'Basics\SubTypeController@store', 'method' => 'POST', 'class' => 'was-validate']) !!}
 					<div class="card-body">
 						<div class="form-group">
 							{{ Form::label('title', 'ประเภทครุภัณฑ์') }}

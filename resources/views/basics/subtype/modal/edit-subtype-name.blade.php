@@ -8,7 +8,7 @@
                 </button>
             </div>
             <!-- form start -->
-            {!! Form::open(['action' => ['Basics\SubtypeController@update', $editSubType->id], 'method' => 'PUT']) !!}
+            {!! Form::open(['action' => ['Basics\SubTypeController@update', $editSubType->id], 'method' => 'PUT']) !!}
             <div class="modal-body">
                 <div class="form-group">
                     {{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}

@@ -13,7 +13,7 @@
                         <h3 class="card-title"><i class="far fa-edit"></i> แก้ไขข้อมูลประเภทครุภัณฑ์ย่อย</h3>
                     </div>
                     <!-- form start -->
-                    {!! Form::open(['action' => ['Basics\SubtypeController@update', $editSubType], 'method'=>'PUT']) !!}
+                    {!! Form::open(['action' => ['Basics\SubTypeController@update', $editSubType], 'method'=>'PUT']) !!}
                     <div class="card-body">
                         <div class="form-group">
                             {{ Form::label('title','ยี่ห้อผลิตภัณฑ์') }}                            

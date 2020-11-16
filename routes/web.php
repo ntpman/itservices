@@ -69,11 +69,11 @@ Route::group(['middleware' => ['auth']], function () {
         });
         // subtype
         Route::name('subtype.')->group(function () {
-            Route::get('/subtype', 'Basics\SubtypeController@index')->name('index');
-            Route::get('/subtype/create', 'Basics\SubtypeController@create')->name('create');
-            Route::post('/subtype', 'Basics\SubtypeController@store')->name('store');
-            Route::get('/subtype/{subtype}/edit', 'Basics\SubtypeController@edit')->name('edit');
-            Route::put('/subtype/{subtype}', 'Basics\SubtypeController@update')->name('update');
+            Route::get('/subtype', 'Basics\SubTypeController@index')->name('index');
+            Route::get('/subtype/create', 'Basics\SubTypeController@create')->name('create');
+            Route::post('/subtype', 'Basics\SubTypeController@store')->name('store');
+            Route::get('/subtype/{subtype}/edit', 'Basics\SubTypeController@edit')->name('edit');
+            Route::put('/subtype/{subtype}', 'Basics\SubTypeController@update')->name('update');
         });
         // usage
         Route::name('usage.')->group(function () {
