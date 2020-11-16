@@ -37,6 +37,16 @@ class CreateAssetRequest extends FormRequest
             'asset_warranty_period' => ['required', 'string', 'max:50'],
             'asset_recived' => ['required', 'date'],
             'asset_retired' => ['nullable', 'date'],
+            // detail
+            'asset_detail_description' => ['required', 'string'],
+            'asset_detail_amont' => ['required', 'string', 'max:50'],
+            // owner
+            'asset_owner_name' => ['required', 'string', 'max:150'],
+            'asset_owner_started' => ['required', 'date'],
+            // location
+            'building_id' => ['required', 'integer',],
+            'location_floor' => ['required', 'string', 'max:25'],
+            'location_room' => ['required', 'string', 'max:50'],
         ];
     }
 

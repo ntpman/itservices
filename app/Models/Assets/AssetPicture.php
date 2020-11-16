@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Model\Assets;
+namespace App\Models\Assets;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Model\Assets\Asset;
+use App\Models\Assets\Asset;
 
 class AssetPicture extends Model
 {

@@ -53,6 +53,7 @@ class AssetController extends Controller
         $brandModels = BrandModel::where('brand_model_status', 'A')->get();
         $commons = Common::where('common_status', 'A')->get();
         $usages = Usage::where('usage_status', 'A')->get();
+        $buildings = Building::where('building_status', 'A')->get();
         $suppliers = Supplier::where('supplier_status', 'A')->get();
         
         return view('assets.asset.create', [
@@ -62,6 +63,7 @@ class AssetController extends Controller
             'brandModels' => $brandModels,
             'commons' => $commons,
             'usages' => $usages,
+            'buildings' => $buildings,
             'suppliers' => $suppliers,
         ]);
     }
@@ -94,7 +96,30 @@ class AssetController extends Controller
         $asset->asset_retired = $request->input('asset_retired');
         $asset->created_by = auth()->user()->name;
 
-        if($asset->save()) {
+        if ($asset->save()) {
+
+            $assetDetail = new AssetDetail;
+            $assetDetail->asset_id = $asset->id;
+            $assetDetail->asset_detail_description = $request->input('asset_detail_description');
+            $assetDetail->asset_detail_amont = $request->input('asset_detail_amont');
+            $assetDetail->asset_detail_comment = $request->input('asset_detail_comment');
+            $assetDetail->created_by = auth()->user()->name;
+            $assetDetail->save();
+
+            $assetOwner = new AssetOwner;
+            $assetOwner->asset_id = $asset->id;
+            $assetOwner->asset_owner_name =  $request->input('asset_owner_name');
+            $assetOwner->asset_owner_started =  $request->input('asset_owner_started');
+            $assetOwner->created_by = auth()->user()->name;
+            $assetOwner->save();
+
+            $location = new Location;
+            $location->asset_id = $asset->id;
+            $location->building_id = $request->input('building_id');
+            $location->location_floor = $request->input('location_floor');
+            $location->location_room = $request->input('location_room');
+            $location->created_by = auth()->user()->name;
+            $location->save();
             
             Session::flash('success_msg', 'บันทึกข้อมูลเรียบร้อย');
 
@@ -158,7 +183,7 @@ class AssetController extends Controller
         /**
          * Check Value Input Name hide 
          */
-        if($request->input('edit-asset_number') == 1) {
+        if ($request->input('edit-asset_number') == 1) {
             $request->validate([
                 'asset_number' => ['required', 'string', 'max:50', 'unique:assets,asset_number'],
             ]);
@@ -175,7 +200,7 @@ class AssetController extends Controller
             return redirect()->back();
         }
 
-        if($request->input('edit-asset_serial_number') == 1) {
+        if ($request->input('edit-asset_serial_number') == 1) {
             $request->validate([
                 'asset_serial_number' => ['required', 'string', 'max:50', 'unique:assets,asset_serial_number'],
             ]);

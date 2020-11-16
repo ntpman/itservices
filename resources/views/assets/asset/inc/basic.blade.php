@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="form-group">
-            <label for="type_id">รหัสประเภทครุภัณฑ์</label>
+            <label for="type_id">รหัสประเภทครุภัณฑ์ <span><sup class="text-danger">*</sup></span> </label>
             <select class="form-control select2bs4 @error('type_id') is-invalid @enderror" 
                 style="width: 100%;"
                 name="type_id"
@@ -47,7 +47,7 @@
     <!-- /.col -->
     <div class="col-lg-6">
         <div class="form-group">
-            <label for="brand_id">รหัสยี่ห้อครุภัณฑ์</label>
+            <label for="brand_id">รหัสยี่ห้อครุภัณฑ์ <span><sup class="text-danger">*</sup></span> </label>
             <select class="form-control select2bs4 @error('brand_id') is-invalid @enderror" 
                 style="width: 100%;"
                 name="brand_id"
@@ -93,7 +93,7 @@
     <!-- /.col -->
     <div class="col-lg-6">
         <div class="form-group">
-            <label for="common_id">รหัสชื่อครุภัณฑ์</label>
+            <label for="common_id">รหัสชื่อครุภัณฑ์ <span><sup class="text-danger">*</sup></span> </label>
             <select class="form-control select2bs4 @error('common_id') is-invalid @enderror" 
                 style="width: 100%;"
                 name="common_id"
@@ -116,7 +116,7 @@
     <!-- /.col -->
     <div class="col-lg-6">
         <div class="form-group">
-            <label for="usage_id">รหัสสถานะการใช้งานครุภัณฑ์</label>
+            <label for="usage_id">รหัสสถานะการใช้งานครุภัณฑ์ <span><sup class="text-danger">*</sup></span> </label>
             <select class="form-control select2bs4 @error('usage_id') is-invalid @enderror" 
                 style="width: 100%;"
                 name="usage_id"
@@ -139,8 +139,8 @@
     <!-- /.col -->
     <div class="col-lg-6">
         <div class="form-group">
-            <label for="supplier_id">รหัสผู้แทนจำหน่ายครุภัณฑ์</label>
-            <a href="#" data-toggle="modal" data-target="#modal-create-supplier_id">
+            <label for="supplier_id">รหัสผู้แทนจำหน่ายครุภัณฑ์ <span><sup class="text-danger">*</sup></span> </label>
+            <a href="#" data-toggle="modal" data-target="#create-supplier_id">
                 <i class="fas fa-plus"></i> Supplier
             </a>
             <select class="form-control select2bs4 @error('supplier_id') is-invalid @enderror" 

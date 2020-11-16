@@ -65,11 +65,16 @@ class SupplierController extends Controller
         $supplier->created_by = auth()->user()->name;
 
         if ($supplier->save()) {
-            
-            Session::flash('success_msg', 'เพิ่มผู้จำหน่ายสินค้าเรียบร้อย');
 
-            return redirect('/supplier');
+            if ($request->input('create-supplier_id') == 1) {
+                Session::flash('success_msg', 'เพิ่มผู้จำหน่ายสินค้าเรียบร้อย');
 
+                return redirect()->back();
+            } else {
+                Session::flash('success_msg', 'เพิ่มผู้จำหน่ายสินค้าเรียบร้อย');
+
+                return redirect('/supplier');
+            }
         }
     }
 
