@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/helpdesk', 'Helpdesks\FormController@index')->name('index');
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
