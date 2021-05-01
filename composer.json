@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.18.35",
         "laravel/tinker": "^2.0",
-        "laravelcollective/html": "^6.2"
+        "laravelcollective/html": "^6.2",
+        "phattarachai/thaidate": "^1.1"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -39,7 +40,8 @@
         "classmap": [
             "database/seeds",
             "database/factories"
-        ]
+        ],
+        "files" : ["app/Helper.php"]
     },
     "autoload-dev": {
         "psr-4": {

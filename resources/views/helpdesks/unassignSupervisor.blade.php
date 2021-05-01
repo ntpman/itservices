@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Helpdesk Main Page
+    | Helpdesk Un Assign Supervisor Page
 @endsection
 
 @section('content')
@@ -11,17 +11,11 @@
         <div class="col-lg-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">ข้อมูลแบบสั่งซ่อม/ทำสิ่งของ (F-CD0-071) ประจำปีงบประมาณ</h3>
+                    <h3 class="card-title">แบบสั่งซ่อม/ทำสิ่งของ (F-CD0-071) ที่รอการมอบหมายหัวหน้างาน</h3>
                     <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/create"><i class="fas fa-plus"></i> เพิ่มข้อมูลแบบ F-CD0-071</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/unAssignSupervisor"><i class="fas fa-tasks"></i></i> มอบหมายหัวหน้างาน</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/unAssignWorker"><i class="fas fa-tools"></i></i> มอบหมายผู้ปฏิบัติงาน</a>
+                                <a class="nav-link active" href="/helpdesk"><i class="fas fa-home"></i></i> กลับหน้าหลัก</a>
                             </li>
                         </ul>
                     </div>
@@ -38,9 +32,9 @@
                                     {{-- <th>เวลารับเอกสาร</th> --}}
                                     <th>ผู้แจ้ง</th>
                                     <th>ความประสงค์</th>
-                                    <th>ผู้รับผิดชอบ</th>
+                                    {{-- <th>ผู้รับผิดชอบ</th> --}}
                                     <th>สถานะการดำเนินงาน</th>
-                                    <th>รายละเอียดแบบสั่งซ่อม/ทำสิ่งของ</th>
+                                    <th>มอบหมายงานหัวหน้างาน</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,10 +49,10 @@
                                         {{-- <td>{{ $item->time_recieved }}</td> --}}
                                         <td>{{ $item->request_owner }}</td>
                                         <td>{{ $item->request_objective }}</td>
-                                        <td>{{ $item->request_responsed }}</td>
+                                        {{-- <td>{{ $item->request_responsed }}</td> --}}
                                         <td>{{ $item->request_status }}</td>
                                         <td>
-                                            <a href="{{ asset('/')}}{{ $item->request_file }}" class="btn btn-info btn-xs"> <i class="fas fa-search"></i> คลิกดูรายละเอียด </a>
+                                            <a href="/helpdesk/assignSupervisor" class="btn btn-info btn-xs"> <i class="fas fa-pencil-alt"></i> มอบหมายหัวหน้างาน </a>
                                         </td>
                                     </tr>
                                 @endforeach

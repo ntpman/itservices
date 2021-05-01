@@ -15,13 +15,7 @@
                     <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/create"><i class="fas fa-plus"></i> เพิ่มข้อมูลแบบ F-CD0-071</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/unAssignSupervisor"><i class="fas fa-tasks"></i></i> มอบหมายหัวหน้างาน</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/unAssignWorker"><i class="fas fa-tools"></i></i> มอบหมายผู้ปฏิบัติงาน</a>
+                                <a class="nav-link active" href="/helpdesk"><i class="fas fa-home"></i></i> กลับหน้าหลัก</a>
                             </li>
                         </ul>
                     </div>
@@ -58,7 +52,7 @@
                                         <td>{{ $item->request_responsed }}</td>
                                         <td>{{ $item->request_status }}</td>
                                         <td>
-                                            <a href="{{ asset('/')}}{{ $item->request_file }}" class="btn btn-info btn-xs"> <i class="fas fa-search"></i> คลิกดูรายละเอียด </a>
+                                            <a href="/helpdesk/assignWorker" class="btn btn-info btn-xs"> <i class="fas fa-pencil-alt"></i> มอบหมายผู้ปฏิบัติ </a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+use App\Models\Helpdesks\RequestInfo;
+
 
 class FormController extends Controller
 {
@@ -16,7 +18,11 @@ class FormController extends Controller
      */
     public function index()
     {
-        return view('helpdesks.index');
+        $requestInfos = RequestInfo::all();
+
+        return view('helpdesks.index', [
+            'requestInfos' => $requestInfos
+        ]);
     }
 
     /**
@@ -26,7 +32,7 @@ class FormController extends Controller
      */
     public function create()
     {
-        return view('basics.brand.create');
+        return view('helpdesks.create');
     }
 
     /**
@@ -37,23 +43,58 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+
+        // dd($request->request_date,
+        // $request->director,
+        // $request->name,
+        // $request->division,
+        // $request->sub_division,
+        // $request->building,
+        // $request->floor,
+        // $request->room,
+        // $request->phone,
+        // $request->email,
+        // $request->request_type,
+        // $request->request_objective,
+        // $request->inv_number,
+        // $request->request_detail);
+
         //validate date
-        $this->validate($request, [
-            'brandFullName' => 'required|unique:brands,brand_full_name',
-            'brandAbbrName' => 'nullable|unique:brands,brand_abbr_name',
-        ]);
+        // $this->validate($request, [
+        //     'brandFullName' => 'required|unique:brands,brand_full_name',
+        //     'brandAbbrName' => 'nullable|unique:brands,brand_abbr_name',
+        // ]);
 
         //Add new data
-        $addBrand = new Brand;
-        $addBrand->brand_full_name = $request->input('brandFullName');
-        $addBrand->brand_abbr_name = $request->input('brandAbbrName');
-        $addBrand->brand_status = 'A';
-        $addBrand->created_by = auth()->user()->name;
-        $addBrand->save();
+        $addNewRequest = new RequestInfo;
+        $addNewRequest->request_date = $request->input('request_date');
+        $addNewRequest->director = $request->input('director');
+        $addNewRequest->document_route = $request->input('document_route');
+        $addNewRequest->request_owner = $request->input('request_owner');
+        $addNewRequest->division = $request->input('division');
+        $addNewRequest->sub_division = $request->input('sub_division');
+        $addNewRequest->building = $request->input('building');
+        $addNewRequest->floor = $request->input('floor');
+        $addNewRequest->room = $request->input('room');
+        $addNewRequest->phone = $request->input('phone');
+        $addNewRequest->email = $request->input('email');
+        $addNewRequest->request_type = $request->input('request_type');
+        $addNewRequest->request_objective = $request->input('request_objective');
+        $addNewRequest->inv_number = $request->input('inv_number');
+        $addNewRequest->request_detail = $request->input('request_detail');
+        $addNewRequest->request_recieved = $request->input('request_recieved');
+        $addNewRequest->request_number = $request->input('request_number');
+        $addNewRequest->request_responsed = "หก.ทส.";
+        $addNewRequest->request_status = "รอมอบหมายงาน";
+        $fileName = date('Ymdhis').'.'.request()->file('request_file')->getClientOriginalExtension();
+        $addNewRequest->request_file = request()->file('request_file')->move('storage/images', $fileName);
+        $addNewRequest->created_by = "ทดสอบ";
+        $addNewRequest->save();
 
-        Session::flash('success_msg', 'บันทึกข้อมูลยี่ห้อผลิตภัณฑ์เรียบร้อย');
+        Session::flash('success_msg', 'บันทึกข้อมูลใบแจ้งปัญหาเรียบร้อย');
 
-        return redirect('/basics/brand');
+        return redirect('/helpdesk');
     }
 
     /**

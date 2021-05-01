@@ -17,7 +17,7 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title text-lg text-olive">ระบบจัดการบัญชีผู้ใช้ DSS WiFi</h3>
+                        <h3 class="card-title text-lg text-olive" style="margin-bottom: 10px">ระบบจัดการบัญชีผู้ใช้ DSS WiFi</h3>
                         <p class="card-text text-sm-left" >สำหรับการสร้างบัญชีใช้งาน WiFi ให้กับผู้ใช้งานภายนอกที่เข้ามาใช้บริการของ วศ. 
                             ตามที่ได้รับการร้องขอจากหน่วยงานภายใน วศ. และอุปกรณ์ Mobile ของ วศ. ที่ลงทะเบียนด้วย MAC Address</p>
                         <a href="http://tucker.dss.local/itservices/" target ="_blank" class="btn btn-primary">คลิก</a>
@@ -27,7 +27,7 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title text-lg text-primary">ระบบจัดการองค์ความรู้ด้านไอที</h3>
+                        <h3 class="card-title text-lg text-primary" style="margin-bottom: 10px">ระบบจัดการองค์ความรู้ด้านไอที</h3>
                         <p class="card-text text-sm-left" >สำหรับการรวบรวมขั้นตอน และวิธีการปฏิบัติงานต่างๆ ที่นำมาใช้ในการปฏิบัติงาน
                             ของเจ้าหน้าที่ฝ่ายเทคโนโลยีสารสนเทศ เช่น การแก้ไขปัญหาจากการใช้งานระบบ การติดตั้งและปรับแต่งระบบปฏิบัติการ ฯลฯ
                         </p>
@@ -40,11 +40,22 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title text-lg text-lightblue ">ระบบ Network Monitoring (cacti)</h3>
+                        <h3 class="card-title text-lg text-lightblue" style="margin-bottom: 10px">ระบบ Network Monitoring (cacti)</h3>
                         <p class="card-text text-sm-left">สำหรับการตรวจสอบสถานะการทำงานของอุปกรณ์เครือข่าย และเครื่องคอมพิวเตอร์แม่ข่าย
                             ที่มีการติดตั้งใช้งานภายใน DSS Network ด้วยโปรแกรม cacti
                         </p>
                         <a href="http://watson.dss.local/cacti/" target="_blank" class="btn btn-primary">คลิก</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-lg text-secondary" style="margin-bottom: 10px">ระบบจัดการเครื่องแม่ข่ายแบบเสมือน</h3>
+                        <p class="card-text text-sm-left">สำหรับการบริการจัดการเครื่องแม่ข่าย VMWare ESXi Server และ VMWare Client 
+                            ที่มีการติดตั้งใช้งานภายใน วศ. ด้วยโปรแกรม vSphere Web Client
+                        </p>
+                        <a href="http://jiffy.dss.local/" target="_blank" class="btn btn-primary">คลิก</a>
                     </div>
                 </div>
             </div>

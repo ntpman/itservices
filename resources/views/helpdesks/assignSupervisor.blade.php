@@ -15,13 +15,10 @@
                     <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/create"><i class="fas fa-plus"></i> เพิ่มข้อมูลแบบ F-CD0-071</a>
+                                <a class="nav-link active" href="/helpdesk"><i class="fas fa-home"></i></i> กลับหน้าหลัก</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="/helpdesk/unAssignSupervisor"><i class="fas fa-tasks"></i></i> มอบหมายหัวหน้างาน</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/unAssignWorker"><i class="fas fa-tools"></i></i> มอบหมายผู้ปฏิบัติงาน</a>
                             </li>
                         </ul>
                     </div>

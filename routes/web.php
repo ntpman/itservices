@@ -16,6 +16,13 @@ Route::get('/', function () {
 });
 
 Route::get('/helpdesk', 'Helpdesks\FormController@index')->name('index');
+Route::get('/helpdesk/create', 'Helpdesks\FormController@create')->name('create');
+Route::post('/helpdesk', 'Helpdesks\FormController@store')->name('store');
+
+Route::get('/helpdesk/unAssignSupervisor', 'Helpdesks\RequestAssignController@unAssignSupervisor')->name('unAssignSupervisor');
+Route::get('/helpdesk/assignSupervisor', 'Helpdesks\RequestAssignController@assignSupervisor')->name('assignSupervisor');
+Route::get('/helpdesk/unAssignWorker', 'Helpdesks\RequestAssignController@unAssignWorker')->name('unAssignWorker');
+Route::get('/helpdesk/assignWorker', 'Helpdesks\RequestAssignController@assignWorker')->name('assignWorker');
 
 Auth::routes();
 
