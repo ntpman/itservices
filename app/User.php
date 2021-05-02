@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use App\Profile;
-use App\Model\Asset\Asset;
+use App\Models\Assets\Asset;
 
 class User extends Authenticatable
 {
@@ -49,5 +49,15 @@ class User extends Authenticatable
     public function assets()
     {
         return $this->hasMany(Asset::class);
+    }
+
+    public function requestAssigns()
+    {
+        return $this->hasMany(RequestAssign::class,'user_id','id');
+    }
+
+    public function requestInfos()
+    {
+        return $this->hasMany(RequestInfo::class,'user_id','id');
     }
 }

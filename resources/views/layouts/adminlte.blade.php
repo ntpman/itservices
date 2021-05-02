@@ -23,9 +23,17 @@
     <link rel="stylesheet" href="{{ asset('/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('/adminlte/dist/css/adminlte.min.css') }}">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset ('/adminlte/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- Google Font: Source -->
     <link rel="stylesheet" href="{{ asset('/css/font.css') }}">
+
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href=" {{ asset('/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+
     <!-- Custom Css -->
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+
     @yield('custom-css')
 </head>
 <body class="hold-transition sidebar-mini text-sm">
@@ -132,6 +140,12 @@
     <script src="{{ asset('/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('/adminlte/dist/js/adminlte.min.js') }}"></script>
+    <!-- date-range-picker -->
+    <script src="{{ asset('/adminlte/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src=" {{ asset('/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
     <!-- REQUIRED SCRIPTS -->
     @if (Session::has('success_msg'))
         <script type="text/javascript">
@@ -165,6 +179,15 @@
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
+            });
+
+            //Date picker
+            $('#reservationdate').datetimepicker({
+                format: 'YYYY-MM-DD'
+            });
+
+            $('#request_recieved').datetimepicker({
+                format: 'YYYY-MM-DD'
             });
 
             //Initialize Select2 Elements

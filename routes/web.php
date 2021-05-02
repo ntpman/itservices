@@ -11,9 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('helpdesks.index');
+// });
+
+Route::get('/', 'Helpdesks\ViewController@index');
+
+Route::get('/helpdesk', 'Helpdesks\ViewController@index')->name('index');
+Route::get('/helpdesk/create', 'Helpdesks\FormController@create')->name('create');
+Route::post('/helpdesk/save', 'Helpdesks\FormController@store')->name('store');
+
+Route::get('/helpdesk/unAssignSupervisor', 'Helpdesks\RequestAssignController@unAssignSupervisor')->name('unAssignSupervisor');
+Route::get('/helpdesk/assignSupervisor/{id}', 'Helpdesks\RequestAssignController@assignSupervisor')->name('assignSupervisor');
+Route::post('/helpdesk/saveSupervisor', 'Helpdesks\RequestAssignController@saveSupervisor')->name('saveSupervisor');
+Route::get('/helpdesk/unAssignWorker', 'Helpdesks\RequestAssignController@unAssignWorker')->name('unAssignWorker');
+Route::get('/helpdesk/assignWorker/{id}', 'Helpdesks\RequestAssignController@assignWorker')->name('assignWorker');
+Route::post('/helpdesk/saveWorker', 'Helpdesks\RequestAssignController@saveWorker')->name('saveWorker');
 
 Auth::routes();
 
