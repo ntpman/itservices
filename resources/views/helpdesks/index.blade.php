@@ -6,25 +6,33 @@
 
 @section('content')
     
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
                     <h3 class="card-title">แบบสั่งซ่อม/ทำสิ่งของ (F-CD0-071) ที่อยู่ระหว่างดำเนินการ</h3>
-                    <div class="card-tools">
+                    {{-- <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active btn btn-info" href="/helpdesk/create"><i class="fas fa-plus"></i> เพิ่มข้อมูล</a>
-                            </li>&nbsp;
-                            <li class="nav-item">
-                                <a class="nav-link active btn btn-success" href="/helpdesk/unAssignSupervisor"><i class="fas fa-tasks"></i></i> มอบหมายหัวหน้างาน</a>
-                            </li>&nbsp;
-                            <li class="nav-item">
-                                <a class="nav-link active btn btn-warning" href="/helpdesk/unAssignWorker"><i class="fas fa-tools"></i></i> มอบหมายผู้ปฏิบัติงาน</a>
-                            </li>
+                            @if (Auth::user() != '')
+                                @if (Auth::user()->position == 'ธุรการกลุ่ม')
+                                    <li class="nav-item">
+                                        <a class="nav-link active btn btn-primary" href="/helpdesk/create"><i class="fas fa-tools"></i></i>เพิ่มข้อมูลใบสั่ง</a>
+                                    </li>
+                                @endif
+                                @if (Auth::user()->position == 'หัวหน้างาน')
+                                    <li class="nav-item">
+                                        <a class="nav-link active btn btn-warning" href="/helpdesk/unAssignWorker"><i class="fas fa-tools"></i></i> มอบหมายผู้ปฏิบัติงาน</a>
+                                    </li>
+                                @endif
+                                @if (Auth::user()->position == 'รก.หก.ทส.')
+                                    <li class="nav-item">
+                                        <a class="nav-link active btn btn-success" href="/helpdesk/unAssignSupervisor"><i class="fas fa-tasks"></i></i> มอบหมายหัวหน้างาน</a>
+                                </li>&nbsp;
+                                @endif
+                            @endif
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive">

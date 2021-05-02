@@ -12,6 +12,10 @@ use App\Models\Helpdesks\RequestAssign;
 
 class FormController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,11 +23,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $request = RequestInfo::all();
 
-        return view('helpdesks.index', [
-            'requests' => $request,
-        ]);
     }
 
     /**
@@ -73,7 +73,7 @@ class FormController extends Controller
         $addNewRequest->request_status = "รอมอบหมายหัวหน้างาน";
         $fileName = date('Ymdhis').'.'.request()->file('request_file')->getClientOriginalExtension();
         $addNewRequest->request_file = request()->file('request_file')->move('storage/images', $fileName);
-        $addNewRequest->created_by = "ทดสอบ";
+        $addNewRequest->created_by = auth()->user()->name;
         $addNewRequest->save();
 
         //Add request assignment
@@ -83,7 +83,7 @@ class FormController extends Controller
         $addRequestAssing->user_id = 2;
         $addRequestAssing->assign_status = "รอมอบหมายหัวหน้างาน"; 
         $addRequestAssing->assign_date = $request->input('request_recieved');
-        $addRequestAssing->created_by = "ทดสอบ";
+        $addRequestAssing->created_by = auth()->user()->name;
         $addRequestAssing->save();
 
         Session::flash('success_msg', 'บันทึกข้อมูลใบแจ้งปัญหาเรียบร้อย');
@@ -110,9 +110,7 @@ class FormController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('basics.brand.edit', [
-            'editBrand' => $brand
-        ]);
+        
     }
 
     /**
@@ -122,52 +120,9 @@ class FormController extends Controller
      * @param  \App\Models\Basics\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(Request $request)
     {
-        /**
-         * Check Set Value: 1 => true
-         */
-        if ($request->input('edit-brandStatus') == 1) {
-            //update data
-            $updateBrand = Brand::find($brand->id);
-            $updateBrand->brand_status = $request->input('brandStatus');
-            $updateBrand->updated_by = auth()->user()->name;
-            $updateBrand->save();
 
-            Session::flash('success_msg', 'แก้ไขสถานะยี่ห้อผลิตภัณฑ์เรียบร้อย');
-            //return index view
-            return redirect('/basics/brand');
-        }
-
-        if ($request->input('edit-brandFullName') == 1) {
-            //validate data
-            $this->validate($request, [
-                'brandFullName' => 'required|unique:brands,brand_full_name',
-            ]);
-            //update data
-            $updateBrand = Brand::find($brand->id);
-            $updateBrand->brand_full_name = $request->input('brandFullName');
-            $updateBrand->updated_by = auth()->user()->name;
-            $updateBrand->save();
-            Session::flash('success_msg', 'แก้ไขชื่อเต็มยี่ห้อผลิตภัณฑ์เรียบร้อย');
-            //return index view
-            return redirect()->back();
-        }
-        
-        if ($request->input('edit-brandAbbrName') == 1) {
-            //validate data
-            $this->validate($request, [
-                'brandAbbrName' => 'nullable|unique:brands,brand_abbr_name',
-            ]);
-            //update data
-            $updateBrand = Brand::find($brand->id);
-            $updateBrand->brand_abbr_name = $request->input('brandAbbrName');
-            $updateBrand->updated_by = auth()->user()->name;
-            $updateBrand->save();
-            Session::flash('success_msg', 'แก้ไขชื่อย่อยี่ห้อผลิตภัณฑ์เรียบร้อย');
-            //return index view
-            return redirect()->back();
-        }
     }
 
     /**

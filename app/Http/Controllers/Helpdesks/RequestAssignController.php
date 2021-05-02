@@ -12,6 +12,11 @@ use App\User;
 
 class RequestAssignController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -119,13 +124,13 @@ class RequestAssignController extends Controller
         $addSupervisor->user_id = $request->input('supervisor');
         $addSupervisor->assign_status = "รอมอบหมายผู้ปฏิบัติงาน";
         $addSupervisor->assign_date = date('Y-m-d');
-        $addSupervisor->created_by = "หัวหน้ากลุ่ม";
+        $addSupervisor->created_by = auth()->user()->name;
         $addSupervisor->save();
 
         $requestInfo = RequestInfo::find($request->request_info_id);
         $requestInfo->user_id = $request->input('supervisor');
         $requestInfo->request_status = "รอมอบหมายผู้ปฏิบัติงาน";
-        $requestInfo->updated_by = "หัวหน้ากลุ่ม";
+        $requestInfo->updated_by = auth()->user()->name;
         $requestInfo->save();
 
         Session::flash('success_msg', 'มอบหมายหัวหน้างานเรียบร้อย');
@@ -142,13 +147,13 @@ class RequestAssignController extends Controller
         $addWorker->user_id = $request->input('worker');
         $addWorker->assign_status = "อยู่ระหว่างดำเนินงาน";
         $addWorker->assign_date = date('Y-m-d');
-        $addWorker->created_by = "หัวหน้างาน";
+        $addWorker->created_by = auth()->user()->name;
         $addWorker->save();
 
         $requestInfo = RequestInfo::find($request->request_info_id);
         $requestInfo->user_id = $request->input('worker');
         $requestInfo->request_status = "อยู่ระหว่างดำเนินงาน";
-        $requestInfo->updated_by = "หัวหน้างาน";
+        $requestInfo->updated_by = auth()->user()->name;
         $requestInfo->save();
 
         Session::flash('success_msg', 'มอบหมายผู้ปฏิบัติงานเรียบร้อย');
