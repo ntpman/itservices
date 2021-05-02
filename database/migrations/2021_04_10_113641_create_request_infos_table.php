@@ -16,8 +16,8 @@ class CreateRequestInfosTable extends Migration
         Schema::create('request_infos', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('รหัสรายการ');
             $table->date('request_date')->comment('วันที่จัดทำเอกสาร');
-            $table->string('director', 20)->comment('หน่วยงานผู้สร้างเอกสาร');
-            $table->string('document_route', 120)->comment('สายบังคับบัญชาของผู้แจ้ง');
+            $table->string('org_responsible', 20)->comment('หน่วยงานที่รับผิดชอบ');
+            $table->string('chain_of_command', 120)->comment('สายบังคับบัญชาของผู้แจ้ง');
             $table->string('request_owner',100)->comment('ชื่อผู้แจ้ง');
             $table->string('division', 255)->comment('หน่วยงานผู้แจ้ง');
             $table->string('sub_division', 100)->comment('กลุ่มงานผู้แจ้ง');
@@ -32,12 +32,14 @@ class CreateRequestInfosTable extends Migration
             $table->text('request_detail', 150)->comment('รายละเอียดของความต้องการ');
             $table->date('request_recieved')->comment('วันที่รับเอกสาร')->nullable();
             $table->text('request_number', 50)->comment('เลขที่เอกสารของฝ่าย');
-            $table->string('request_responsed',100)->comment('ชื่อผู้รับผิดชอบ')->nullable();
-            $table->string('request_status', 100)->comment('สถานะการดำเนินงาน');
+            $table->unsignedBigInteger('user_id')->comment('รหัสผู้ถูกมอบหมายงาน');
+            $table->text('request_status', 50)->comment('สถานะการดำเนินงาน');
             $table->string('request_file', 100)->comment('ไฟล์ใบแจ้งปัญหา');
             $table->string('created_by', 50)->comment('รหัสผู้สร้างข้อมูล');
             $table->string('updated_by', 50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
     /**

@@ -1,12 +1,12 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Helpdesk Un Assign Supervisor Page
+    | Helpdesk Assign Supervisor Page
 @endsection
 
 @section('content')
     
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-primary card-outline">
@@ -15,7 +15,7 @@
                     <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk"><i class="fas fa-home"></i></i> กลับหน้าหลัก</a>
+                                <a class="nav-link active btn-danger" href="/helpdesk"><i class="fas fa-home"></i></i> กลับหน้าหลัก</a>
                             </li>
                         </ul>
                     </div>
@@ -26,33 +26,24 @@
                         @if (count($requestInfos) > 0)
                             <thead>
                                 <tr>
-                                    {{-- <th>#</th> --}}
                                     <th>เลขที่เอกสาร</th>
                                     <th>วันที่รับเอกสาร</th>
-                                    {{-- <th>เวลารับเอกสาร</th> --}}
                                     <th>ผู้แจ้ง</th>
                                     <th>ความประสงค์</th>
-                                    {{-- <th>ผู้รับผิดชอบ</th> --}}
-                                    <th>สถานะการดำเนินงาน</th>
-                                    <th>มอบหมายงานหัวหน้างาน</th>
+                                    <th>สถานะ</th>
+                                    <th>มอบหมายงาน</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
                                 @foreach ($requestInfos as $item)                                  
                                     <tr>
-                                        {{-- <td>{{ $i++ }}</td> --}}
                                         <td>{{ $item->request_number }}</td>
                                         <td>{{ $item->request_recieved }}</td>
-                                        {{-- <td>{{ $item->time_recieved }}</td> --}}
                                         <td>{{ $item->request_owner }}</td>
                                         <td>{{ $item->request_objective }}</td>
-                                        {{-- <td>{{ $item->request_responsed }}</td> --}}
                                         <td>{{ $item->request_status }}</td>
                                         <td>
-                                            <a href="/helpdesk/assignSupervisor" class="btn btn-info btn-xs"> <i class="fas fa-pencil-alt"></i> มอบหมายหัวหน้างาน </a>
+                                            <a href="/helpdesk/assignSupervisor/{{ $item->id}}" class="btn btn-info btn-xs"> <i class="fas fa-pencil-alt"></i> มอบหมายหัวหน้างาน</a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Profile;
 use App\Models\Assets\Asset;
-use App\Models\Helpdesks\RequestAssign;
 
 class User extends Authenticatable
 {
@@ -54,6 +53,11 @@ class User extends Authenticatable
 
     public function requestAssigns()
     {
-        return $this->hasMany(RequestAssign::class);
+        return $this->hasMany(RequestAssign::class,'user_id','id');
+    }
+
+    public function requestInfos()
+    {
+        return $this->hasMany(RequestInfo::class,'user_id','id');
     }
 }

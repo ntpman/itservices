@@ -11,17 +11,17 @@
         <div class="col-lg-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">ข้อมูลแบบสั่งซ่อม/ทำสิ่งของ (F-CD0-071) ประจำปีงบประมาณ</h3>
+                    <h3 class="card-title">แบบสั่งซ่อม/ทำสิ่งของ (F-CD0-071) ที่อยู่ระหว่างดำเนินการ</h3>
                     <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/create"><i class="fas fa-plus"></i> เพิ่มข้อมูลแบบ F-CD0-071</a>
-                            </li>
+                                <a class="nav-link active btn btn-info" href="/helpdesk/create"><i class="fas fa-plus"></i> เพิ่มข้อมูล</a>
+                            </li>&nbsp;
                             <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/unAssignSupervisor"><i class="fas fa-tasks"></i></i> มอบหมายหัวหน้างาน</a>
-                            </li>
+                                <a class="nav-link active btn btn-success" href="/helpdesk/unAssignSupervisor"><i class="fas fa-tasks"></i></i> มอบหมายหัวหน้างาน</a>
+                            </li>&nbsp;
                             <li class="nav-item">
-                                <a class="nav-link active" href="/helpdesk/unAssignWorker"><i class="fas fa-tools"></i></i> มอบหมายผู้ปฏิบัติงาน</a>
+                                <a class="nav-link active btn btn-warning" href="/helpdesk/unAssignWorker"><i class="fas fa-tools"></i></i> มอบหมายผู้ปฏิบัติงาน</a>
                             </li>
                         </ul>
                     </div>
@@ -29,35 +29,30 @@
                 <!-- /.card-header -->
                 <div class="card-body table-responsive">
                     <table id="" class="table table-bordered table-striped table-sm datatables">
-                        @if (count($requestInfos) > 0)
+                        @if (count($requests) > 0)
                             <thead>
                                 <tr>
-                                    {{-- <th>#</th> --}}
-                                    <th>เลขที่เอกสาร</th>
-                                    <th>วันที่รับเอกสาร</th>
-                                    {{-- <th>เวลารับเอกสาร</th> --}}
-                                    <th>ผู้แจ้ง</th>
-                                    <th>ความประสงค์</th>
-                                    <th>ผู้รับผิดชอบ</th>
-                                    <th>สถานะการดำเนินงาน</th>
-                                    <th>รายละเอียดแบบสั่งซ่อม/ทำสิ่งของ</th>
+                                    <th style="text-align: center">เลขที่เอกสาร</th>
+                                    <th style="text-align: center">วันที่รับเอกสาร</th>
+                                    <th style="text-align: center">ผู้แจ้ง</th>
+                                    <th style="text-align: center">ความประสงค์</th>
+                                    <th style="text-align: center">ผู้รับผิดชอบ</th>
+                                    <th style="text-align: center">วันที่มอบหมาย</th>
+                                    <th style="text-align: center">สถานะ</th>
+                                    <th style="text-align: center">ไฟล์ F-CD0-071</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
-                                @foreach ($requestInfos as $item)                                  
+                                @foreach ($requests as $item)                                  
                                     <tr>
-                                        {{-- <td>{{ $i++ }}</td> --}}
                                         <td>{{ $item->request_number }}</td>
-                                        <td>{{ $item->request_recieved }}</td>
-                                        {{-- <td>{{ $item->time_recieved }}</td> --}}
+                                        <td>{{ date ('d-m-Y', strtotime( $item->request_recieved ))}}</td>
                                         <td>{{ $item->request_owner }}</td>
                                         <td>{{ $item->request_objective }}</td>
-                                        <td>{{ $item->request_responsed }}</td>
+                                        <td>{{ $item->user->name}}</td>
+                                        <td>{{date ('d-m-Y', strtotime ($item->updated_at ))}}</td>
                                         <td>{{ $item->request_status }}</td>
-                                        <td>
+                                        <td style="text-align: center">
                                             <a href="{{ asset('/')}}{{ $item->request_file }}" class="btn btn-info btn-xs"> <i class="fas fa-search"></i> คลิกดูรายละเอียด </a>
                                         </td>
                                     </tr>

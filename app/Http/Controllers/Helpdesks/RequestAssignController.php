@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Helpdesks;
 use App\Http\Controllers\Controller;
 use App\Models\Helpdesks\RequestAssign;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Helpdesks\RequestInfo;
+use App\User;
 
 class RequestAssignController extends Controller
 {
@@ -17,10 +19,11 @@ class RequestAssignController extends Controller
      */
     public function unAssignSupervisor()
     {
-        $requestInfos = RequestInfo::all();
+        // $requestAssign = RequestAssign::where('assign_status','=','รอมอบหมายหัวหน้างาน')->get();
+        $requestInfo = RequestInfo::where('request_status','=','รอมอบหมายหัวหน้างาน')->get();
 
         return view('helpdesks.unAssignSupervisor', [
-            'requestInfos' => $requestInfos
+            'requestInfos' => $requestInfo
         ]);
     }
 
@@ -76,12 +79,14 @@ class RequestAssignController extends Controller
         //
     }
 
-    public function assignSupervisor(RequestAssign $requestAssign)
+    public function assignSupervisor(Request $request, RequestAssign $requestAssign)
     {
-        $requestInfos = RequestInfo::all();
+        $requestInfo = RequestInfo::where('id','=',$request->id)->get();
+        $user = User::where('position','like','%หัวหน้างาน%')->get();
 
         return view('helpdesks.assignSupervisor', [
-            'requestInfos' => $requestInfos
+            'requestInfos' => $requestInfo,
+            'users' => $user,
         ]);
     }
 
@@ -101,9 +106,31 @@ class RequestAssignController extends Controller
      * @param  \App\Models\Helpdesks\RequestAssign  $requestAssign
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RequestAssign $requestAssign)
+    public function update(Request $request)
     {
         //
+    }
+
+    public function saveSupervisor(Request $request)
+    {
+        $addSupervisor = new RequestAssign;
+        $addSupervisor->request_info_id = $request->request_info_id;
+        $addSupervisor->user_id = $request->input('supervisor');
+        $addSupervisor->assign_status = "รอมอบหมายผู้ปฏิบัติงาน";
+        $addSupervisor->assign_date = date('Y-m-d');
+        $addSupervisor->created_by = "หัวหน้างาน";
+        $addSupervisor->save();
+
+        $requestInfo = RequestInfo::find($request->request_info_id);
+        $requestInfo->user_id = $request->input('supervisor');
+        $requestInfo->request_status = "รอมอบหมายผู้ปฏิบัติงาน";
+        $requestInfo->updated_by = "หัวหน้างาน";
+        $requestInfo->save();
+
+        Session::flash('success_msg', 'มอบหมายหัวหน้างานเรียบร้อย');
+
+        return redirect('/helpdesk/unAssignSupervisor');
+
     }
 
     /**
