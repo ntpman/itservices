@@ -20,7 +20,7 @@
 							{{ Form::select('typeId', $allType, '', ['class' => 'form-control', 'required']) }}
 						</div>
 						<div class="form-group">
-							{{ Form::label('title','ชื่อครุภัณฑ์ย่อย')}}
+							{{ Form::label('title','ชื่อประเภทครุภัณฑ์ย่อย')}}
 							{{ Form::text('subTypeName', '', ['class' => 'form-control','required']) }}
 						</div>
 						<a href="/basics/subtype" class="btn btn-secondary">ย้อนกลับ</a>

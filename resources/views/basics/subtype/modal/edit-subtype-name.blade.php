@@ -11,7 +11,7 @@
             {!! Form::open(['action' => ['Basics\SubTypeController@update', $editSubType->id], 'method' => 'PUT']) !!}
             <div class="modal-body">
                 <div class="form-group">
-                    {{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}
+                    {{ Form::label('title','ชื่อประเภทครุภัณฑ์ย่อย')}}
                     {{ Form::text('subTypeName', $editSubType->subtype_name, ['class' => 'form-control']) }}
                 </div>
             </div>

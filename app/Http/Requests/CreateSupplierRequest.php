@@ -31,7 +31,7 @@ class CreateSupplierRequest extends FormRequest
             'supplier_subdistrict_id' => ['nullable', 'integer'],
             'supplier_postcode' => ['required', 'string', 'min:5', 'max:5'],
             'supplier_phone' => ['required', 'string', 'max:255'],
-            'supplier_email' => ['required', 'string', 'email', 'max:255'],
+            'supplier_email' => ['required', 'string', '', 'max:255'],
             'supplier_contact' => ['required', 'string', 'max:255'],
             'created_by' => ['nullable', 'string', 'max:50'],
             'updated_by' => ['nullable', 'string', 'max:50'],

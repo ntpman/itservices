@@ -16,11 +16,11 @@
                     {!! Form::open(['action' => ['Basics\SubTypeController@update', $editSubType], 'method'=>'PUT']) !!}
                     <div class="card-body">
                         <div class="form-group">
-                            {{ Form::label('title','ยี่ห้อผลิตภัณฑ์') }}                            
+                            {{ Form::label('title','ประเภทครุภัณฑ์') }}                            
                             {{ Form::select('typeId', $allType, $editSubType->type_id, ['class' => 'form-control']) }}
                         </div>
                         <div class="form-group">
-                            {{ Form::label('title','ชื่อรุ่นผลิตภัณฑ์')}}
+                            {{ Form::label('title','ชื่อประเภทครุภัณฑ์ย่อย')}}
                             <a href="#" data-toggle="modal" data-target="#edit-subTypeName">
                                 <i class="far fa-edit"></i> Edit
                             </a>

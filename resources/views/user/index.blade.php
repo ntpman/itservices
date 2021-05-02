@@ -27,6 +27,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
+                                        <th>Position</th>
                                         <th>Email</th>
                                         <th>Role</th>
                                         <th>Status</th>
@@ -40,6 +41,7 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $item->name }}</td>
+                                            <td>{{ $item->position }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>
                                                 @if ($item->role === 3)
