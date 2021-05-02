@@ -19,7 +19,6 @@ class RequestAssignController extends Controller
      */
     public function unAssignSupervisor()
     {
-        // $requestAssign = RequestAssign::where('assign_status','=','รอมอบหมายหัวหน้างาน')->get();
         $requestInfo = RequestInfo::where('request_status','=','รอมอบหมายหัวหน้างาน')->get();
 
         return view('helpdesks.unAssignSupervisor', [
@@ -29,7 +28,7 @@ class RequestAssignController extends Controller
 
     public function unAssignWorker()
     {
-        $requestInfos = RequestInfo::all();
+        $requestInfos = RequestInfo::where('request_status','=','รอมอบหมายผู้ปฏิบัติงาน')->get();
 
         return view('helpdesks.unAssignWorker', [
             'requestInfos' => $requestInfos
@@ -79,7 +78,7 @@ class RequestAssignController extends Controller
         //
     }
 
-    public function assignSupervisor(Request $request, RequestAssign $requestAssign)
+    public function assignSupervisor(Request $request)
     {
         $requestInfo = RequestInfo::where('id','=',$request->id)->get();
         $user = User::where('position','like','%หัวหน้างาน%')->get();
@@ -90,12 +89,14 @@ class RequestAssignController extends Controller
         ]);
     }
 
-    public function assignWorker(RequestAssign $requestAssign)
+    public function assignWorker(Request $request)
     {
-        $requestInfos = RequestInfo::all();
+        $requestInfos = RequestInfo::where('id','=',$request->id)->get();
+        $user = User::where('position','like','%ปฏิบัติงาน%')->get();
 
         return view('helpdesks.assignWorker', [
-            'requestInfos' => $requestInfos
+            'requestInfos' => $requestInfos,
+            'users' => $user,
         ]);
     }
 
@@ -118,13 +119,13 @@ class RequestAssignController extends Controller
         $addSupervisor->user_id = $request->input('supervisor');
         $addSupervisor->assign_status = "รอมอบหมายผู้ปฏิบัติงาน";
         $addSupervisor->assign_date = date('Y-m-d');
-        $addSupervisor->created_by = "หัวหน้างาน";
+        $addSupervisor->created_by = "หัวหน้ากลุ่ม";
         $addSupervisor->save();
 
         $requestInfo = RequestInfo::find($request->request_info_id);
         $requestInfo->user_id = $request->input('supervisor');
         $requestInfo->request_status = "รอมอบหมายผู้ปฏิบัติงาน";
-        $requestInfo->updated_by = "หัวหน้างาน";
+        $requestInfo->updated_by = "หัวหน้ากลุ่ม";
         $requestInfo->save();
 
         Session::flash('success_msg', 'มอบหมายหัวหน้างานเรียบร้อย');
@@ -133,6 +134,28 @@ class RequestAssignController extends Controller
 
     }
 
+
+    public function saveWorker(Request $request)
+    {
+        $addWorker = new RequestAssign;
+        $addWorker->request_info_id = $request->request_info_id;
+        $addWorker->user_id = $request->input('worker');
+        $addWorker->assign_status = "อยู่ระหว่างดำเนินงาน";
+        $addWorker->assign_date = date('Y-m-d');
+        $addWorker->created_by = "หัวหน้างาน";
+        $addWorker->save();
+
+        $requestInfo = RequestInfo::find($request->request_info_id);
+        $requestInfo->user_id = $request->input('worker');
+        $requestInfo->request_status = "อยู่ระหว่างดำเนินงาน";
+        $requestInfo->updated_by = "หัวหน้างาน";
+        $requestInfo->save();
+
+        Session::flash('success_msg', 'มอบหมายผู้ปฏิบัติงานเรียบร้อย');
+
+        return redirect('/helpdesk/unAssignWorker');
+
+    }
     /**
      * Remove the specified resource from storage.
      *

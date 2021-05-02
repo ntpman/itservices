@@ -23,7 +23,8 @@ Route::get('/helpdesk/unAssignSupervisor', 'Helpdesks\RequestAssignController@un
 Route::get('/helpdesk/assignSupervisor/{id}', 'Helpdesks\RequestAssignController@assignSupervisor')->name('assignSupervisor');
 Route::post('/helpdesk/saveSupervisor', 'Helpdesks\RequestAssignController@saveSupervisor')->name('saveSupervisor');
 Route::get('/helpdesk/unAssignWorker', 'Helpdesks\RequestAssignController@unAssignWorker')->name('unAssignWorker');
-Route::get('/helpdesk/assignWorker', 'Helpdesks\RequestAssignController@assignWorker')->name('assignWorker');
+Route::get('/helpdesk/assignWorker/{id}', 'Helpdesks\RequestAssignController@assignWorker')->name('assignWorker');
+Route::post('/helpdesk/saveWorker', 'Helpdesks\RequestAssignController@saveWorker')->name('saveWorker');
 
 Auth::routes();
 

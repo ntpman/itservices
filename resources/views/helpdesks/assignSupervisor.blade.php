@@ -23,7 +23,6 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     {!! Form::open(['action' => 'Helpdesks\RequestAssignController@saveSupervisor', 'method' => 'POST', 'class' => 'was-validate','enctype'=>'multipart/form-data']) !!}
-
                     {{ Form::label('supervisor','หัวหน้างาน')}}
                     <div class="row">
                         <div class="col-lg-6">

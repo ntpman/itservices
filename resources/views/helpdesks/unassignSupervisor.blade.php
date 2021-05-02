@@ -26,8 +26,8 @@
                         @if (count($requestInfos) > 0)
                             <thead>
                                 <tr>
-                                    <th>เลขที่เอกสาร</th>
-                                    <th>วันที่รับเอกสาร</th>
+                                    <th style="text-align: center" width="50px">เลขที่</th>
+                                    <th style="text-align: center" width="60px">วันที่รับ</th>
                                     <th>ผู้แจ้ง</th>
                                     <th>ความประสงค์</th>
                                     <th>สถานะ</th>
@@ -38,7 +38,7 @@
                                 @foreach ($requestInfos as $item)                                  
                                     <tr>
                                         <td>{{ $item->request_number }}</td>
-                                        <td>{{ $item->request_recieved }}</td>
+                                        <td>{{ date ('d-m-Y', strtotime($item->request_recieved)) }}</td>
                                         <td>{{ $item->request_owner }}</td>
                                         <td>{{ $item->request_objective }}</td>
                                         <td>{{ $item->request_status }}</td>

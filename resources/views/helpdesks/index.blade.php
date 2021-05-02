@@ -32,14 +32,14 @@
                         @if (count($requests) > 0)
                             <thead>
                                 <tr>
-                                    <th style="text-align: center">เลขที่เอกสาร</th>
-                                    <th style="text-align: center">วันที่รับเอกสาร</th>
+                                    <th style="text-align: center" width="50px">เลขที่</th>
+                                    <th style="text-align: center" width="60px">วันที่รับ</th>
                                     <th style="text-align: center">ผู้แจ้ง</th>
                                     <th style="text-align: center">ความประสงค์</th>
                                     <th style="text-align: center">ผู้รับผิดชอบ</th>
-                                    <th style="text-align: center">วันที่มอบหมาย</th>
+                                    <th style="text-align: center" width="ึ60px">วันที่มอบหมาย</th>
                                     <th style="text-align: center">สถานะ</th>
-                                    <th style="text-align: center">ไฟล์ F-CD0-071</th>
+                                    <th style="text-align: center">ไฟล์แนบ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,7 +53,7 @@
                                         <td>{{date ('d-m-Y', strtotime ($item->updated_at ))}}</td>
                                         <td>{{ $item->request_status }}</td>
                                         <td style="text-align: center">
-                                            <a href="{{ asset('/')}}{{ $item->request_file }}" class="btn btn-info btn-xs"> <i class="fas fa-search"></i> คลิกดูรายละเอียด </a>
+                                            <a href="{{ asset('/')}}{{ $item->request_file }}" class="btn btn-info btn-xs"> <i class="fas fa-search"></i> รายละเอียด </a>
                                         </td>
                                     </tr>
                                 @endforeach
