@@ -54,11 +54,19 @@ class BrandController extends Controller
         $addBrand->brand_abbr_name = $request->input('brandAbbrName');
         $addBrand->brand_status = 'A';
         $addBrand->created_by = auth()->user()->name;
-        $addBrand->save();
+        
+        if ($addBrand->save()) {
+            if ($request->input('create-brand_id') == 1) {
+                Session::flash('success_msg', 'บันทึกข้อมูลยี่ห้อผลิตภัณฑ์เรียบร้อย');
 
-        Session::flash('success_msg', 'บันทึกข้อมูลยี่ห้อผลิตภัณฑ์เรียบร้อย');
+                return redirect()->back();
+            } else {
+                Session::flash('success_msg', 'บันทึกข้อมูลยี่ห้อผลิตภัณฑ์เรียบร้อย');
 
-        return redirect('/basics/brand');
+                return redirect('/basics/brand');
+            }
+        }
+        
     }
 
     /**

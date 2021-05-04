@@ -22,3 +22,22 @@ Route::name('provinces.')->group(function () {
     Route::get('districts/{id}', 'Api\ProvinceController@district')->name('district');
     Route::get('subdistricts/{id}', 'Api\ProvinceController@subdistrict')->name('subdistrict');
 });
+
+Route::prefix('')->group(function () {
+
+});
+
+// List brands
+Route::get('brands', 'Api\BrandController@index');
+
+// List single brand
+Route::get('brand/{id}', 'Api\BrandController@show');
+
+// Create new brand
+Route::post('brand', 'Api\BrandController@store');
+
+// Update brand
+Route::put('brand', 'Api\BrandController@update');
+
+// Delete brand
+Route::delete('brand/{id}', 'Api\BrandController@destroy');

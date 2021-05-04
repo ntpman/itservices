@@ -129,6 +129,8 @@
 @endsection
 
 @section('modal')
+    <brand-modal-create></brand-modal-create>
+    {{-- @include('assets.asset.modal.create-brand') --}}
     @include('assets.asset.modal.create-supplier')
 @endsection
 

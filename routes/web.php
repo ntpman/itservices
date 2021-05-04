@@ -170,14 +170,15 @@ Route::group(['middleware' => ['auth']], function () {
     /**
      * Route Suppliers
      */
-    Route::name('supplier.')->group(function () {
-        Route::get('/supplier', 'SupplierController@index')->name('index');
-        Route::get('/supplier/create', 'SupplierController@create')->name('create');
-        Route::post('/supplier', 'SupplierController@store')->name('store');
-        Route::get('/supplier/{supplier}', 'SupplierController@show')->name('show');
-        Route::get('/supplier/{supplier}/edit', 'SupplierController@edit')->name('edit');
-        Route::put('/supplier/{supplier}', 'SupplierController@update')->name('update');
+    Route::prefix('supplier')->group(function () {
+        Route::name('supplier.')->group(function () {
+            Route::get('', 'SupplierController@index')->name('index');
+            Route::get('/create', 'SupplierController@create')->name('create');
+            Route::post('', 'SupplierController@store')->name('store');
+            Route::get('/{supplier}', 'SupplierController@show')->name('show');
+            Route::get('/{supplier}/edit', 'SupplierController@edit')->name('edit');
+            Route::put('/{supplier}', 'SupplierController@update')->name('update');
+        });
     });
-    
 });
 

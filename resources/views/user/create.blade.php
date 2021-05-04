@@ -28,6 +28,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <!-- /.col -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
@@ -39,6 +40,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <!-- /.col -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="password">Password</label>
@@ -50,6 +52,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <!-- /.col -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="image">File input Image</label>
@@ -66,6 +69,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- /.col -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="role">Role</label>
@@ -74,8 +78,14 @@
                                             <option value="2" {{ old('role') ==  2 ? 'selected' : '' }}>Maneger</option>
                                             <option value="3" {{ old('role') ==  3 ? 'selected' : '' }}>Admin</option>
                                         </select>
+                                        @error('role')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
+                                <!-- /.col -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="status">Status</label>
@@ -83,9 +93,35 @@
                                             <option value="1" {{ old('status') ==  1 ? 'selected' : '' }}>Active</option>
                                             <option value="2" {{ old('status') ==  2 ? 'selected' : '' }}>Not Active</option>
                                         </select>
+                                        @error('status')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
+                                <!-- /.col -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="status">Position</label>
+                                        <select class="form-control custom-select" style="width: 100%;" name="position" id="position">
+                                            <option value="หก.ทส." {{ old('position') ==  'หก.ทส.' ? 'selected' : '' }}>หก.ทส.</option>
+                                            <option value="รก.หก.ทส." {{ old('position') ==  'รก.หก.ทส.' ? 'selected' : '' }}>รก.หก.ทส.</option>
+                                            <option value="หัวหน้างาน" {{ old('position') ==  'หัวหน้างาน' ? 'selected' : '' }}>หัวหน้างาน</option>
+                                            <option value="ธุรการกลุ่ม" {{ old('position') ==  'ธุรการกลุ่ม' ? 'selected' : '' }}>ธุรการกลุ่ม</option>
+                                            <option value="ผู้ปฏิบัติงานด้านซอฟต์แวร์" {{ old('position') ==  'ผู้ปฏิบัติงานด้านซอฟต์แวร์' ? 'selected' : '' }}>ผู้ปฏิบัติงานด้านซอฟต์แวร์</option>
+                                            <option value="ผู้ปฏิบัติงานด้านฮาร์ดแวร์" {{ old('position') ==  'ผู้ปฏิบัติงานด้านฮาร์ดแวร์' ? 'selected' : '' }}>ผู้ปฏิบัติงานด้านฮาร์ดแวร์</option>
+                                        </select>
+                                        @error('position')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- /.col -->
                             </div>
+                            <!-- /.row -->
                         </div>
                         <!-- /.card-body -->        
                         <div class="card-footer">

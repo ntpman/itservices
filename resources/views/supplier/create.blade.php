@@ -125,7 +125,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="supplier_email">อีเมล</label>
-                                        <input type="email" class="form-control @error('supplier_email') is-invalid @enderror" name="supplier_email" id="supplier_email" value="{{ old('supplier_email') }}" placeholder="supplier_email">
+                                        <input type="text" class="form-control @error('supplier_email') is-invalid @enderror" name="supplier_email" id="supplier_email" value="{{ old('supplier_email') }}" placeholder="supplier_email">
                                         @error('supplier_email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

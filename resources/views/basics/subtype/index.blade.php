@@ -26,7 +26,7 @@
                                     <tr>
                                         <th style="width:80px;">ลำดับที่</th>
                                         <th class="text-center">ประเภทครุภัณฑ์</th>
-                                        <th class="text-center">ชื่อครุภัณฑ์ย่อย</th>
+                                        <th class="text-center">ชื่อประเภทครุภัณฑ์ย่อย</th>
                                         <th style="width:180px;">สถานะการใช้งานข้อมูล</th>
                                         <th>ดำเนินการ</th>
                                     </tr>

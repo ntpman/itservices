@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('position', 'desc')->get();
         
         // dd($users);
 
@@ -73,7 +73,7 @@ class UserController extends Controller
             // Upload Image
             $path = $request->file('image')->storeAs('public/image_users', $fileNameToStore);
         } else {
-            $fileNameToStore = '';
+            $fileNameToStore = null;
         }
 
         // store in the database
@@ -81,6 +81,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
+        $user->position = $request->input('position');
         $user->image = $fileNameToStore;
         $user->role = $request->input('role');
         $user->status = $request->input('status');

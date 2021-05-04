@@ -1,53 +1,11 @@
 <div class="row">
-    <div class="col-lg-6">
-        <div class="form-group">
-            <label for="type_id">รหัสประเภทครุภัณฑ์ <span><sup class="text-danger">*</sup></span> </label>
-            <select class="form-control select2bs4 @error('type_id') is-invalid @enderror" 
-                style="width: 100%;"
-                name="type_id"
-                id="type_id"
-                data-placeholder="type_id">
-                    <option value="" selected></option>
-                @foreach ($types as $item)
-                    <option value="{{ $item->id }}" {{ ( old('type_id') == $item->id) ? 'selected' : '' }}>
-                        {{ $item->type_name }}
-                    </option>                                         
-                @endforeach
-            </select>
-            @error('type_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-    </div>
-    <!-- /.col -->
-    <div class="col-lg-6">
-        <div class="form-group">
-            <label for="subtype_id">รหัสประเภทครุภัณฑ์ย่อย</label>
-            <select class="form-control select2bs4 @error('subtype_id') is-invalid @enderror" 
-                style="width: 100%;"
-                name="subtype_id"
-                id="subtype_id"
-                data-placeholder="subtype_id">
-                    <option value="" selected></option>
-                @foreach ($subtypes as $item)
-                    <option value="{{ $item->id }}" {{ ( old('subtype_id') == $item->id) ? 'selected' : '' }}>
-                        {{ $item->subtype_name }}
-                    </option>                                         
-                @endforeach
-            </select>
-            @error('subtype_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-    </div>
     <!-- /.col -->
     <div class="col-lg-6">
         <div class="form-group">
             <label for="brand_id">รหัสยี่ห้อครุภัณฑ์ <span><sup class="text-danger">*</sup></span> </label>
+            <a href="#" data-toggle="modal" data-target="#create-brand_id">
+                <i class="fas fa-plus"></i> Brand
+            </a>
             <select class="form-control select2bs4 @error('brand_id') is-invalid @enderror" 
                 style="width: 100%;"
                 name="brand_id"
@@ -71,6 +29,9 @@
     <div class="col-lg-6">
         <div class="form-group">
             <label for="brand_model_id">รหัสรุ่นครุภัณฑ์</label>
+            <a href="#" data-toggle="modal" data-target="#create-brand_model_id">
+                <i class="fas fa-plus"></i> Brand Model
+            </a>
             <select class="form-control select2bs4 @error('brand_model_id') is-invalid @enderror" 
                 style="width: 100%;"
                 name="brand_model_id"
@@ -93,7 +54,62 @@
     <!-- /.col -->
     <div class="col-lg-6">
         <div class="form-group">
+            <label for="type_id">รหัสประเภทครุภัณฑ์ <span><sup class="text-danger">*</sup></span> </label>
+            <a href="#" data-toggle="modal" data-target="#create-type_id">
+                <i class="fas fa-plus"></i> Type
+            </a>
+            <select class="form-control select2bs4 @error('type_id') is-invalid @enderror" 
+                style="width: 100%;"
+                name="type_id"
+                id="type_id"
+                data-placeholder="type_id">
+                    <option value="" selected></option>
+                @foreach ($types as $item)
+                    <option value="{{ $item->id }}" {{ ( old('type_id') == $item->id) ? 'selected' : '' }}>
+                        {{ $item->type_name }}
+                    </option>                                         
+                @endforeach
+            </select>
+            @error('type_id')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
+    <!-- /.col -->
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="subtype_id">รหัสประเภทครุภัณฑ์ย่อย</label>
+            <a href="#" data-toggle="modal" data-target="#create-subtype_id">
+                <i class="fas fa-plus"></i> Subtype
+            </a>
+            <select class="form-control select2bs4 @error('subtype_id') is-invalid @enderror" 
+                style="width: 100%;"
+                name="subtype_id"
+                id="subtype_id"
+                data-placeholder="subtype_id">
+                    <option value="" selected></option>
+                @foreach ($subtypes as $item)
+                    <option value="{{ $item->id }}" {{ ( old('subtype_id') == $item->id) ? 'selected' : '' }}>
+                        {{ $item->subtype_name }}
+                    </option>                                         
+                @endforeach
+            </select>
+            @error('subtype_id')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="form-group">
             <label for="common_id">รหัสชื่อครุภัณฑ์ <span><sup class="text-danger">*</sup></span> </label>
+            <a href="#" data-toggle="modal" data-target="#create-common_id">
+                <i class="fas fa-plus"></i> Common
+            </a>
             <select class="form-control select2bs4 @error('common_id') is-invalid @enderror" 
                 style="width: 100%;"
                 name="common_id"

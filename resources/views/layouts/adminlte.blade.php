@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>
 
     <title>{{ config('app.name', '') }} @yield('page_name')</title>
 
@@ -88,8 +89,10 @@
 
             <!-- Main content -->
             <div class="content">
-                @yield('content')
-                @yield('modal')
+                <div id="app">
+                    @yield('content')
+                    @yield('modal')
+                </div>
             </div>
             <!-- /.content -->
         </div>
