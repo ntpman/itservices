@@ -18,6 +18,8 @@
 Route::get('/', 'Helpdesks\ViewController@index');
 
 Route::get('/helpdesk', 'Helpdesks\ViewController@index')->name('index');
+Route::get('/helpdesk/newRequest', 'Helpdesks\ViewController@newRequest')->name('newRequest');
+Route::get('/helpdesk/listAll', 'Helpdesks\ViewController@listAll')->name('listAll');
 Route::get('/helpdesk/create', 'Helpdesks\FormController@create')->name('create');
 Route::post('/helpdesk/save', 'Helpdesks\FormController@store')->name('store');
 
@@ -27,6 +29,19 @@ Route::post('/helpdesk/saveSupervisor', 'Helpdesks\RequestAssignController@saveS
 Route::get('/helpdesk/unAssignWorker', 'Helpdesks\RequestAssignController@unAssignWorker')->name('unAssignWorker');
 Route::get('/helpdesk/assignWorker/{id}', 'Helpdesks\RequestAssignController@assignWorker')->name('assignWorker');
 Route::post('/helpdesk/saveWorker', 'Helpdesks\RequestAssignController@saveWorker')->name('saveWorker');
+
+Route::get('/helpdesk/workList', 'Helpdesks\WorkerController@workList')->name('workList');
+Route::get('/helpdesk/workOwner', 'Helpdesks\WorkerController@workOwner')->name('workOwner');
+Route::get('/helpdesk/workRecord/{id}', 'Helpdesks\WorkerController@workRecord')->name('workRecord');
+Route::post('/helpdesk/workRecord', 'Helpdesks\WorkerController@store')->name('store');
+Route::get('/helpdesk/evaluate', 'Helpdesks\WorkerController@evaluate')->name('evaluate');
+Route::get('/helpdesk/evaluate/{id}', 'Helpdesks\WorkerController@evaluate')->name('evaluate');
+Route::post('/helpdesk/saveSurvey', 'Helpdesks\WorkerController@saveSurvey')->name('saveSurvey');
+Route::post('/helpdesk/prelimAssess', 'Helpdesks\WorkerController@prelimAssess')->name('prelimAssess');
+Route::post('/helpdesk/saveWorkDetail', 'Helpdesks\WorkerController@saveWorkDetail')->name('saveWorkDetail');
+Route::get('/helpdesk/satisfactionList', 'Helpdesks\WorkerController@satisfactionList')->name('satisfactionList');
+Route::get('/helpdesk/satisfactionRecord/{id}', 'Helpdesks\WorkerController@satisfactionRecord')->name('satisfactionRecord');
+Route::post('/helpdesk/saveSatisfaction', 'Helpdesks\WorkerController@saveSatisfaction')->name('saveSatisfaction');
 
 Auth::routes();
 

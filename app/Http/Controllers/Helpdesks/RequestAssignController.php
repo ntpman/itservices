@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Helpdesks\RequestAssign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 use App\Models\Helpdesks\RequestInfo;
 use App\User;
@@ -33,7 +34,8 @@ class RequestAssignController extends Controller
 
     public function unAssignWorker()
     {
-        $requestInfos = RequestInfo::where('request_status','=','รอมอบหมายผู้ปฏิบัติงาน')->get();
+        $requestInfos = RequestInfo::where('request_status','=','รอมอบหมายผู้ปฏิบัติงาน')
+                        ->where('user_id','=', Auth()->user()->id)->get();
 
         return view('helpdesks.unAssignWorker', [
             'requestInfos' => $requestInfos
@@ -97,7 +99,8 @@ class RequestAssignController extends Controller
     public function assignWorker(Request $request)
     {
         $requestInfos = RequestInfo::where('id','=',$request->id)->get();
-        $user = User::where('position','like','%ปฏิบัติงาน%')->get();
+        $supervisor = Str::substr($request->user()->position,10);
+        $user = User::where('position','like','%'.$supervisor.'%')->get();
 
         return view('helpdesks.assignWorker', [
             'requestInfos' => $requestInfos,

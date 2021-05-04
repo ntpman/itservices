@@ -15,7 +15,7 @@
                     <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link active btn-danger" href="/helpdesk"><i class="fas fa-home"></i></i> กลับหน้าหลัก</a>
+                                {{-- <a class="nav-link active btn-danger" href="/helpdesk"><i class="fas fa-home"></i></i> กลับหน้าหลัก</a> --}}
                             </li>
                         </ul>
                     </div>
@@ -28,10 +28,9 @@
                                 <tr>
                                     <th style="text-align: center" width="50px">เลขที่</th>
                                     <th style="text-align: center" width="60px">วันที่รับ</th>
-                                    <th>ผู้แจ้ง</th>
-                                    <th>ความประสงค์</th>
-                                    <th>สถานะ</th>
-                                    <th>มอบหมายงาน</th>
+                                    <th style="text-align: center">ผู้แจ้ง</th>
+                                    <th style="text-align: center">ความประสงค์</th>
+                                    <th style="text-align: center" width="100px">มอบหมายงาน</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,10 +39,9 @@
                                         <td>{{ $item->request_number }}</td>
                                         <td>{{ date ('d-m-Y', strtotime($item->request_recieved)) }}</td>
                                         <td>{{ $item->request_owner }}</td>
-                                        <td>{{ $item->request_objective }}</td>
-                                        <td>{{ $item->request_status }}</td>
-                                        <td>
-                                            <a href="/helpdesk/assignSupervisor/{{ $item->id}}" class="btn btn-info btn-xs"> <i class="fas fa-pencil-alt"></i> มอบหมายหัวหน้างาน</a>
+                                        <td>{{ $item->request_type }} {{ $item->request_objective }}</td>
+                                        <td style="text-align: center">
+                                            <a href="/helpdesk/assignSupervisor/{{ $item->id}}" class="btn btn-info btn-xs"> <i class="fas fa-pencil-alt"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

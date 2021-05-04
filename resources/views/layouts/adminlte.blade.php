@@ -112,7 +112,7 @@
                 <i class="far fa-calendar-alt"></i> {{ date('d-m-Y') }} <i class="far fa-clock"></i> {{ date('H:i') }}
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2020-2021 <a href="/">Itdss-Dev</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2020-2021 @ DSS IT Subdivision. </strong>Version 1.01, All rights reserved.
         </footer>
     </div>
     <!-- ./wrapper -->
@@ -180,11 +180,23 @@
 
             //Date picker
             $('#reservationdate').datetimepicker({
-                format: 'YYYY-MM-DD'
+                format: 'DD-MM-YYYY'
             });
 
             $('#request_recieved').datetimepicker({
-                format: 'YYYY-MM-DD'
+                format: 'DD-MM-YYYY'
+            });
+
+            $('#delivery_date').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+
+            $('#survey_date').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+            
+            $('#estimate_date').datetimepicker({
+                format: 'DD-MM-YYYY'
             });
 
             //Initialize Select2 Elements

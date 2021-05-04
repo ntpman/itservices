@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Helpdesk Main Page
+    | Helpdesk Work List Page
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">แบบสั่งซ่อม/ทำสิ่งของ (F-CD0-071) ที่รอการมอบหมายผู้ปฏิบัติงาน</h3>
+                    <h3 class="card-title">แบบสั่งซ่อม/ทำสิ่งของที่ได้รับมอบหมาย</h3>
                     <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
                             <li class="nav-item">
@@ -28,11 +28,10 @@
                                 <tr>
                                     <th style="text-align: center" width="50px">เลขที่</th>
                                     <th style="text-align: center" width="60px">วันที่รับ</th>
-                                    <th>ผู้แจ้ง</th>
-                                    <th>ความประสงค์</th>
-                                    <th>ผู้รับผิดชอบ</th>
-                                    <th>สถานะ</th>
-                                    <th>มอบหมายงาน</th>
+                                    <th style="text-align: center">ผู้แจ้ง</th>
+                                    <th style="text-align: center">ความประสงค์</th>
+                                    <th style="text-align: center">สถานะ</th>
+                                    <th style="text-align: center" width="150px">บันทึกการปฏิบัติงาน</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,10 +41,9 @@
                                         <td>{{ date ('d-m-Y', strtotime($item->request_recieved)) }}</td>
                                         <td>{{ $item->request_owner }}</td>
                                         <td>{{ $item->request_type }} {{ $item->request_objective }}</td>
-                                        <td>{{ $item->user->name }}</td>
                                         <td>{{ $item->request_status }}</td>
-                                        <td>
-                                            <a href="/helpdesk/assignWorker/{{$item->id}}" class="btn btn-info btn-xs"> <i class="fas fa-pencil-alt"></i> มอบหมายผู้ปฏิบัติ </a>
+                                        <td style="text-align: center">
+                                            <a href="/helpdesk/workRecord/{{$item->id}}" class="btn btn-info btn-xs"> <i class="fas fa-tools"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

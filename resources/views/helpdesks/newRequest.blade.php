@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Helpdesk Main Page
+    | Helpdesk New List Page
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">แบบสั่งซ่อม/ทำสิ่งของ (F-CD0-071) ที่อยู่ระหว่างดำเนินการ</h3>
+                    <h3 class="card-title">แบบสั่งซ่อม/ทำสิ่งของ (F-CD0-071) ใหม่</h3>
                     {{-- <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
                             @if (Auth::user() != '')
@@ -37,7 +37,7 @@
                 <!-- /.card-header -->
                 <div class="card-body table-responsive">
                     <table id="" class="table table-bordered table-striped table-sm datatables">
-                        @if (count($requests) > 0)
+                        @if (count($newRequests) > 0)
                             <thead>
                                 <tr>
                                     <th style="text-align: center" width="50px">เลขที่</th>
@@ -51,7 +51,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($requests as $item)                                  
+                                @foreach ($newRequests as $item)                                  
                                     <tr>
                                         <td>{{ $item->request_number }}</td>
                                         <td>{{ date ('d-m-Y', strtotime( $item->request_recieved ))}}</td>

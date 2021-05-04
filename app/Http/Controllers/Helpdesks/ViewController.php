@@ -19,10 +19,28 @@ class ViewController extends Controller
      */
     public function index()
     {
-        $request = RequestInfo::all();
+        $request = RequestInfo::whereNotIn('request_status',["บันทึกผลการปฏิบัติงานแล้ว","ประเมินความพึงพอใจแล้ว"])->get();
 
         return view('helpdesks.index', [
             'requests' => $request,
+        ]);
+    }
+
+    public function listAll()
+    {
+        $requestAll = RequestInfo::all();
+
+        return view('helpdesks.listAll', [
+            'requestAlls' => $requestAll,
+        ]);
+    }
+
+    public function newRequest()
+    {
+        $newRequest = RequestInfo::where('request_status','=','รอมอบหมายหัวหน้างาน')->get();
+
+        return view('helpdesks.newRequest', [
+            'newRequests' => $newRequest,
         ]);
     }
 
