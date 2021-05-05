@@ -64,6 +64,12 @@
               {{ Form::textarea('suggestion', null, ['class' => 'form-control','id'=>'suggestion','rows'=>3,'placeholder'=>"ระบุข้อเสนอแนะ (ถ้ามี)",]) }}
             </div>
           </div>
+          <div class="row">
+            <div class="form-group col  col-md-6">
+              {{ Form::label('done_file','ไฟล์ที่ดำเนินการเสร็จแล้ว')}}
+              <input type="file" name="done_file" class="form-control"  accept=".pdf" required>
+            </div>
+          </div>
           <div class="card-footer">
             <div class="form-group col-md-12" style="text-align: center">
               {{ Form::submit('บันทึกข้อมูล', ['class' => 'btn btn-primary ']) }}

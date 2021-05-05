@@ -31,6 +31,7 @@ Route::get('/helpdesk/assignWorker/{id}', 'Helpdesks\RequestAssignController@ass
 Route::post('/helpdesk/saveWorker', 'Helpdesks\RequestAssignController@saveWorker')->name('saveWorker');
 
 Route::get('/helpdesk/workList', 'Helpdesks\WorkerController@workList')->name('workList');
+Route::get('/helpdesk/assignedList', 'Helpdesks\WorkerController@assignedList')->name('assignedList');
 Route::get('/helpdesk/workOwner', 'Helpdesks\WorkerController@workOwner')->name('workOwner');
 Route::get('/helpdesk/workRecord/{id}', 'Helpdesks\WorkerController@workRecord')->name('workRecord');
 Route::post('/helpdesk/workRecord', 'Helpdesks\WorkerController@store')->name('store');

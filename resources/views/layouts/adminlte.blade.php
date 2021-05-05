@@ -115,7 +115,7 @@
                 <i class="far fa-calendar-alt"></i> {{ date('d-m-Y') }} <i class="far fa-clock"></i> {{ date('H:i') }}
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2020-2021 @ DSS IT Subdivision. </strong>Version 1.01, All rights reserved.
+            <strong>Copyright &copy; 2020-2021 @ DSS IT Subdivision. </strong>Version 1.02, All rights reserved.
         </footer>
     </div>
     <!-- ./wrapper -->

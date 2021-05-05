@@ -52,6 +52,14 @@ class WorkerController extends Controller
             'requestInfos' => $requestInfos
         ]);
     }
+    public function assignedList()
+    {
+        $requestAssign = RequestAssign::where('created_by','=',auth()->user()->name)->get();
+
+        return view('helpdesks.assignedList', [
+            'requestAssigns' => $requestAssign
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -114,7 +122,7 @@ class WorkerController extends Controller
         $requestSaveSurvey->request_status = "สำรวจหน้างานแล้ว";
         $surveyDate = $request->input('survey_date');
         $requestSaveSurvey->survey_date = date('Y-m-d', strtotime($surveyDate));
-        $requestInfo->updated_by = auth()->user()->name;
+        $requestSaveSurvey->updated_by = auth()->user()->name;
         $requestSaveSurvey->save();
 
         Session::flash('success_msg', 'บันทึกวันที่สำรวจหน้างานเรียบร้อย');
@@ -213,16 +221,18 @@ class WorkerController extends Controller
         $saveSatisfaction->satisfy_score = $request->input('satisfy_score');
         $saveSatisfaction->suggestion = $request->input('suggestion');
         $saveSatisfaction->request_status = "ประเมินความพึงพอใจแล้ว";
+        $doneFile = date('Ymdhis').'.'.$request->file('done_file')->getClientOriginalExtension();
+        $saveSatisfaction->done_file = $request->file('done_file')->move('storage/pdf/work-done', $doneFile);
         $saveSatisfaction->updated_by = auth()->user()->name;
-        // dd($request, $saveSatisfaction, "saveWorkDetail");
         $saveSatisfaction->save();
-        
+
         Session::flash('success_msg', 'บันทึกผลความพึงพอใจเรียบร้อย');
         
         return redirect('/helpdesk/satisfactionList');
     
     }
-
+    // $fileName = date('Ymdhis').'.'.request()->file('request_file')->getClientOriginalExtension();
+    // $addNewRequest->request_file = request()->file('request_file')->move('storage/images', $fileName);
     /**
      * Remove the specified resource from storage.
      *

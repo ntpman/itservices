@@ -34,7 +34,7 @@ class CreateRequestInfosTable extends Migration
             $table->string('request_number', 50)->comment('เลขที่เอกสารของฝ่าย');
             $table->unsignedBigInteger('user_id')->comment('รหัสผู้ถูกมอบหมายงาน');
             $table->string('request_status', 50)->comment('สถานะการดำเนินงาน');
-            $table->string('request_file', 100)->comment('ไฟล์ใบแจ้งปัญหา');
+            $table->string('request_file', 100)->comment('ไฟล์เอกสารแจ้งปัญหา');
             $table->date('survey_date')->comment('วันที่สำรวจหน้างาน')->nullable();
             $table->string('evaluate_result', 255)->comment('ผลการประเมินเบื้องต้น')->nullable();
             $table->date('estimate_date')->comment('วันที่คาดว่าจะแล้วเสร็จ')->nullable();
@@ -44,6 +44,7 @@ class CreateRequestInfosTable extends Migration
             $table->string('request_consignee',100)->comment('ผู้รับมอบงาน');
             $table->integer('satisfy_score', 2)->comment('ความพึงพอใจในการรับริการ')->nullable();
             $table->text('suggestion')->comment('ข้อเสนอแนะ');
+            $table->string('done_file', 100)->comment('ไฟล์ที่ดำเนินการเสร็จแล้ว	');
             $table->string('created_by', 50)->comment('รหัสผู้สร้างข้อมูล');
             $table->string('updated_by', 50)->nullable()->comment('รหัสผู้แก้ไขข้อมูลล่าสุด');
             $table->timestamps();
