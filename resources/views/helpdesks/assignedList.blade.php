@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">แบบสั่งซ่อม/ทำสิ่งของที่ได้รับมอบหมาย</h3>
+                    <h3 class="card-title">แบบสั่งซ่อม/ทำสิ่งของที่มอบหมายผู้ปฏิบัติงานแล้ว</h3>
                     <div class="card-tools">
                         <ul class="nav nav-pills nav-fill ml-auto">
                             <li class="nav-item">

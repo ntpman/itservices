@@ -36,7 +36,7 @@ class CreateRequestInfosTable extends Migration
             $table->string('request_status', 50)->comment('สถานะการดำเนินงาน');
             $table->string('request_file', 100)->comment('ไฟล์เอกสารแจ้งปัญหา');
             $table->date('survey_date')->comment('วันที่สำรวจหน้างาน')->nullable();
-            $table->string('evaluate_result', 255)->comment('ผลการประเมินเบื้องต้น')->nullable();
+            $table->string('prelim_assess', 255)->comment('ผลการประเมินเบื้องต้น')->nullable();
             $table->date('estimate_date')->comment('วันที่คาดว่าจะแล้วเสร็จ')->nullable();
             $table->string('pcm_number', 50)->comment('หมายเลขจัดซื้อจัดจ้าง')->nullable();
             $table->text('work_detail')->comment('ผลการปฏิบัติงาน')->nullable();

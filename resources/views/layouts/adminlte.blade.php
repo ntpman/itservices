@@ -115,7 +115,7 @@
                 <i class="far fa-calendar-alt"></i> {{ date('d-m-Y') }} <i class="far fa-clock"></i> {{ date('H:i') }}
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2020-2021 @ DSS IT Subdivision. </strong>Version 1.02, All rights reserved.
+            <strong>Copyright &copy; 2020-2021 @ DSS IT Subdivision. </strong>Version 1.03, All rights reserved.
         </footer>
     </div>
     <!-- ./wrapper -->
@@ -171,15 +171,15 @@
             $('[data-mask]').inputmask()
 
             // DataTables
-            $('.datatables').DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+            // $('.datatables').DataTable({
+            //     "paging": true,
+            //     "lengthChange": true,
+            //     "searching": true,
+            //     "ordering": true,
+            //     "info": true,
+            //     "autoWidth": false,
+            //     "responsive": true,
+            // });
 
             //Date picker
             $('#reservationdate').datetimepicker({
