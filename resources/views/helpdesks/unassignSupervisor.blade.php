@@ -26,7 +26,7 @@
                         @if (count($requestInfos) > 0)
                             <thead>
                                 <tr>
-                                    <th style="text-align: center" width="50px">เลขที่</th>
+                                    <th style="text-align: center" width="60px">เลขที่</th>
                                     <th style="text-align: center" width="60px">วันที่รับ</th>
                                     <th style="text-align: center">ผู้แจ้ง</th>
                                     <th style="text-align: center">ความประสงค์</th>
