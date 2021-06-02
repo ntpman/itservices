@@ -13,6 +13,7 @@
         "laravel/framework": "^6.18.35",
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.2",
+        "nesbot/carbon": "^2.48",
         "phattarachai/thaidate": "^1.1"
     },
     "require-dev": {

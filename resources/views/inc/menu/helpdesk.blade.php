@@ -14,6 +14,12 @@
                 <p>แสดงข้อมูลทั้งหมด</p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="/helpdesk/listByCriteria" class="nav-link {{ Request::is('helpdesk/listByCriteria') ? 'active' : '' }}">
+                <i class="fas fa-folder-open nav-icon"></i>
+                <p>เรียกดูข้อมูลงานแล้วเสร็จ</p>
+            </a>
+        </li>
         @endif
     @if (Auth::user()->position == 'หัวหน้างานฮาร์ดแวร์' || Auth::user()->position == 'หัวหน้างานซอฟต์แวร์')
         <li class="nav-item">

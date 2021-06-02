@@ -23,6 +23,9 @@ Route::get('/helpdesk/listAll', 'Helpdesks\ViewController@listAll')->name('listA
 Route::get('/helpdesk/create', 'Helpdesks\FormController@create')->name('create');
 Route::post('/helpdesk/save', 'Helpdesks\FormController@store')->name('store');
 
+Route::get('/helpdesk/listByCriteria', 'Helpdesks\ViewController@listByCriteria')->name('listByCriteria');
+Route::get('/helpdesk/listWorkCriteria', 'Helpdesks\WorkerController@listWorkByCriteria')->name('listWorkByCriteria');
+
 Route::get('/helpdesk/unAssignSupervisor', 'Helpdesks\RequestAssignController@unAssignSupervisor')->name('unAssignSupervisor');
 Route::get('/helpdesk/assignSupervisor/{id}', 'Helpdesks\RequestAssignController@assignSupervisor')->name('assignSupervisor');
 Route::post('/helpdesk/saveSupervisor', 'Helpdesks\RequestAssignController@saveSupervisor')->name('saveSupervisor');

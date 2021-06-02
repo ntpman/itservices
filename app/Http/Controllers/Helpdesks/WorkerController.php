@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Helpdesks\RequestInfo;
 use App\User;
 
+use Carbon\Carbon;
+
 class WorkerController extends Controller
 {
     public function __construct()
@@ -183,7 +185,6 @@ class WorkerController extends Controller
         return redirect('/helpdesk/workList');
 
     }
-
     public function saveWorkDetail(Request $request)
     {
 
@@ -198,8 +199,7 @@ class WorkerController extends Controller
 
         return redirect('/helpdesk/workList');
 
-    }
-    
+    } 
     public function satisfactionRecord(Request $request)
     {
         $requestInfo = RequestInfo::where('id','=',$request->id)->get();
@@ -233,6 +233,75 @@ class WorkerController extends Controller
     }
     // $fileName = date('Ymdhis').'.'.request()->file('request_file')->getClientOriginalExtension();
     // $addNewRequest->request_file = request()->file('request_file')->move('storage/images', $fileName);
+    
+
+    public function listWorkByCriteria(Request $request) 
+    {
+        $month = $request->workByMonth;
+        $dateS = Carbon::now()->month(10)->year(now()->format('Y')-1)->startOfMonth();
+        $dateE = Carbon::now()->month($month)->endOfMonth();
+
+        $listFinishWorkByMonth = RequestInfo::whereMonth('delivery_date',$month)->get();
+        $listUnfinishWork = RequestInfo::whereBetween('request_recieved', [$dateS,$dateE])
+                                ->whereNull('delivery_date')
+                                ->get();
+        $listWorkByMonth = RequestInfo::whereMonth('request_recieved',$month)->get();
+
+        $avgScore = RequestInfo::whereMonth('delivery_date',$month)->avg('satisfy_score');
+        
+        if ($avgScore == '') {
+            $score = 0;
+        } else {
+            $score = $avgScore;
+        }
+
+        if ($month == "01" ) {
+            $monthName = "มกราคม";
+        } 
+        else if ($month == "02") {
+            $monthName = "กุมภาพันธ์";   
+        }
+        else if ($month == "03") {
+            $monthName = "มีนาคม"; 
+        }    
+        else if ($month == "04") {
+            $monthName = "เมษายน";
+        }         
+        else if ($month == "05") {
+            $monthName = "พฤษภาคม";
+        }        
+        else if ($month == "06") {
+            $monthName = "มิถุนายน";
+        }        
+        else if ($month == "07") {
+            $monthName = "กรกฎาคม"; 
+        }         
+        else if ($month == "08") {
+            $monthName = "สิงหาคม";  
+        }        
+        else if ($month == "09") {
+            $monthName = "กันยายน";  
+        }        
+        else if ($month == "10") {
+            $monthName = "ตุลาคม";   
+        }        
+        else if ($month == "11") {
+            $monthName = "พฤศจิกายน"; 
+        }       
+        else if ($month == "12") {
+            $monthName = "ธันวาคม"; 
+        }       
+
+        return view('helpdesks.listByMonth', [
+            'listFinishWorkByMonths' => $listFinishWorkByMonth,
+            'listWorkByMonths' => $listWorkByMonth,
+            'listUnfinishWorks' => $listUnfinishWork,
+            'monthName' => $monthName,
+            'score' => $score,
+        ]);
+    }
+    
+    
     /**
      * Remove the specified resource from storage.
      *

@@ -35,6 +35,15 @@ class ViewController extends Controller
         ]);
     }
 
+    public function listByCriteria()
+    {
+        $requestAll = RequestInfo::all();
+
+        return view('helpdesks.listByCriteria', [
+            // 'requestAlls' => $requestAll,
+        ]);
+    }
+
     public function newRequest()
     {
         $newRequest = RequestInfo::where('request_status','=','รอมอบหมายหัวหน้างาน')->get();
