@@ -74,7 +74,7 @@
                     ใบงานที่รับแจ้งประจำเดือน {{ $monthName }} จำนวน {{ count($listWorkByMonths) }} ใบ
                 </div>
                 <div>
-                    ใบงานที่ยังไม่แล้วเสร็จสะสมจนถึงเดือน {{ $monthName }} จำนวน {{ count($listUnfinishWorks) }} ใบ
+                    ใบงานที่ยังไม่แล้วเสร็จสะสมจนถึงสิ้นเดือน {{ $monthName }} จำนวน {{ count($listUnfinishWorks) }} ใบ
                 </div>
                 <div>
                     ใบงานที่แล้วเสร็จประจำเดือน {{ $monthName }} จำนวน {{ count($listFinishWorkByMonths) }} ใบ
@@ -104,7 +104,7 @@
                                         <td>{{ $item->user->name}}</td>
                                         <td>{{ $item->request_number }}</td>
                                         <td>{{ date ('d-m-Y', strtotime( $item->request_recieved ))}}</td>
-                                        <td>{{ date ('d-m-Y', strtotime ($item->updated_at ))}}</td>
+                                        <td>{{ date ('d-m-Y', strtotime ($item->delivery_date ))}}</td>
                                         <td>{{ $item->request_owner }}</td>
                                         {{-- <td>{{ $item->request_type }} {{ $item->request_objective }}</td> --}}
                                         {{-- <td>{{ $item->request_status }}</td> --}}
