@@ -77,7 +77,10 @@
                     ใบงานที่ยังไม่แล้วเสร็จสะสมจนถึงสิ้นเดือน {{ $monthName }} จำนวน {{ count($listUnfinishWorks) }} ใบ
                 </div>
                 <div>
-                    ใบงานที่แล้วเสร็จประจำเดือน {{ $monthName }} จำนวน {{ count($listFinishWorkByMonths) }} ใบ
+                    ใบงานที่แล้วเสร็จทั้งหมดประจำเดือน {{ $monthName }} จำนวน {{ count($listFinishWorkByMonths) }} ใบ คิดเป็น {{ ( count($listFinishWorkByMonths)  / (count ($listUnfinishWorks) + count ($listFinishWorkByMonths))) * 100}} เปอร์เซ็นต์ ของงานทั้งหมด
+                </div>
+                <div>
+                    ใบงานของเดือน {{ $monthName }} ที่แล้วเสร็จ  จำนวน {{ count($listFinishWorkOfMonths) }} ใบ คิดเป็น {{ ( count($listFinishWorkOfMonths) / count ($listWorkByMonths) ) * 100}} เปอร์เซ็นต์ ของงานประจำเดือน
                 </div>
                 <div>
                     ค่าเฉลี่ยคะแนนความพึงพอใจ {{ $score }} จาก 5 คะแนน คิดเป็น {{ ($score / 5 ) * 100}} เปอร์เซ็นต์

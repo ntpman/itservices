@@ -245,8 +245,11 @@ class WorkerController extends Controller
         $listUnfinishWork = RequestInfo::whereBetween('request_recieved', [$dateS,$dateE])
                                 ->whereNull('delivery_date')
                                 ->get();
-        $listWorkByMonth = RequestInfo::whereMonth('request_recieved',$month)->get();
-
+        $listWorkByMonth = RequestInfo::whereMonth('request_recieved',$month)
+                                ->get();
+        $listFinishWorkOfMonth = RequestInfo::whereMonth('request_recieved',$month)
+                                ->whereNotNull('delivery_date')
+                                ->get();
         $avgScore = RequestInfo::whereMonth('delivery_date',$month)->avg('satisfy_score');
         
         if ($avgScore == '') {
@@ -298,6 +301,7 @@ class WorkerController extends Controller
             'listUnfinishWorks' => $listUnfinishWork,
             'monthName' => $monthName,
             'score' => $score,
+            'listFinishWorkOfMonths' => $listFinishWorkOfMonth,
         ]);
     }
     
