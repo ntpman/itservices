@@ -36,28 +36,28 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive">
-                    <table id="" class="table table-bordered table-striped table-sm datatables">
+                    <table id="allRequest" class="table table-bordered table-striped table-sm datatables">
                         @if (count($requests) > 0)
                             <thead>
                                 <tr>
+                                    <th style="text-align: center">ผู้รับผิดชอบ</th>
                                     <th style="text-align: center" width="50px">เลขที่</th>
                                     <th style="text-align: center" width="60px">วันที่รับ</th>
                                     <th style="text-align: center">ผู้แจ้ง</th>
                                     <th style="text-align: center">ความประสงค์</th>
-                                    <th style="text-align: center">ผู้รับผิดชอบ</th>
                                     <th style="text-align: center" width="ึ60px">วันที่จ่ายงาน</th>
                                     <th style="text-align: center">สถานะ</th>
                                     <th style="text-align: center" width="40px">เอกสาร</i></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="items">
                                 @foreach ($requests as $item)                                  
                                     <tr>
+                                        <td>{{ $item->user->name}}</td>
                                         <td>{{ $item->request_number }}</td>
                                         <td>{{ date ('d-m-Y', strtotime( $item->request_recieved ))}}</td>
                                         <td>{{ $item->request_owner }}</td>
                                         <td>{{ $item->request_type }} {{ $item->request_objective }}</td>
-                                        <td>{{ $item->user->name}}</td>
                                         <td>{{date ('d-m-Y', strtotime ($item->updated_at ))}}</td>
                                         <td>{{ $item->request_status }}</td>
                                         <td style="text-align: center">
@@ -81,5 +81,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('/js/basic-table.js') }}"></script>
+    <script src="{{ asset('/js/group-table.js') }}"></script>
 @endsection
