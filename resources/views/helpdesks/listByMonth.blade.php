@@ -89,13 +89,13 @@
                                 <tr>
                                     <th style="text-align: center">ผู้รับผิดชอบ</th>
                                     <th style="text-align: center" width="100px">เลขที่</th>
-                                    <th style="text-align: center" width="100px">วันที่รับ</th>
-                                    <th style="text-align: center" width="ึ100px">วันที่แล้วเสร็จ</th>
-                                    <th style="text-align: center" width="150px">ผู้แจ้ง</th>
+                                    <th style="text-align: center" width="80px">วันที่รับ</th>
+                                    <th style="text-align: center" width="ึ80px">วันที่แล้วเสร็จ</th>
                                     {{-- <th style="text-align: center" width="400px">ความประสงค์</th> --}}
-                                    {{-- <th style="text-align: center" width="120px">สถานะ</th> --}}
-                                    <th style="text-align: center" width="120px">ผลการประเมิน</th>
-                                    <th style="text-align: center" width="100px">เอกสาร</i></th>
+                                    <th style="text-align: center" width="250px">รายละเอียดการปฏิบัติงาน</th>
+                                    <th style="text-align: center" width="100px">ผลการประเมิน</th>
+                                    <th style="text-align: center" width="150px">ผู้รับมอบงาน</th>
+                                    <th style="text-align: center" width="60px">เอกสาร</i></th>
                                 </tr>
                             </thead>
                             <tbody id="items">
@@ -105,10 +105,10 @@
                                         <td>{{ $item->request_number }}</td>
                                         <td>{{ date ('d-m-Y', strtotime( $item->request_recieved ))}}</td>
                                         <td>{{ date ('d-m-Y', strtotime ($item->delivery_date ))}}</td>
-                                        <td>{{ $item->request_owner }}</td>
                                         {{-- <td>{{ $item->request_type }} {{ $item->request_objective }}</td> --}}
-                                        {{-- <td>{{ $item->request_status }}</td> --}}
+                                        <td>{{ $item->work_detail }}</td>
                                         <td style="text-align: center">{{ $item->satisfy_score }}</td>
+                                        <td>{{ $item->request_consignee }}</td>
                                         <td style="text-align: center">
                                             <a href="{{ asset('/')}}{{ $item->done_file }}" class="btn btn-success btn-xs" target="_new"> <i class="far fa-file-pdf"></i></a>
                                         </td>
