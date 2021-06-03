@@ -44,11 +44,12 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         //validate date
-        // $this->validate($request, [
-        //     'brandFullName' => 'required|unique:brands,brand_full_name',
-        //     'brandAbbrName' => 'nullable|unique:brands,brand_abbr_name',
-        // ]);
+        $this->validate($request, [
+            'request_number' => 'required|unique:request_infos,request_number',
+            // 'brandAbbrName' => 'nullable|unique:brands,brand_abbr_name',
+        ]);
 
         //Add new data
         $addNewRequest = new RequestInfo;

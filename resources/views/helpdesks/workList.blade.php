@@ -30,7 +30,7 @@
                                     <th style="text-align: center" width="60px">วันที่รับ</th>
                                     <th style="text-align: center">ผู้แจ้ง</th>
                                     <th style="text-align: center">ความประสงค์</th>
-                                    <th style="text-align: center">สถานะ</th>
+                                    <th style="text-align: center" width="180px">สถานะ</th>
                                     <th style="text-align: center" width="150px">บันทึกการปฏิบัติงาน</th>
                                 </tr>
                             </thead>

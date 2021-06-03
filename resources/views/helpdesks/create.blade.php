@@ -29,84 +29,66 @@
         <div class="card-body">
           {!! Form::open(['action' => 'Helpdesks\FormController@store', 'method' => 'POST', 'class' => 'was-validate','enctype'=>'multipart/form-data']) !!}
           <div class="row">
-            <div class="form-group col col-md-3">
+            <div class="col-md-3">
               {{ Form::label('dateCreate','วันที่จัดทำ')}}
               <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                <input type="text" name="request_date" class="form-control datetimepicker-input" data-target="#reservationdate" required>
+                <input type="text" name="request_date" class="form-control datetimepicker-input" data-target="#reservationdate" value="{{ old('request_date') }}" required>
                 <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                   <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
               </div>
             </div>
-            <div class="form-group col col-md-3">
-              {{ Form::label('org_responsible','เสนอ')}}
-              <select name="org_responsible" id="org_responsible" class="form-control" required>
-                <option value="">ระบุ ผอ. ที่รับผิดชอบ</option>
-                <option value="ผสท.">ผสท.</option>
-                <option value="ลสล.">ลสล.</option>
-              </select>
+            
+            <div class="col-md-2">
+              {{ Form::label('org_responsible', 'เสนอ: *') }}
+              <br>
+              <label class="radio-inline">
+                {{ Form::radio('org_responsible', "ผสท.", null,['required']) }} ผสท.
+              </label>
+              <label class="radio-inline">
+                {{ Form::radio('org_responsible', "ลสล.", null) }} ลสล.
+              </label> 
             </div>
-            <div class="form-group col col-md-6">
+
+            <div class="col-md-7">
               {{ Form::label('chain_of_command','ผ่าน')}}
               {{ Form::text('chain_of_command', null, ['class' => 'form-control','id'=>'chain_of_command','placeholder'=>"ระบุสายบังคับบัญชา",]) }}
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
-              <div class="input-group">
-                {{ Form::label('request_owner','ชื่อผู้แจ้ง')}}
-              </div>
-              <div class="input-group">
-                <input type="text" name="request_owner" id="request_owner" class="form-control" required>
-              </div>
+              {{ Form::label('request_owner','ชื่อผู้แจ้ง')}}
+              {{ Form::text('request_owner',null,['class' => 'form-control', 'id'=>'request_owner', 'required']) }}
             </div>
             <div class="col-md-4">
-              <div class="input-group">
-                {{ Form::label('division','สำนัก/กอง')}}
-              </div>
-              <div class="input-group">
-                <input type="text" name="division" id="division" class="form-control" required>
-              </div>
+              {{ Form::label('division','สำนัก/กอง')}}
+              {{ Form::text('division',null,['class' => 'form-control', 'id'=>'division', 'required']) }}
             </div>
             <div class="col-md-4">
-              <div class="input-group">
-                {{ Form::label('sub_division','กลุ่มงาน')}}
-              </div>
-              <div class="input-group">
-                <input type="text" name="sub_division" id="sub_division" class="form-control" required>
-              </div>
+              {{ Form::label('sub_division','กลุ่มงาน')}}
+              {{ Form::text('division',null,['class' => 'form-control', 'id'=>'division', 'required']) }}
             </div>
           </div>
             <div class="row">
               <div class="col-md-3">
                 {{ Form::label('building','อาคาร')}}
-                <div class="input-group">
-                  <input type="text" name="building" id="building" class="form-control" required>
-                </div>
+                {{ Form::text('building',null,['class' => 'form-control', 'id'=>'building', 'required']) }}
               </div>
               <div class="col-md-1">
                 {{ Form::label('floor','ชั้น')}}
-                <div class="input-group">
-                  <input type="text" name="floor" id="floor" class="form-control">
-                </div>
+                {{ Form::text('floor',null,['class' => 'form-control', 'id'=>'floor',]) }}
               </div>
               <div class="col-md-3">
                 {{ Form::label('room','ห้อง')}}
-                <div class="input-group">
-                  <input type="text" name="room" id="room" class="form-control">
-                </div>
+                {{ Form::text('room',null,['class' => 'form-control', 'id'=>'room',]) }}
               </div>
               <div class="col-md-2">
                 {{ Form::label('phone','โทรศัพท์')}}
-                <div class="input-group">
-                  <input type="text" name="phone" id="phone" class="form-control" required>
-                </div>
+                {{ Form::text('phone',null,['class' => 'form-control', 'id'=>'phone', 'required']) }}
               </div>
               <div class="col-md-3">
                 {{ Form::label('email','อีเมล')}}
-                <div class="input-group">
-                  {{ Form::email('email', null, ['class' => 'form-control','id'=>'email','placeholder'=>"ระบุอีเมลผู้แจ้ง",]) }}
-                </div>
+                {{ Form::email('email', null, ['class' => 'form-control','id'=>'email','placeholder'=>"ระบุอีเมลผู้แจ้ง",]) }}
               </div>
             </div>
             {{ Form::label('request_type','มีความประสงค์')}}
@@ -114,9 +96,9 @@
               <div class="form-group col col-md-3">
                 <select name="request_type" class="form-control" required>
                   <option value="">ระบุความประสงค์...</option>
-                  <option value="ซ่อม">ซ่อม</option>
-                  <option value="ทำ">ทำ</option>
-                  <option value="อื่นๆ">อื่น ๆ</option>
+                  <option value="ซ่อม" {{ old('request_type') == "ซ่อม" ? 'selected' : '' }}>ซ่อม</option>
+                  <option value="ทำ" {{ old('request_type') == "ทำ" ? 'selected' : '' }}>ทำ</option>
+                  <option value="อื่นๆ" {{ old('request_type') == "อื่นๆ" ? 'selected' : ''}}>อื่น ๆ</option>
                 </select>
               </div>
               <div class="form-group col-md-9">
@@ -136,26 +118,26 @@
               </div>
             </div>
             <div class="row">
-              <div class="form-group col col-md-3">
+              <div class="col-md-3">
                 {{ Form::label('request_number','เลขที่เอกสารกลุ่ม')}}
                 {{ Form::text('request_number', null, ['class' => 'form-control','id'=>'request_number','placeholder'=>"ระบุเลขที่เอกสารของฝ่าย", 'required']) }}
               </div>
-              <div class="form-group col col-md-3">
+              <div class="col-md-3">
                 {{ Form::label('dateCreate','วันที่รับเอกสาร')}}
                     <div class="input-group date" id="request_recieved" data-target-input="nearest">
-                        <input type="text" name="request_recieved" class="form-control datetimepicker-input" data-target="#request_recieved">
+                        <input type="text" name="request_recieved" class="form-control datetimepicker-input" data-target="#request_recieved" value="{{ old('request_recieved') }}" required>
                         <div class="input-group-append" data-target="#request_recieved" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                     </div>
               </div>
-              <div class="form-group col  col-md-6">
-                {{ Form::label('request_file','ไฟล์ใบแจ้งปัญหา')}}
-                <input type="file" name="request_file" class="form-control"  accept=".pdf" required>
+              <div class="col-md-6">
+                  {{ Form::label('request_file','ไฟล์ใบแจ้งปัญหา')}} 
+                  {{ Form::file('request_file', ['class' => 'form-control', 'id' => 'request_file', 'accept' => '.pdf', 'required']) }}
               </div>
             </div>
             <div class="card-footer">
-              <div class="form-group col col-md-7" style="text-align: right">
+              <div class="col" style="text-align: center">
                 {{ Form::submit('บันทึกข้อมูล', ['class' => 'btn btn-primary ']) }}
               </div>
             </div>
