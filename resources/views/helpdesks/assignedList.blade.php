@@ -22,28 +22,28 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive">
-                    <table id="" class="table table-bordered table-striped table-sm datatables">
+                    <table id="allRequest" class="table table-bordered table-striped table-sm datatables">
                         @if (count($requestAssigns) > 0)
                             <thead>
                                 <tr>
+                                    <th style="text-align: center">ผู้ปฏิบัติงาน</th>
                                     <th style="text-align: center" width="60px">เลขที่</th>
                                     <th style="text-align: center" width="70px">วันที่รับ</th>
                                     <th style="text-align: center">ผู้แจ้ง</th>
                                     <th style="text-align: center">ความประสงค์</th>
-                                    <th style="text-align: center">ผู้ปฏิบัติงาน</th>
                                     <th style="text-align: center">สถานะ</th>
                                     <th style="text-align: center" width="60px">เอกสารแจ้ง</th>
                                     <th style="text-align: center" width="60px">ส่งมอบงานแล้ว</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="items">
                                 @foreach ($requestAssigns as $item)                                  
                                     <tr>
+                                        <td>{{ $item->user->name }}</td>
                                         <td>{{ $item->requestInfo->request_number }}</td>
                                         <td>{{ date ('d-m-Y', strtotime($item->requestInfo->request_recieved)) }}</td>
                                         <td>{{ $item->requestInfo->request_owner }}</td>
                                         <td>{{ $item->requestInfo->request_type }} {{ $item->requestInfo->request_objective }}</td>
-                                        <td>{{ $item->user->name }}</td>
                                         <td>{{ $item->requestInfo->request_status }}</td>
                                         <td style="text-align: center">
                                             <a href="/{{$item->requestInfo->request_file}}" class="btn btn-danger" target="_new"> <i class="fas fa-file-pdf"></i></a>
@@ -71,4 +71,6 @@
 </div><!-- /.container-fluid -->
 
 @endsection
-
+@section('scripts')
+    <script src="{{ asset('/js/group-table.js') }}" ></script>
+@endsection
