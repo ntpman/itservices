@@ -233,7 +233,7 @@ return [
         // Create More Class Aliases
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Input' => Illuminate\Support\Facades\Request::class,
+        // 'Input' => Illuminate\Support\Facades\Request::class,
 
     ],
 

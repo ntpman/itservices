@@ -24,12 +24,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="col col-sm-10 col-md-12" style="margin-top: 1px">
+    <div class="col col-sm-10 col-md-12" style="margin-top: 0.5px">
       <div class="card">
         <div class="card-body">
           {!! Form::open(['action' => 'Helpdesks\FormController@store', 'method' => 'POST', 'class' => 'was-validate','enctype'=>'multipart/form-data']) !!}
           <div class="row">
-            <div class="col-md-3">
+            <div class="form-group col col-md-3">
               {{ Form::label('dateCreate','วันที่จัดทำ')}}
               <div class="input-group date" id="reservationdate" data-target-input="nearest">
                 <input type="text" name="request_date" class="form-control datetimepicker-input" data-target="#reservationdate" value="{{ old('request_date') }}" required>
@@ -39,8 +39,8 @@
               </div>
             </div>
             
-            <div class="col-md-2">
-              {{ Form::label('org_responsible', 'เสนอ: *') }}
+            <div class="form-group col col-md-2">
+              {{ Form::label('org_responsible', 'เสนอ: ') }}
               <br>
               <label class="radio-inline">
                 {{ Form::radio('org_responsible', "ผสท.", null,['required']) }} ผสท.
@@ -50,65 +50,70 @@
               </label> 
             </div>
 
-            <div class="col-md-7">
+            <div class="form-group col col-md-7">
               {{ Form::label('chain_of_command','ผ่าน')}}
               {{ Form::text('chain_of_command', null, ['class' => 'form-control','id'=>'chain_of_command','placeholder'=>"ระบุสายบังคับบัญชา",]) }}
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4">
+            <div class="form-group col col-md-4">
               {{ Form::label('request_owner','ชื่อผู้แจ้ง')}}
               {{ Form::text('request_owner',null,['class' => 'form-control', 'id'=>'request_owner', 'required']) }}
             </div>
-            <div class="col-md-4">
+            <div class="form-group col col-md-4">
               {{ Form::label('division','สำนัก/กอง')}}
               {{ Form::text('division',null,['class' => 'form-control', 'id'=>'division', 'required']) }}
             </div>
-            <div class="col-md-4">
+            <div class="form-group col col-md-4">
               {{ Form::label('sub_division','กลุ่มงาน')}}
-              {{ Form::text('division',null,['class' => 'form-control', 'id'=>'division', 'required']) }}
+              {{ Form::text('sub_division',null,['class' => 'form-control', 'id'=>'division', 'required']) }}
             </div>
           </div>
             <div class="row">
-              <div class="col-md-3">
+              <div class="form-group col col-md-3">
                 {{ Form::label('building','อาคาร')}}
                 {{ Form::text('building',null,['class' => 'form-control', 'id'=>'building', 'required']) }}
               </div>
-              <div class="col-md-1">
+              <div class="form-group col col-md-1">
                 {{ Form::label('floor','ชั้น')}}
                 {{ Form::text('floor',null,['class' => 'form-control', 'id'=>'floor',]) }}
               </div>
-              <div class="col-md-3">
+              <div class="form-group col col-md-3">
                 {{ Form::label('room','ห้อง')}}
                 {{ Form::text('room',null,['class' => 'form-control', 'id'=>'room',]) }}
               </div>
-              <div class="col-md-2">
+              <div class="form-group col col-md-2">
                 {{ Form::label('phone','โทรศัพท์')}}
                 {{ Form::text('phone',null,['class' => 'form-control', 'id'=>'phone', 'required']) }}
               </div>
-              <div class="col-md-3">
+              <div class="form-group col col-md-3">
                 {{ Form::label('email','อีเมล')}}
                 {{ Form::email('email', null, ['class' => 'form-control','id'=>'email','placeholder'=>"ระบุอีเมลผู้แจ้ง",]) }}
               </div>
             </div>
-            {{ Form::label('request_type','มีความประสงค์')}}
             <div class="row">
-              <div class="form-group col col-md-3">
-                <select name="request_type" class="form-control" required>
-                  <option value="">ระบุความประสงค์...</option>
-                  <option value="ซ่อม" {{ old('request_type') == "ซ่อม" ? 'selected' : '' }}>ซ่อม</option>
-                  <option value="ทำ" {{ old('request_type') == "ทำ" ? 'selected' : '' }}>ทำ</option>
-                  <option value="อื่นๆ" {{ old('request_type') == "อื่นๆ" ? 'selected' : ''}}>อื่น ๆ</option>
-                </select>
+              <div class="form-group col col-md-2">
+                {{ Form::label('request_type','มีความประสงค์')}}
+                <br>
+                <label class="radio-inline">
+                  {{ Form::radio('request_type', "ซ่อม", null,['required']) }} ซ่อม
+                </label>
+                <label class="radio-inline">
+                  {{ Form::radio('request_type', "ทำ", null) }} ทำ
+                </label> 
+                <label class="radio-inline">
+                  {{ Form::radio('request_type', "อื่น ๆ", null) }} อื่น ๆ
+                </label> 
               </div>
-              <div class="form-group col-md-9">
+              <div class="form-group col col-md-7">
+                {{ Form::label('request_objective','ความประสงค์ที่ต้องการให้ดำเนินการ')}}
                 {{ Form::textarea('request_objective', null, ['class' => 'form-control','id'=>'request_objective', 'rows'=> 2,'placeholder'=>"ระบุความประสงค์ที่ต้องการให้ดำเนินการ",'required']) }}
               </div>
-            </div>
-            <div class="row">
-              <div class="form-group col col-md-12">
+            {{-- </div>
+            <div class="row"> --}}
+              <div class="form-group col col-md-3">
                 {{ Form::label('inv_number','หมายเลขครุภัณฑ์ (ถ้ามี)')}}
-                {{ Form::text('inv_number', null, ['class' => 'form-control','id'=>'inv_number','placeholder'=>"ระบุหมายเลขครุภัณฑ์ (ถ้ามี)",]) }}
+                {{ Form::textarea('inv_number', null, ['class' => 'form-control','id'=>'inv_number', 'rows' => 2,'placeholder'=>"ระบุหมายเลขครุภัณฑ์ (ถ้ามี)",]) }}
               </div>
             </div>
             <div class="row">

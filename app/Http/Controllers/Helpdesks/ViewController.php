@@ -80,7 +80,7 @@ class ViewController extends Controller
      * @param  \App\Models\Basics\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show(RequestInfo $requestInfo)
     {
         //
     }
@@ -91,9 +91,9 @@ class ViewController extends Controller
      * @param  \App\Models\Basics\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(RequestInfo $requestInfo)
     {
-
+        dd($requestInfo);
     }
 
     /**

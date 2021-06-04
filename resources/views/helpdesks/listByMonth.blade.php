@@ -35,41 +35,6 @@
                     </div>
                 </div>
 
-                <!-- /.card-header -->
-                {{-- <div class="card-body">
-                    {!! Form::open(['action' => 'Helpdesks\WorkerController@listWorkByCriteria', 'method' => 'GET', 'class' => 'was-validate','enctype'=>'multipart/form-data']) !!}
-                    {{ Form::label('workByMonth','ระบุเงื่อนไขการเรียกดูข้อมูล')}}
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <select class="form-control select2bs4 @error('workByMonth') is-invalid @enderror" 
-                                        style="width: 100%;" name="workByMonth" id="workByMonth"
-                                        data-placeholder="ระบุเดือนที่ต้องการ" required>
-                                        <option value=""></option>
-                                        <option value="01">มกราคม</option>
-                                        <option value="02">กุมภาพันธ์</option>        
-                                        <option value="03">มีนาคม</option>        
-                                        <option value="04">เมษายน</option>        
-                                        <option value="05">พฤษภาคม</option>        
-                                        <option value="06">มิถุนายน</option>        
-                                        <option value="07">กรกฎาคม</option>        
-                                        <option value="08">สิงหาคม</option>        
-                                        <option value="09">กันยายน</option>        
-                                        <option value="10">ตุลาคม</option>        
-                                        <option value="11">พฤศจิกายน</option>        
-                                        <option value="12">ธันวาคม</option>        
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="form-group col col-md-7" style="text-align: right">
-                            {{ Form::submit('ค้นหา', ['class' => 'btn btn-primary ']) }}
-                        </div>
-                    </div>
-                    {!! Form::close() !!}
-                </div> --}}
-
                 <div>
                     ใบงานที่รับแจ้งประจำเดือน {{ $monthName }} จำนวน {{ count($listWorkByMonths) }} ใบ
                 </div>
@@ -77,7 +42,7 @@
                     ใบงานที่ยังไม่แล้วเสร็จสะสมจนถึงสิ้นเดือน {{ $monthName }} จำนวน {{ count($listUnfinishWorks) }} ใบ
                 </div>
                 <div>
-                    ใบงานที่แล้วเสร็จทั้งหมดประจำเดือน {{ $monthName }} จำนวน {{ count($listFinishWorkByMonths) }} ใบ คิดเป็น {{ ( count($listFinishWorkByMonths)  / (count ($listUnfinishWorks) + count ($listFinishWorkByMonths))) * 100}} เปอร์เซ็นต์ ของงานทั้งหมด
+                    ใบงานที่แล้วเสร็จทั้งหมดประจำเดือน {{ $monthName }} จำนวน {{ count($listFinishWorkByMonths) }} ใบ คิดเป็น {{ round((count($listFinishWorkByMonths)  / (count ($listUnfinishWorks) + count ($listFinishWorkByMonths))) * 100,2)}} เปอร์เซ็นต์ ของงานทั้งหมด
                 </div>
                 <div>
                     @php                        
@@ -89,10 +54,10 @@
                             { $a = 1; }
                     @endphp
 
-                ใบงานของเดือน {{ $monthName }} ที่แล้วเสร็จ  จำนวน {{ count($listFinishWorkOfMonths) }} ใบ คิดเป็น {{ (( count($listFinishWorkOfMonths) / $a) * 100)}} เปอร์เซ็นต์ ของงานประจำเดือน
+                ใบงานของเดือน {{ $monthName }} ที่แล้วเสร็จ  จำนวน {{ count($listFinishWorkOfMonths) }} ใบ คิดเป็น {{ round((( count($listFinishWorkOfMonths) / $a) * 100),2)}} เปอร์เซ็นต์ ของงานประจำเดือน
                 </div>
                 <div>
-                    ค่าเฉลี่ยคะแนนความพึงพอใจ {{ $score }} จาก 5 คะแนน คิดเป็น {{ ($score / 5 ) * 100}} เปอร์เซ็นต์
+                    ค่าเฉลี่ยคะแนนความพึงพอใจ {{ round ($score,2) }} จาก 5 คะแนน คิดเป็น {{ round (($score / 5 ) * 100,2)}} เปอร์เซ็นต์
                 </div>
                 <div class="card-body table-responsive">
                     <table id="allRequest" class="table table-bordered table-striped table-sm datatables">

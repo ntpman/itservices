@@ -22,6 +22,8 @@ Route::get('/helpdesk/newRequest', 'Helpdesks\ViewController@newRequest')->name(
 Route::get('/helpdesk/listAll', 'Helpdesks\ViewController@listAll')->name('listAll');
 Route::get('/helpdesk/create', 'Helpdesks\FormController@create')->name('create');
 Route::post('/helpdesk/save', 'Helpdesks\FormController@store')->name('store');
+Route::get('/helpdesk/edit/{id}', 'Helpdesks\FormController@edit')->name('edit');
+Route::put('/helpdesk/update', 'Helpdesks\FormController@update')->name('update');
 
 Route::get('/helpdesk/listByCriteria', 'Helpdesks\ViewController@listByCriteria')->name('listByCriteria');
 Route::get('/helpdesk/listWorkCriteria', 'Helpdesks\WorkerController@listWorkByCriteria')->name('listWorkByCriteria');

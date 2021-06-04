@@ -44,11 +44,9 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        //validate date
+        //validate date data 
         $this->validate($request, [
             'request_number' => 'required|unique:request_infos,request_number',
-            // 'brandAbbrName' => 'nullable|unique:brands,brand_abbr_name',
         ]);
 
         //Add new data
@@ -111,9 +109,15 @@ class FormController extends Controller
      * @param  \App\Models\Basics\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(Request $request)
     {
+        $requestInfo = RequestInfo::find($request->id);
+// dd($requestInfo);
         
+        return view('helpdesks.edit',[
+            'requestDetail' => $requestInfo
+        ]);
+
     }
 
     /**
@@ -125,7 +129,7 @@ class FormController extends Controller
      */
     public function update(Request $request)
     {
-
+        dd($request->request_number);
     }
 
     /**
