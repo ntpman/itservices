@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Helpdesks\RequestInfo;
 use App\Models\Helpdesks\RequestAssign;
 
+use File;
+
 
 class FormController extends Controller
 {
@@ -129,7 +131,62 @@ class FormController extends Controller
      */
     public function update(Request $request)
     {
-        dd($request->request_number);
+        
+        //update data
+        $updateRequestInfo = RequestInfo::find($request->id);
+        $createDate = $request->request_date;
+        $updateRequestInfo->request_date = date('Y-m-d', strtotime($createDate));
+        $updateRequestInfo->org_responsible = $request->org_responsible;
+        $updateRequestInfo->chain_of_command = $request->chain_of_command;
+        $updateRequestInfo->request_owner = $request->request_owner;
+        $updateRequestInfo->division = $request->division;
+        $updateRequestInfo->sub_division = $request->sub_division;
+        $updateRequestInfo->building = $request->building;
+        $updateRequestInfo->floor = $request->floor;
+        $updateRequestInfo->room = $request->room;
+        $updateRequestInfo->phone = $request->phone;
+        $updateRequestInfo->email = $request->email;
+        $updateRequestInfo->request_type = $request->request_type;
+        $updateRequestInfo->request_objective = $request->request_objective;
+        $updateRequestInfo->inv_number = $request->inv_number;
+        $updateRequestInfo->request_detail = $request->request_detail;
+        $recivedDate = $request->request_recieved;
+        $updateRequestInfo->request_recieved = date('Y-m-d', strtotime($recivedDate));
+        
+        //check change request number
+        if ($updateRequestInfo->request_number != $request->request_number){
+            //validate data
+            $this->validate($request, [
+                'request_number' => 'nullable|unique:request_infos,request_number',
+            ]);
+            $updateRequestInfo->request_number = $request->request_number;
+        }
+        
+        //check upload new file
+        $file = request()->file('request_file');
+        
+        if(isset($file)) {
+            $fileName = date('Ymdhis').'.'.request()->file('request_file')->getClientOriginalExtension();
+
+            // Delete existing file
+            $existFile = $request->existingFile;
+            if(File::exists(public_path('storage/images/').$existFile)){
+                File::delete(public_path('storage/images/').$existFile);
+                $updateRequestInfo->request_file = request()->file('request_file')->move('storage/images', $fileName);
+            }else{
+                $updateRequestInfo->request_file = request()->file('request_file')->move('storage/images', $fileName);
+            }
+        }
+        $updateRequestInfo->updated_by = auth()->user()->name;
+        $updateRequestInfo->save();
+        
+        Session::flash('success_msg', 'แก้ไขข้อมูลเรียบร้อยแล้ว');
+        
+        //return current view
+        return redirect()->back();
+
+
+        
     }
 
     /**

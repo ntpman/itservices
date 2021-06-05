@@ -16,8 +16,12 @@
 					{!! Form::open(['action' => 'Basics\BuildingController@store', 'method' => 'POST', 'class' => 'was-validate']) !!}
 					<div class="card-body">
 						<div class="form-group">
-							{{ Form::label('title','ชื่ออาคาร')}}
-							{{ Form::text('buildingName', '', ['class' => 'form-control','required']) }}
+							{{ Form::label('title','ชื่อเต็มของอาคาร')}}
+							{{ Form::text('buildingFullName', '', ['class' => 'form-control','required']) }}
+						</div>
+						<div class="form-group">
+							{{ Form::label('title','ชื่อย่อของอาคาร')}}
+							{{ Form::text('buildingAbbrName', '', ['class' => 'form-control','required']) }}
 						</div>
 						<a href="/basics/building" class="btn btn-secondary">ย้อนกลับ</a>
 						{{ Form::submit('บันทึก', ['class' => 'btn btn-primary']) }}

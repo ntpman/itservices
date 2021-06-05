@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit-buildingFullName" data-backdrop="static">
+<div class="modal fade" id="edit-buildingAbbrName" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,13 +11,13 @@
             {!! Form::open(['action' => ['Basics\BuildingController@update', $editBuilding->id], 'method'=>'PUT']) !!}
             <div class="modal-body">
                 <div class="form-group">
-                    {{ Form::label('title','ชื่ออาคาร')}}
-                    {{ Form::text('buildingFullName', $editBuilding->building_full_name, ['class' => 'form-control','required']) }}
+                    {{ Form::label('title','ชื่อย่อของอาคาร')}}
+                    {{ Form::text('buildingAbbrName', $editBuilding->building_abbr_name, ['class' => 'form-control','required']) }}
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                <input type="hidden" name="edit-buildingFullName" value="1">
+                <input type="hidden" name="edit-buildingAbbrName" value="1">
                 {{ Form::hidden('_method','PUT') }}
                 {{ Form::submit('บันทึก', ['class'=>'btn btn-primary btn-sm']) }}
             </div>

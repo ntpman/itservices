@@ -31,6 +31,9 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href=" {{ asset('/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
 
+    <!-- Dropzone -->
+    <link rel="stylesheet" href="{{ asset('/adminlte/plugins/dropzone/dropzone.js') }}">
+
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
@@ -115,7 +118,7 @@
                 <i class="far fa-calendar-alt"></i> {{ date('d-m-Y') }} <i class="far fa-clock"></i> {{ date('H:i') }}
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2020-2021 @ DSS IT Subdivision. </strong>Version 1.03, All rights reserved.
+            <strong>Copyright &copy; 2020-2021 @ DSS IT Subdivision. </strong>Version 1.04, All rights reserved.
         </footer>
     </div>
     <!-- ./wrapper -->
@@ -145,6 +148,9 @@
 
     <!-- Tempusdominus Bootstrap 4 -->
     <script src=" {{ asset('/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+    <!-- Dropzone-->
+    <script src="{{ asset('/adminlte/plugins/dropzone/dropzone.js') }}"></script>
 
     <!-- REQUIRED SCRIPTS -->
     @if (Session::has('success_msg'))

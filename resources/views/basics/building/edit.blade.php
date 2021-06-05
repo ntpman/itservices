@@ -1,7 +1,7 @@
 @extends('layouts.adminlte')
 
 @section('page_name')
-    | Buildings Edit
+    | แก้ไขข้อมูลชื่ออาคาร
 @endsection
 
 @section('content')
@@ -16,11 +16,18 @@
                     {!! Form::open(['action' => ['Basics\BuildingController@update', $editBuilding->id], 'method'=>'PUT']) !!}
                     <div class="card-body">
                         <div class="form-group">
-                            {{ Form::label('title','ชื่ออาคาร')}}
-                            <a href="#" data-toggle="modal" data-target="#edit-buildingName">
+                            {{ Form::label('title','ชื่อเต็มของอาคาร')}}
+                            <a href="#" data-toggle="modal" data-target="#edit-buildingFullName">
                                 <i class="far fa-edit"></i> Edit
                             </a>
-							{{ Form::text('', $editBuilding->building_name, ['class' => 'form-control', 'readonly']) }}
+							{{ Form::text('', $editBuilding->building_full_name, ['class' => 'form-control', 'readonly']) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('title','ชื่อย่อของอาคาร')}}
+                            <a href="#" data-toggle="modal" data-target="#edit-buildingAbbrName">
+                                <i class="far fa-edit"></i> Edit
+                            </a>
+							{{ Form::text('', $editBuilding->building_abbr_name, ['class' => 'form-control', 'readonly']) }}
                         </div>
                         <div class="form-group">
                             {{ Form::label('title', 'สถานะการใช้งานข้อมูล') }}
@@ -49,6 +56,7 @@
 @section('modal')
 
     @include('basics.building.modal.edit-building-name')
+    @include('basics.building.modal.edit-building-abbr-name')
 
 @endsection
 

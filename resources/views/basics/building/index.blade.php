@@ -25,7 +25,8 @@
                                 <thead>
                                     <tr>
                                         <th style="width:80px;">ลำดับที่</th>
-                                        <th class="text-center">ชื่ออาคาร</th>
+                                        <th class="text-center">ชื่อเต็มอาคาร</th>
+                                        <th class="text-center">ชื่อย่ออาคาร</th>
                                         <th style="width:180px;">สถานะการใช้งานข้อมูล</th>
                                         <th>ดำเนินการ</th>
                                     </tr>
@@ -34,7 +35,8 @@
                                 @foreach ($showAllBuilding as $building)
                                     <tr>
                                         <td class="text-center">{{ $building->id }}</td>
-                                        <td> {{ $building->building_name }}</td>
+                                        <td> {{ $building->building_full_name }}</td>
+                                        <td> {{ $building->building_abbr_name }}</td>
                                         <td class="text-center">{{ $building->building_status }}</td>
                                         <td>
                                             <a href="/basics/building/{{ $building->id }}/edit" class="bth btn-info btn-sm">

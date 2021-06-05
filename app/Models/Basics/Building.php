@@ -10,7 +10,8 @@ class Building extends Model
 {
     protected $table = 'buildings';
     protected $primaryKey = 'id';
-    protected $fillable = ['building_name', 'building_status', 'created_by', 'updated_by'];
+    
+    protected $guarded = [];
 
     public $timestamps = true;
 

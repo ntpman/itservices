@@ -41,12 +41,14 @@ class BuildingController extends Controller
     {
         //validate date
         $this->validate($request, [
-            'buildingName' => 'required|unique:buildings,building_name',
+            'buildingFullName' => 'required|unique:buildings,building_full_name',
+            'buildingAbbrName' => 'required|unique:buildings,building_abbr_name',
         ]);
 
         //Add new data
         $addBuilding = new Building;
-        $addBuilding->building_name = $request->input('buildingName');
+        $addBuilding->building_full_name = $request->input('buildingFullName');
+        $addBuilding->building_abbr_name = $request->input('buildingAbbrName');
         $addBuilding->building_status = 'A';
         $addBuilding->created_by = auth()->user()->name;
         $addBuilding->save();
@@ -90,23 +92,39 @@ class BuildingController extends Controller
      */
     public function update(Request $request, Building $building)
     {
-        if ($request->input('edit-buildingName') == 1) {
+        if ($request->input('edit-buildingFullName') == 1) {
             //validate data
             $this->validate($request, [
-                'buildingName' => 'required|unique:buildings,building_name',
+                'buildingFullName' => 'required|unique:buildings,building_full_name',
             ]);
 
             //update data
             $updateBuilding = Building::find($building->id);
-            $updateBuilding->building_name = $request->input('buildingName');
+            $updateBuilding->building_full_name = $request->input('buildingName');
             $updateBuilding->updated_by = auth()->user()->name;
             $updateBuilding->save();
 
-            Session::flash('success_msg', 'แก้ไขชื่ออาคารเรียบร้อย');
+            Session::flash('success_msg', 'แก้ไขชื่อเต็มของอาคารเรียบร้อย');
 
             return redirect()->back();
         }
 
+        if ($request->input('edit-buildingAbbrName') == 1) {
+            //validate data
+            $this->validate($request, [
+                'buildingAbbrName' => 'required|unique:buildings,building_abbr_name',
+            ]);
+
+            //update data
+            $updateBuilding = Building::find($building->id);
+            $updateBuilding->building_abbr_name = $request->input('buildingAbbrName');
+            $updateBuilding->updated_by = auth()->user()->name;
+            $updateBuilding->save();
+
+            Session::flash('success_msg', 'แก้ไขชื่อย่อของอาคารเรียบร้อย');
+
+            return redirect()->back();
+        }
         if ($request->input('edit') == 1) {
 
             $updateBuilding = Building::find($building->id);

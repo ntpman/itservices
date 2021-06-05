@@ -46,7 +46,7 @@
                                     <th style="text-align: center">ความประสงค์</th>
                                     {{-- <th style="text-align: center">ผู้รับผิดชอบ</th> --}}
                                     {{-- <th style="text-align: center" width="ึ60px">วันที่</th> --}}
-                                    <th style="text-align: center" width="100px">สถานะ</th>
+                                    <th style="text-align: center" width="150px">สถานะ</th>
                                     <th style="text-align: center" width="40px">เอกสาร</i></th>
                                     <th style="text-align: center" width="100px">แก้ไขข้อมูล</i></th>
                                 </tr>
