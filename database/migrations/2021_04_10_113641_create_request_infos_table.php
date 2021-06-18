@@ -17,7 +17,7 @@ class CreateRequestInfosTable extends Migration
             $table->bigIncrements('id')->comment('รหัสรายการ');
             $table->date('request_date')->comment('วันที่จัดทำเอกสาร');
             $table->string('org_responsible', 20)->comment('หน่วยงานที่รับผิดชอบ');
-            $table->string('chain_of_command', 120)->comment('สายบังคับบัญชาของผู้แจ้ง');
+            $table->string('chain_of_command', 120)->comment('สายบังคับบัญชาของผู้แจ้ง')->nullable();
             $table->string('request_owner',100)->comment('ชื่อผู้แจ้ง');
             $table->string('division', 255)->comment('หน่วยงานผู้แจ้ง');
             $table->string('sub_division', 100)->comment('กลุ่มงานผู้แจ้ง');

@@ -15,8 +15,14 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/helpdesk/listByCriteria" class="nav-link {{ Request::is('helpdesk/listByCriteria') ? 'active' : '' }}">
+            <a href="/helpdesk/listUnfinishRequest" class="nav-link {{ Request::is('helpdesk/listUnfinishRequest') ? 'active' : '' }}">
                 <i class="fas fa-folder-open nav-icon"></i>
+                <p>ข้อมูลงานที่ยังไม่แล้วเสร็จ</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/helpdesk/listByCriteria" class="nav-link {{ Request::is('helpdesk/listByCriteria') ? 'active' : '' }}">
+                <i class="far fa-calendar-check nav-icon"></i>
                 <p>เรียกดูข้อมูลงานแล้วเสร็จ</p>
             </a>
         </li>

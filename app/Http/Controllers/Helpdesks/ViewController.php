@@ -44,6 +44,16 @@ class ViewController extends Controller
         ]);
     }
 
+    public function listUnfinishRequest()
+    {
+        // dd("HI");
+        $requestUnfinish = RequestInfo::whereNotIn('request_status',['ประเมินความพึงพอใจแล้ว'])->get();
+
+        return view('helpdesks.listUnfinish', [
+            'requestUnfinishs' => $requestUnfinish,
+        ]);
+    }
+
     public function newRequest()
     {
         $newRequest = RequestInfo::where('request_status','=','รอมอบหมายหัวหน้างาน')->get();

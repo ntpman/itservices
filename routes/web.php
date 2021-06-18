@@ -26,6 +26,7 @@ Route::get('/helpdesk/edit/{id}', 'Helpdesks\FormController@edit')->name('edit')
 Route::put('/helpdesk/update', 'Helpdesks\FormController@update')->name('update');
 
 Route::get('/helpdesk/listByCriteria', 'Helpdesks\ViewController@listByCriteria')->name('listByCriteria');
+Route::get('/helpdesk/listUnfinishRequest', 'Helpdesks\ViewController@listUnfinishRequest')->name('listUnfinishRequest');
 Route::get('/helpdesk/listWorkCriteria', 'Helpdesks\WorkerController@listWorkByCriteria')->name('listWorkByCriteria');
 
 Route::get('/helpdesk/unAssignSupervisor', 'Helpdesks\RequestAssignController@unAssignSupervisor')->name('unAssignSupervisor');
