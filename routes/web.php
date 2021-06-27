@@ -22,7 +22,7 @@ Route::get('/helpdesk/newRequest', 'Helpdesks\ViewController@newRequest')->name(
 Route::get('/helpdesk/listAll', 'Helpdesks\ViewController@listAll')->name('listAll');
 Route::get('/helpdesk/create', 'Helpdesks\FormController@create')->name('create');
 Route::post('/helpdesk/save', 'Helpdesks\FormController@store')->name('store');
-Route::get('/helpdesk/edit/{id}', 'Helpdesks\FormController@edit')->name('edit');
+Route::get('/helpdesk/editNewRequest/{id}', 'Helpdesks\FormController@editNewRequest')->name('editNewRequest');
 Route::put('/helpdesk/update', 'Helpdesks\FormController@update')->name('update');
 
 Route::get('/helpdesk/listByCriteria', 'Helpdesks\ViewController@listByCriteria')->name('listByCriteria');
@@ -37,7 +37,7 @@ Route::get('/helpdesk/assignWorker/{id}', 'Helpdesks\RequestAssignController@ass
 Route::post('/helpdesk/saveWorker', 'Helpdesks\RequestAssignController@saveWorker')->name('saveWorker');
 
 Route::get('/helpdesk/workList', 'Helpdesks\WorkerController@workList')->name('workList');
-Route::get('/helpdesk/assignedList', 'Helpdesks\WorkerController@assignedList')->name('assignedList');
+Route::get('/helpdesk/assignWorkerList', 'Helpdesks\WorkerController@assignWorkerList')->name('assignWorkerList');
 Route::get('/helpdesk/workOwner', 'Helpdesks\WorkerController@workOwner')->name('workOwner');
 Route::get('/helpdesk/workRecord/{id}', 'Helpdesks\WorkerController@workRecord')->name('workRecord');
 Route::post('/helpdesk/workRecord', 'Helpdesks\WorkerController@store')->name('store');

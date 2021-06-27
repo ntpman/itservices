@@ -71,8 +71,8 @@
           </div>
             <div class="row">
               <div class="form-group col col-md-3">
-                {{ Form::label('building','อาคาร')}}
-                {{ Form::text('building',null,['class' => 'form-control', 'id'=>'building', 'required']) }}
+                {{ Form::label('building_id','อาคาร')}}
+                {{ Form::select('building_id', $buildingOptions, null, ['class' => 'form-control', 'id'=>'building_id','placeholder'=>"ระบุชื่ออาคาร", 'required']) }}
               </div>
               <div class="form-group col col-md-1">
                 {{ Form::label('floor','ชั้น')}}

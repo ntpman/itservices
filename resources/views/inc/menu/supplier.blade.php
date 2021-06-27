@@ -1,3 +1,4 @@
+@if (Auth::user()->position == 'รก.หก.ทส.' || Auth::user()->position == 'ธุรการกลุ่ม')
 <li class="nav-item has-treeview {{ Request::is('supplier*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link {{ Request::is('supplier*') ? 'active' : '' }}">
         <p>
@@ -20,3 +21,4 @@
         </li>
     </ul>
 </li>
+@endif

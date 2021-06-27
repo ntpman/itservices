@@ -27,7 +27,7 @@
             </a>
         </li>
         @endif
-    @if (Auth::user()->position == 'หัวหน้างานฮาร์ดแวร์' || Auth::user()->position == 'หัวหน้างานซอฟต์แวร์')
+    @if (Auth::user()->position == 'หัวหน้างานฮาร์ดแวร์' || Auth::user()->position == 'หัวหน้างานซอฟต์แวร์' || Auth::user()->position == 'หัวหน้างานธุรการ')
         <li class="nav-item">
             <a href="/helpdesk/unAssignWorker" class="nav-link {{ Request::is('helpdesk/unAssignWorker') ? 'active' : '' }}">
                 <i class="fas fa-file-signature nav-icon"></i>
@@ -35,14 +35,15 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/helpdesk/assignedList" class="nav-link {{ Request::is('helpdesk/assignWorkerList') ? 'active' : '' }}">
+            <a href="/helpdesk/assignWorkerList" class="nav-link {{ Request::is('helpdesk/assignWorkerList') ? 'active' : '' }}">
                 <i class="fas fa-clipboard-list nav-icon"></i>
                 <p>งานที่มอบหมายแล้ว</p>
             </a>
         </li>
     @endif
     @if (Auth::user()->position == 'ผู้ปฏิบัติงานด้านฮาร์ดแวร์' || Auth::user()->position == 'ผู้ปฏิบัติงานด้านซอฟต์แวร์'
-        || Auth::user()->position == 'หัวหน้างานฮาร์ดแวร์' || Auth::user()->position == 'หัวหน้างานซอฟต์แวร์')
+        || Auth::user()->position == 'หัวหน้างานฮาร์ดแวร์' || Auth::user()->position == 'หัวหน้างานซอฟต์แวร์'
+        || Auth::user()->position == 'หัวหน้างานธุรการ' || Auth::user()->position == 'ธุรการกลุ่ม')
         <li class="nav-item">
             <a href="/helpdesk/workOwner" class="nav-link {{ Request::is('helpdesk/workOwner') ? 'active' : '' }}">
                 <i class="fas fa-file-contract nav-icon"></i>

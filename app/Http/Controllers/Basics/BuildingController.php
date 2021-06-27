@@ -100,7 +100,7 @@ class BuildingController extends Controller
 
             //update data
             $updateBuilding = Building::find($building->id);
-            $updateBuilding->building_full_name = $request->input('buildingName');
+            $updateBuilding->building_full_name = $request->input('buildingFullName');
             $updateBuilding->updated_by = auth()->user()->name;
             $updateBuilding->save();
 

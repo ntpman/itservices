@@ -22,10 +22,10 @@
                                     <th style="text-align: center">ผู้รับผิดชอบ</th>
                                     <th style="text-align: center" width="50px">เลขที่</th>
                                     <th style="text-align: center" width="60px">วันที่รับ</th>
-                                    <th style="text-align: center" width="150px">ผู้แจ้ง</th>
-                                    <th style="text-align: center" width="300px">ความประสงค์</th>
-                                    <th style="text-align: center" width="100px">วันที่จ่ายงาน</th>
-                                    <th style="text-align: center" width="120px">สถานะ</th>
+                                    <th style="text-align: center" width="120px">ผู้แจ้ง</th>
+                                    <th style="text-align: center" width="200px">ความประสงค์</th>
+                                    <th style="text-align: center" width="90px">วันที่จ่ายงาน</th>
+                                    <th style="text-align: center" width="100px">สถานะ</th>
                                     <th style="text-align: center" width="40px">เอกสาร</i></th>
                                 </tr>
                             </thead>

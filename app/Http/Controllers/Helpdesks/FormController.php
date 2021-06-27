@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Helpdesks\RequestInfo;
 use App\Models\Helpdesks\RequestAssign;
 
+use App\Models\Basics\Building;
 use File;
 
 
@@ -35,7 +36,10 @@ class FormController extends Controller
      */
     public function create()
     {
-        return view('helpdesks.create');
+        $building = Building::where('building_status','=','A'); 
+        return view('helpdesks.create',[
+            'buildingOptions' => $building->pluck('building_abbr_name', 'id')->toArray(),
+        ]);
     }
 
     /**
@@ -60,7 +64,7 @@ class FormController extends Controller
         $addNewRequest->request_owner = $request->input('request_owner');
         $addNewRequest->division = $request->input('division');
         $addNewRequest->sub_division = $request->input('sub_division');
-        $addNewRequest->building = $request->input('building');
+        $addNewRequest->building_id = $request->input('building_id');
         $addNewRequest->floor = $request->input('floor');
         $addNewRequest->room = $request->input('room');
         $addNewRequest->phone = $request->input('phone');
@@ -111,13 +115,14 @@ class FormController extends Controller
      * @param  \App\Models\Basics\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function editNewRequest(Request $request)
     {
         $requestInfo = RequestInfo::find($request->id);
-// dd($requestInfo);
+        $building = Building::where('building_status','=','A');
         
-        return view('helpdesks.edit',[
-            'requestDetail' => $requestInfo
+        return view('helpdesks.editNewRequest',[
+            'requestDetail' => $requestInfo,
+            'buildingOptions' => $building->pluck('building_abbr_name', 'id')->toArray(),
         ]);
 
     }
@@ -141,7 +146,7 @@ class FormController extends Controller
         $updateRequestInfo->request_owner = $request->request_owner;
         $updateRequestInfo->division = $request->division;
         $updateRequestInfo->sub_division = $request->sub_division;
-        $updateRequestInfo->building = $request->building;
+        $updateRequestInfo->building_id = $request->building_id;
         $updateRequestInfo->floor = $request->floor;
         $updateRequestInfo->room = $request->room;
         $updateRequestInfo->phone = $request->phone;

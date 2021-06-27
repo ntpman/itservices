@@ -21,7 +21,7 @@ class CreateRequestInfosTable extends Migration
             $table->string('request_owner',100)->comment('ชื่อผู้แจ้ง');
             $table->string('division', 255)->comment('หน่วยงานผู้แจ้ง');
             $table->string('sub_division', 100)->comment('กลุ่มงานผู้แจ้ง');
-            $table->string('building', 50)->comment('อาคาร');
+            $table->unsignedBigInteger('building_id')->comment('รหัสอาคาร');
             $table->string('floor', 50)->comment('ชั้น')->nullable();
             $table->string('room', 50)->comment('ห้อง')->nullable();
             $table->string('phone', 50)->comment('หมายเลขโทรศัพท์');
@@ -50,6 +50,7 @@ class CreateRequestInfosTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('building_id')->references('id')->on('buildings');
         });
     }
     /**

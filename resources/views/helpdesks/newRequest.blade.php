@@ -65,7 +65,7 @@
                                             <a href="{{ asset('/')}}{{ $item->request_file }}" class="btn btn-danger btn-xs" target="_new"> <i class="far fa-file-pdf"></i></a>
                                         </td>
                                         <td style="text-align: center">
-                                            <a href="/helpdesk/edit/{{ $item->id }}" class="btn btn-info btn-xs"> <i class="fas fa-edit"></i></a>
+                                            <a href="/helpdesk/editNewRequest/{{ $item->id }}" class="btn btn-info btn-xs"> <i class="fas fa-edit"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

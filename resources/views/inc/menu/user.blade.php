@@ -1,3 +1,4 @@
+@if (Auth::user()->position == 'รก.หก.ทส.' || Auth::user()->name == 'sub@dss.go.th' || Auth::user()->name=='nititpong@dss.go.th')
 <li class="nav-item has-treeview {{ Request::is('admin/users*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link {{ Request::is('admin/users*') ? 'active' : '' }}">
         <p>
@@ -20,3 +21,4 @@
         </li>
     </ul>
 </li>
+@endif

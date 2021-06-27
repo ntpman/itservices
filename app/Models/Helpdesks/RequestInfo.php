@@ -5,6 +5,7 @@ namespace App\Models\Helpdesks;
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
+use App\Models\Basics\Building;
 
 class RequestInfo extends Model
 {
@@ -27,6 +28,11 @@ class RequestInfo extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id' , 'id');
+    }
+
+    public function buildingName()
+    {
+        return $this->belongsTo(Building::class, 'building_id' , 'id');
     }
 
 }

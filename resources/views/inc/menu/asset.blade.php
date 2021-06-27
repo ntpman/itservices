@@ -1,7 +1,8 @@
+@if (Auth::user()->position == 'รก.หก.ทส.' || Auth::user()->position == 'ธุรการกลุ่ม')
 <li class="nav-item has-treeview {{ Request::is('assets*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link {{ Request::is('assets*') ? 'active' : '' }}">
         <p>
-            คลังครุภัณฑ์
+            คลังวัสดุ
             <i class="right fas fa-angle-left"></i>
         </p>
     </a>
@@ -20,3 +21,4 @@
         </li>
     </ul>
 </li>
+@endif

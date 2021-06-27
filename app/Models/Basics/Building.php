@@ -25,4 +25,10 @@ class Building extends Model
     {
         return $this->hasMany(Location::class);
     }
+
+    public function requestInfos()
+    {
+        return $this->hasMany(RequestInfo::class, 'building_id', 'id');
+    }
+
 }

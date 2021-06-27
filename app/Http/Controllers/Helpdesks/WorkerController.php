@@ -54,11 +54,11 @@ class WorkerController extends Controller
             'requestInfos' => $requestInfos
         ]);
     }
-    public function assignedList()
+    public function assignWorkerList()
     {
         $requestAssign = RequestAssign::where('created_by','=',auth()->user()->name)->get();
 
-        return view('helpdesks.assignedList', [
+        return view('helpdesks.assignWorkerList', [
             'requestAssigns' => $requestAssign
         ]);
     }
