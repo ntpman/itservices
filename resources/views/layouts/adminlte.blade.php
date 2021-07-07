@@ -118,7 +118,7 @@
                 <i class="far fa-calendar-alt"></i> {{ date('d-m-Y') }} <i class="far fa-clock"></i> {{ date('H:i') }}
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2020-2021 @ DSS IT Subdivision. </strong>Version 1.04, All rights reserved.
+            <strong>Copyright &copy; 2020-2021 @ DSS IT Subdivision. </strong>Version 1.05, All rights reserved.
         </footer>
     </div>
     <!-- ./wrapper -->
@@ -205,6 +205,14 @@
             });
             
             $('#estimate_date').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+
+            $('#books_received_date').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+
+            $('#books_due_date').datetimepicker({
                 format: 'DD-MM-YYYY'
             });
 

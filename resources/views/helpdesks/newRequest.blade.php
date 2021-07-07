@@ -42,11 +42,11 @@
                                 <tr>
                                     <th style="text-align: center" width="50px">เลขที่</th>
                                     <th style="text-align: center" width="100px">วันที่รับ</th>
-                                    <th style="text-align: center">ผู้แจ้ง</th>
+                                    <th style="text-align: center" width="120px">ผู้แจ้ง</th>
                                     <th style="text-align: center">ความประสงค์</th>
                                     {{-- <th style="text-align: center">ผู้รับผิดชอบ</th> --}}
                                     {{-- <th style="text-align: center" width="ึ60px">วันที่</th> --}}
-                                    <th style="text-align: center" width="150px">สถานะ</th>
+                                    {{-- <th style="text-align: center" width="150px">สถานะ</th> --}}
                                     <th style="text-align: center" width="40px">เอกสาร</i></th>
                                     <th style="text-align: center" width="100px">แก้ไขข้อมูล</i></th>
                                 </tr>
@@ -60,7 +60,7 @@
                                         <td>{{ $item->request_type }} {{ $item->request_objective }}</td>
                                         {{-- <td>{{ $item->user->name}}</td> --}}
                                         {{-- <td>{{date ('d-m-Y', strtotime ($item->updated_at ))}}</td> --}}
-                                        <td>{{ $item->request_status }}</td>
+                                        {{-- <td>{{ $item->request_status }}</td> --}}
                                         <td style="text-align: center">
                                             <a href="{{ asset('/')}}{{ $item->request_file }}" class="btn btn-danger btn-xs" target="_new"> <i class="far fa-file-pdf"></i></a>
                                         </td>

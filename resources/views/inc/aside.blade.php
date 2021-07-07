@@ -48,6 +48,22 @@
                 </ul>
             </nav>
             <hr style="height:10px;background-color:rgb(177, 100, 100)" />
+
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-compact" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                    
+                    <!-- Include flie menu -->
+
+                    {{-- Basic --}}
+                    @include('inc.menu.books')
+
+                    <!-- /.include flie menu -->
+                    
+                </ul>
+            </nav>
+            {{-- <hr style="height:10px;background-color:rgb(68, 103, 168)" /> --}}
+
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-compact" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->

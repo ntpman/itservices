@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(RequestInfo::class,'user_id','id');
     }
+
+    public function books()
+    {
+        return $this->hasMany(Books::class,'user_id','id');
+    }
 }

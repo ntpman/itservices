@@ -50,6 +50,17 @@ Route::get('/helpdesk/satisfactionList', 'Helpdesks\WorkerController@satisfactio
 Route::get('/helpdesk/satisfactionRecord/{id}', 'Helpdesks\WorkerController@satisfactionRecord')->name('satisfactionRecord');
 Route::post('/helpdesk/saveSatisfaction', 'Helpdesks\WorkerController@saveSatisfaction')->name('saveSatisfaction');
 
+
+Route::post('/helpdesk/oncall/openCase', 'Helpdesks\OnCallController@openCase')->name('openCase');
+Route::post('/helpdesk/oncall/listAllCases', 'Helpdesks\OnCallController@listAllCases')->name('listAllCases');
+
+
+Route::get('/books/addNewBooks', 'RegistrationBooksController@addNewBooks')->name('addNewBooks');
+Route::post('/books/saveNewBooks', 'RegistrationBooksController@saveNewBooks')->name('saveNewBooks');
+Route::get('/books/listAllBooks', 'RegistrationBooksController@listAllBooks')->name('listAllBooks');
+Route::get('/books/editBooks', 'RegistrationBooksController@editBooks')->name('editBooks');
+
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
